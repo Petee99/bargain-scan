@@ -1,0 +1,51 @@
+.topnav {
+  overflow: hidden;
+  background-color: #333333;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  padding-bottom: 1em;
+}
+
+.topnav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  padding-bottom: 0px;
+  text-decoration: none;
+  font-size: 17px;
+  float: left;
+  text-decoration: none;
+}
+
+.topnav a::after{
+  content: '';
+  display: block;
+  border-bottom: solid 2px #2ecc71;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.topnav a:hover::after {
+  transform: scaleX(1);
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.profile{
+  float: right;
+}
+
+.profile a {
+  text-align: center;
+  float: none;
+}
+
+.topnav.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

@@ -1,0 +1,23 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    position: relative;
+    bottom:0;
+    width: 100%;
+    vertical-align: middle;
+    background-color:#333333;
+    color: #a0a0a0;
+    text-align: center;
+    margin:0;
+}
+
+footer p {
+    margin: auto;
+    padding: 1%;
+}
+
+

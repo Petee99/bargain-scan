@@ -1,0 +1,68 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}INTRODUCTION}{1}{section.1}%
+\contentsline {section}{\numberline {2}BACKGROUND}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}History of Barcode Technology}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Evolution of Mobile Devices and Barcode Scanning Applications}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Relevance of Price Comparison in The Retail Industry}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}ANALYSIS OF PURPOSE-RELATED SOFTWARE}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}PriceGrabber.com}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Google Shopping}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}RedLaser}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}PriceRunner}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}ShopSavvy}{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Arukereso.hu}{8}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Cashmap.hu}{8}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Conclusion}{9}{subsection.3.8}%
+\contentsline {section}{\numberline {4}VISION}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Introduction}{10}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Purpose}{10}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Scope}{10}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Positioning}{10}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Business Opportunity}{10}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Problem Statement}{10}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Product Position Statement}{11}{subsubsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.3}Market Analysis}{12}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Market Demographics}{12}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Porter's Five Forces Analysis}{13}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}PEST Analysis}{14}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Ansoff Matrix Analysis}{14}{subsubsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.4}Stakeholder and User Descriptions}{15}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Stakeholder Summary}{15}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}User Summary}{16}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}User Environment}{16}{subsubsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.5}Product Overview}{17}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Product Perspective}{17}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Summary of Capabilities}{17}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}Assumptions and Dependencies}{18}{subsubsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}SWOT Analysis}{18}{subsubsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.6}Product Features}{19}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Constraints}{20}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Quality Ranges}{20}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Documentation Requirements}{21}{subsection.4.9}%
+\contentsline {section}{\numberline {5}SOFTWARE PLAN}{22}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Approach}{22}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Risk Management}{23}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Software Structure}{23}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}User Interface}{25}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Technological Stack}{25}{subsection.5.5}%
+\contentsline {section}{\numberline {6}IMPLEMENTATION}{27}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Introduction}{27}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Database}{28}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Introduction}{28}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Database Structure}{29}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Application Programming Interface}{31}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Introduction}{31}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Entry Point}{32}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Controller}{32}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}JWT Authentication}{34}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Data Models}{36}{subsubsection.6.3.5}%
+\contentsline {subsubsection}{\numberline {6.3.6}Web Scraping}{37}{subsubsection.6.3.6}%
+\contentsline {subsubsection}{\numberline {6.3.7}OpenAI Processing}{41}{subsubsection.6.3.7}%
+\contentsline {subsection}{\numberline {6.4}Web Application}{42}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Introduction}{42}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Architecture}{43}{subsubsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.5}Mobile Application}{47}{subsection.6.5}%
+\contentsline {section}{\numberline {7}BIBLIOGRAPHY}{48}{section.7}%
+\contentsline {section}{\numberline {8}LIST OF FIGURES}{50}{section.8}%
+\contentsline {section}{\numberline {9}LIST OF TABLES}{51}{section.9}%
+\contentsfinish 

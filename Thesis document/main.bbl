@@ -1,0 +1,729 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{barcode2023}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{History of Barcodes}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.barcodeproducts.co.nz/frequently_asked_questions_faq/barcodes_info
+      \endverb
+      \verb{url}
+      \verb https://www.barcodeproducts.co.nz/frequently_asked_questions_faq/barcodes_info
+      \endverb
+    \endentry
+    \entry{weightman2015}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9ece763778b5ca3d4fe55066f179c213}{%
+           family={Weightman},
+           familyi={W\bibinitperiod},
+           given={Gavin},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{9ece763778b5ca3d4fe55066f179c213}
+      \strng{fullhash}{9ece763778b5ca3d4fe55066f179c213}
+      \strng{bibnamehash}{9ece763778b5ca3d4fe55066f179c213}
+      \strng{authorbibnamehash}{9ece763778b5ca3d4fe55066f179c213}
+      \strng{authornamehash}{9ece763778b5ca3d4fe55066f179c213}
+      \strng{authorfullhash}{9ece763778b5ca3d4fe55066f179c213}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The History of the Bar Code}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.smithsonianmag.com/innovation/history-bar-code-180956704/
+      \endverb
+      \verb{url}
+      \verb https://www.smithsonianmag.com/innovation/history-bar-code-180956704/
+      \endverb
+    \endentry
+    \entry{densowave2011}{online}{}
+      \name{author}{1}{}{%
+        {{hash=5dc46ab32619487fcbd3b48ec12674ab}{%
+           family={Incorporated},
+           familyi={I\bibinitperiod},
+           given={Denso\bibnamedelima Wave},
+           giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{5dc46ab32619487fcbd3b48ec12674ab}
+      \strng{fullhash}{5dc46ab32619487fcbd3b48ec12674ab}
+      \strng{bibnamehash}{5dc46ab32619487fcbd3b48ec12674ab}
+      \strng{authorbibnamehash}{5dc46ab32619487fcbd3b48ec12674ab}
+      \strng{authornamehash}{5dc46ab32619487fcbd3b48ec12674ab}
+      \strng{authorfullhash}{5dc46ab32619487fcbd3b48ec12674ab}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{History of QR code}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2011}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.qrcode.com/en/history/
+      \endverb
+      \verb{url}
+      \verb https://www.qrcode.com/en/history/
+      \endverb
+    \endentry
+    \entry{chen2012}{article}{}
+      \name{author}{3}{}{%
+        {{hash=83702ad2b0cc9ef7ee381daa5f80b7f0}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=4669b36bf2634e9c62ad3cae2e829b82}{%
+           family={Chiang},
+           familyi={C\bibinitperiod},
+           given={R.\bibnamedelimi H.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=5985a5861bd012e8da9fe628ccf5c709}{%
+           family={Storey},
+           familyi={S\bibinitperiod},
+           given={V.\bibnamedelimi C.},
+           giveni={V\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{790cdfa6f2ab7010b92755df28f2e069}
+      \strng{fullhash}{790cdfa6f2ab7010b92755df28f2e069}
+      \strng{bibnamehash}{790cdfa6f2ab7010b92755df28f2e069}
+      \strng{authorbibnamehash}{790cdfa6f2ab7010b92755df28f2e069}
+      \strng{authornamehash}{790cdfa6f2ab7010b92755df28f2e069}
+      \strng{authorfullhash}{790cdfa6f2ab7010b92755df28f2e069}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{MIS Quarterly}
+      \field{number}{4}
+      \field{title}{Business intelligence and analytics: From big data to big impact}
+      \field{volume}{36}
+      \field{year}{2012}
+      \field{pages}{1165\bibrangedash 1188}
+      \range{pages}{24}
+    \endentry
+    \entry{rao2011}{online}{}
+      \name{author}{1}{}{%
+        {{hash=128e0a2fec1be0b38f507b6838138e6c}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Leena},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{128e0a2fec1be0b38f507b6838138e6c}
+      \strng{fullhash}{128e0a2fec1be0b38f507b6838138e6c}
+      \strng{bibnamehash}{128e0a2fec1be0b38f507b6838138e6c}
+      \strng{authorbibnamehash}{128e0a2fec1be0b38f507b6838138e6c}
+      \strng{authornamehash}{128e0a2fec1be0b38f507b6838138e6c}
+      \strng{authorfullhash}{128e0a2fec1be0b38f507b6838138e6c}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{title}{Facebook Co-Founder Eduardo Saverin Leads 7M dollar Round In Scanning And Product Search App ShopSavvy}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2011}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://techcrunch.com/2011/11/02/facebook-co-founder-eduardo-saverin-leads-7m-round-in-scanning-and-product-search-app-shopsavvy
+      \endverb
+      \verb{url}
+      \verb https://techcrunch.com/2011/11/02/facebook-co-founder-eduardo-saverin-leads-7m-round-in-scanning-and-product-search-app-shopsavvy
+      \endverb
+    \endentry
+    \entry{huang2006}{article}{}
+      \name{author}{2}{}{%
+        {{hash=cae9da35ae12a6cbd407d07b86b4e18c}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=9bb8bf37edd8f06c020c8dd2aff2f567}{%
+           family={Oppewal},
+           familyi={O\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{33204b58aa99a4580dd706bb8973566e}
+      \strng{fullhash}{33204b58aa99a4580dd706bb8973566e}
+      \strng{bibnamehash}{33204b58aa99a4580dd706bb8973566e}
+      \strng{authorbibnamehash}{33204b58aa99a4580dd706bb8973566e}
+      \strng{authornamehash}{33204b58aa99a4580dd706bb8973566e}
+      \strng{authorfullhash}{33204b58aa99a4580dd706bb8973566e}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Retail and Distribution Management}
+      \field{number}{4/5}
+      \field{title}{Why consumers hesitate to shop online: An experimental choice analysis of grocery shopping and the role of delivery fees}
+      \field{volume}{34}
+      \field{year}{2006}
+      \field{pages}{334\bibrangedash 353}
+      \range{pages}{20}
+    \endentry
+    \entry{pentina2014}{article}{}
+      \name{author}{2}{}{%
+        {{hash=cf80619ab5be369044be12faebabfda9}{%
+           family={Pentina},
+           familyi={P\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
+        {{hash=d492d6077e2b43bb8827a094f7a89cee}{%
+           family={Tarafdar},
+           familyi={T\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{32110b4fbbe355e566ff6e87bd501d1d}
+      \strng{fullhash}{32110b4fbbe355e566ff6e87bd501d1d}
+      \strng{bibnamehash}{32110b4fbbe355e566ff6e87bd501d1d}
+      \strng{authorbibnamehash}{32110b4fbbe355e566ff6e87bd501d1d}
+      \strng{authornamehash}{32110b4fbbe355e566ff6e87bd501d1d}
+      \strng{authorfullhash}{32110b4fbbe355e566ff6e87bd501d1d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computers in Human Behavior}
+      \field{title}{From “information” to “knowing”: Exploring the role of social media in contemporary news consumption}
+      \field{volume}{35}
+      \field{year}{2014}
+      \field{pages}{211\bibrangedash 223}
+      \range{pages}{13}
+    \endentry
+    \entry{grewal2011}{article}{}
+      \name{author}{3}{}{%
+        {{hash=1bea02744c8dceae789d51b1452c7426}{%
+           family={Grewal},
+           familyi={G\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d8a8a19c2973402291c5792e8285fd5b}{%
+           family={Roggeveen},
+           familyi={R\bibinitperiod},
+           given={A.\bibnamedelimi L.},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=27c9aedff359495070f2f2dec7c4f3d2}{%
+           family={Nordfält},
+           familyi={N\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
+      \strng{fullhash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
+      \strng{bibnamehash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
+      \strng{authorbibnamehash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
+      \strng{authornamehash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
+      \strng{authorfullhash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Retailing}
+      \field{number}{1}
+      \field{title}{Retail value-based pricing strategies: New times, new technologies, new consumers}
+      \field{volume}{87}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+    \endentry
+    \entry{Forbes2005}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b1e9b36364c855fad4161cfb10d45735}{%
+           family={Forbes},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{b1e9b36364c855fad4161cfb10d45735}
+      \strng{fullhash}{b1e9b36364c855fad4161cfb10d45735}
+      \strng{bibnamehash}{b1e9b36364c855fad4161cfb10d45735}
+      \strng{authorbibnamehash}{b1e9b36364c855fad4161cfb10d45735}
+      \strng{authornamehash}{b1e9b36364c855fad4161cfb10d45735}
+      \strng{authorfullhash}{b1e9b36364c855fad4161cfb10d45735}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{title}{ROUNDUP GUS' Experian buys PriceGrabber.com for 485 mln usd}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2005}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://web.archive.org/web/20051,216080349/http://www.forbes.com/home/feeds/afx/2005/12/14/afx2390699.html
+      \endverb
+      \verb{url}
+      \verb https://web.archive.org/web/20051,216080349/http://www.forbes.com/home/feeds/afx/2005/12/14/afx2390699.html
+      \endverb
+    \endentry
+    \entry{Connexity2015}{online}{}
+      \name{author}{1}{}{%
+        {{hash=56f88621acc732591b8fa9af2c2aec3c}{%
+           family={Newswire},
+           familyi={N\bibinitperiod},
+           given={PR},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{56f88621acc732591b8fa9af2c2aec3c}
+      \strng{fullhash}{56f88621acc732591b8fa9af2c2aec3c}
+      \strng{bibnamehash}{56f88621acc732591b8fa9af2c2aec3c}
+      \strng{authorbibnamehash}{56f88621acc732591b8fa9af2c2aec3c}
+      \strng{authornamehash}{56f88621acc732591b8fa9af2c2aec3c}
+      \strng{authorfullhash}{56f88621acc732591b8fa9af2c2aec3c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{Connexity Acquires PriceGrabber}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.prnewswire.com/news-releases/connexity-acquires-pricegrabber-300099651.html
+      \endverb
+      \verb{url}
+      \verb https://www.prnewswire.com/news-releases/connexity-acquires-pricegrabber-300099651.html
+      \endverb
+    \endentry
+    \entry{HarnickPriceGrabberApp}{online}{}
+      \name{author}{1}{}{%
+        {{hash=feaed127a8f9ab4498340e68a640d5b7}{%
+           family={Harnick},
+           familyi={H\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{feaed127a8f9ab4498340e68a640d5b7}
+      \strng{fullhash}{feaed127a8f9ab4498340e68a640d5b7}
+      \strng{bibnamehash}{feaed127a8f9ab4498340e68a640d5b7}
+      \strng{authorbibnamehash}{feaed127a8f9ab4498340e68a640d5b7}
+      \strng{authornamehash}{feaed127a8f9ab4498340e68a640d5b7}
+      \strng{authorfullhash}{feaed127a8f9ab4498340e68a640d5b7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{PriceGrabber launches mobile shopping app}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{n.d.}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.retaildive.com/ex/mobilecommercedaily/pricegrabber-launches-mobile-shopping-app
+      \endverb
+      \verb{url}
+      \verb https://www.retaildive.com/ex/mobilecommercedaily/pricegrabber-launches-mobile-shopping-app
+      \endverb
+    \endentry
+    \entry{Google2023}{online}{}
+      \name{author}{1}{}{%
+        {{hash=8b36e9207c24c76e6719268e49201d94}{%
+           family={Google},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{fullhash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{bibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorbibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authornamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorfullhash}{8b36e9207c24c76e6719268e49201d94}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How Google Shopping works}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://support.google.com/faqs/answer/2987537?hl=en
+      \endverb
+      \verb{url}
+      \verb https://support.google.com/faqs/answer/2987537?hl=en
+      \endverb
+    \endentry
+    \entry{PriceRunner2023}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ae0cf2341dd0e46557e6b3ae7e850bbb}{%
+           family={PriceRunner},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{fullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{bibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorbibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authornamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorfullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{About PriceRunner}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.pricerunner.com/info/about-pricerunner
+      \endverb
+      \verb{url}
+      \verb https://www.pricerunner.com/info/about-pricerunner
+      \endverb
+    \endentry
+    \entry{PriceRunnerTerms2023}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ae0cf2341dd0e46557e6b3ae7e850bbb}{%
+           family={PriceRunner},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{fullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{bibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorbibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authornamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorfullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How Does It Work}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.pricerunner.com/info/setup
+      \endverb
+      \verb{url}
+      \verb https://www.pricerunner.com/info/setup
+      \endverb
+    \endentry
+    \entry{PriceRunnerFaq2023}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ae0cf2341dd0e46557e6b3ae7e850bbb}{%
+           family={PriceRunner},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{fullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{bibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorbibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authornamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorfullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \field{extraname}{3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{FAQ for Retailers}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.pricerunner.com/info/faq-for-retailers
+      \endverb
+      \verb{url}
+      \verb https://www.pricerunner.com/info/faq-for-retailers
+      \endverb
+    \endentry
+    \entry{PriceRunnerApp2023}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ae0cf2341dd0e46557e6b3ae7e850bbb}{%
+           family={PriceRunner},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{fullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{bibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorbibnamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authornamehash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \strng{authorfullhash}{ae0cf2341dd0e46557e6b3ae7e850bbb}
+      \field{extraname}{4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{App}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.pricerunner.com/info/iphone
+      \endverb
+      \verb{url}
+      \verb https://www.pricerunner.com/info/iphone
+      \endverb
+    \endentry
+    \entry{ShopSavvyAbout}{online}{}
+      \name{author}{1}{}{%
+        {{hash=5c45de0c670da6bf1404c16bcb14b3a4}{%
+           family={ShopSavvy},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{5c45de0c670da6bf1404c16bcb14b3a4}
+      \strng{fullhash}{5c45de0c670da6bf1404c16bcb14b3a4}
+      \strng{bibnamehash}{5c45de0c670da6bf1404c16bcb14b3a4}
+      \strng{authorbibnamehash}{5c45de0c670da6bf1404c16bcb14b3a4}
+      \strng{authornamehash}{5c45de0c670da6bf1404c16bcb14b3a4}
+      \strng{authorfullhash}{5c45de0c670da6bf1404c16bcb14b3a4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{About ShopSavvy}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://shopsavvy.com/about
+      \endverb
+      \verb{url}
+      \verb https://shopsavvy.com/about
+      \endverb
+    \endentry
+    \entry{PymntsShopSavvy}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b115e8c4779c45b7ce7160a210b1be53}{%
+           family={PYMNTS},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{b115e8c4779c45b7ce7160a210b1be53}
+      \strng{fullhash}{b115e8c4779c45b7ce7160a210b1be53}
+      \strng{bibnamehash}{b115e8c4779c45b7ce7160a210b1be53}
+      \strng{authorbibnamehash}{b115e8c4779c45b7ce7160a210b1be53}
+      \strng{authornamehash}{b115e8c4779c45b7ce7160a210b1be53}
+      \strng{authorfullhash}{b115e8c4779c45b7ce7160a210b1be53}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{ShopSavvy And Discounts 2.0}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.pymnts.com/exclusive-series/2015/shopsavvy-and-discounts-2-0/
+      \endverb
+      \verb{url}
+      \verb https://www.pymnts.com/exclusive-series/2015/shopsavvy-and-discounts-2-0/
+      \endverb
+    \endentry
+    \entry{shopsavvy2020}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{ShopSavvy Product Search Technology Now Available on Chrome}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.prdistribution.com/news/shopsavvy-product-search-technology-now-available-on-chrome/5550432
+      \endverb
+      \verb{url}
+      \verb https://www.prdistribution.com/news/shopsavvy-product-search-technology-now-available-on-chrome/5550432
+      \endverb
+    \endentry
+    \entry{arukeresoLinkedin}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{LinkedIn - Árukereső}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.linkedin.com/company/arukereso/about/
+      \endverb
+      \verb{url}
+      \verb https://www.linkedin.com/company/arukereso/about/
+      \endverb
+    \endentry
+    \entry{karacsony2019}{online}{}
+      \name{author}{1}{}{%
+        {{hash=26feea66cb0a05c0369497b027af666c}{%
+           family={Karácsony},
+           familyi={K\bibinitperiod},
+           given={Tamás},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{26feea66cb0a05c0369497b027af666c}
+      \strng{fullhash}{26feea66cb0a05c0369497b027af666c}
+      \strng{bibnamehash}{26feea66cb0a05c0369497b027af666c}
+      \strng{authorbibnamehash}{26feea66cb0a05c0369497b027af666c}
+      \strng{authornamehash}{26feea66cb0a05c0369497b027af666c}
+      \strng{authorfullhash}{26feea66cb0a05c0369497b027af666c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{Árukereső, miért keresünk fel téged?}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://hold.hu/holdblog/arukereso/
+      \endverb
+      \verb{url}
+      \verb https://hold.hu/holdblog/arukereso/
+      \endverb
+    \endentry
+    \entry{arukereso}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Megbízható Bolt Program}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.arukereso.hu/static/megbizhato_bolt_program.html
+      \endverb
+      \verb{url}
+      \verb https://www.arukereso.hu/static/megbizhato_bolt_program.html
+      \endverb
+    \endentry
+    \entry{maradokapenzemnel2021}{online}{}
+      \name{author}{1}{}{%
+        {{hash=5f55353fecdb0cbdeb02bd5236b973bb}{%
+           family={maradokapénzemnél},
+           familyi={m\bibinitperiod}}}%
+      }
+      \strng{namehash}{5f55353fecdb0cbdeb02bd5236b973bb}
+      \strng{fullhash}{5f55353fecdb0cbdeb02bd5236b973bb}
+      \strng{bibnamehash}{5f55353fecdb0cbdeb02bd5236b973bb}
+      \strng{authorbibnamehash}{5f55353fecdb0cbdeb02bd5236b973bb}
+      \strng{authornamehash}{5f55353fecdb0cbdeb02bd5236b973bb}
+      \strng{authorfullhash}{5f55353fecdb0cbdeb02bd5236b973bb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Így maxolhatod ki a spórolást a cashmap.hu-n}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2023}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://cashmap.blog.hu/2021/05/21/igy_maxolhatod_ki_a_sporolast_a_cashmap_hu-n
+      \endverb
+      \verb{url}
+      \verb https://cashmap.blog.hu/2021/05/21/igy_maxolhatod_ki_a_sporolast_a_cashmap_hu-n
+      \endverb
+    \endentry
+    \entry{mvp}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Minimum Vieable Product (MVP)}
+      \field{urlday}{23}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.productplan.com/glossary/minimum-viable-product/
+      \endverb
+      \verb{url}
+      \verb https://www.productplan.com/glossary/minimum-viable-product/
+      \endverb
+    \endentry
+    \entry{userFriendly}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e1f17be686b20a3526e048442994a710}{%
+           family={AiloitteAdmin},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e1f17be686b20a3526e048442994a710}
+      \strng{fullhash}{e1f17be686b20a3526e048442994a710}
+      \strng{bibnamehash}{e1f17be686b20a3526e048442994a710}
+      \strng{authorbibnamehash}{e1f17be686b20a3526e048442994a710}
+      \strng{authornamehash}{e1f17be686b20a3526e048442994a710}
+      \strng{authorfullhash}{e1f17be686b20a3526e048442994a710}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{What is Mobile User Interface (UI) Design? A Beginner’s Guide}
+      \field{urlday}{23}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ailoitte.com/blog/ui-design-mobile-apps/
+      \endverb
+      \verb{url}
+      \verb https://www.ailoitte.com/blog/ui-design-mobile-apps/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:MobileApp.ViewModels"
+             x:Class="MobileApp.Views.MainPageView"
+             Title="{Binding Title}"
+             BackgroundColor="AliceBlue">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <CollectionView ItemsSource="{Binding ShopItems}" ItemsLayout="VerticalGrid, 2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10" Padding="10" Margin="5" BorderColor="LightGray"
+                               BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100" />
+                                    <!-- Image Row -->
+                                    <RowDefinition Height="150" />
+                                    <!-- Title Row -->
+                                    <RowDefinition Height="Auto" />
+                                    <!-- Price Row -->
+                                    <RowDefinition Height="Auto" />
+                                    <!-- Shop Row -->
+                                </Grid.RowDefinitions>
+                                
+                                <Image Grid.Row="0" Source="{Binding IconPath}" MaximumWidthRequest="60">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="#512BD4" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="Small"
+                                       MaxLines="5" />
+                                <Label Grid.Row="2" Text="{Binding Price}" FontSize="Small" />
+                                <Image Grid.Row="3" Source="{Binding ShopIconPath}" MaximumWidthRequest="30"
+                                       HorizontalOptions="Start" />
+                                
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

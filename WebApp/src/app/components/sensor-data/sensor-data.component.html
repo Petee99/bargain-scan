@@ -1,0 +1,19 @@
+<div id="chart">
+<div class="container">
+    <div class="card">
+      <h3>Upload Product Data</h3>
+      <div class="drop_box">
+        <header>
+          <h4>Select or Drop File here</h4>
+        </header>
+        <p>File Types Supported: CSV, JSON</p>
+
+        <input type="file" accept=".csv,.json" #fileInput (change)="onFileChange($event)">
+
+      </div>
+  
+      <button class="btn" (click)="upload()">Upload</button>
+
+    </div>
+  </div>
+</div>

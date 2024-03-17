@@ -1,0 +1,21 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'main.blg'
+[105] biber-MSWIN64:340> INFO - === 
+[130] Biber.pm:419> INFO - Reading 'main.bcf'
+[216] Biber.pm:979> INFO - Found 25 citekeys in bib section 0
+[227] Biber.pm:4419> INFO - Processing section 0
+[237] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
+[271] bibtex.pm:1713> INFO - LaTeX decoding ...
+[292] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[375] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[375] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[375] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[375] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[390] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[396] bbl.pm:763> INFO - Output to main.bbl
+[396] Biber.pm:131> WARN - legacy year field 'n.d.' in entry 'HarnickPriceGrabberApp' is not an integer - this will probably not sort properly.
+[396] Biber.pm:131> WARN - legacy month field 'May' in entry 'PymntsShopSavvy' is not an integer - this will probably not sort properly.
+[396] Biber.pm:131> WARN - legacy month field 'May' in entry 'shopsavvy2020' is not an integer - this will probably not sort properly.
+[396] Biber.pm:131> WARN - legacy month field 'Oct' in entry 'karacsony2019' is not an integer - this will probably not sort properly.
+[396] Biber.pm:131> WARN - legacy month field 'May' in entry 'userFriendly' is not an integer - this will probably not sort properly.
+[396] Biber.pm:133> INFO - WARNINGS: 5

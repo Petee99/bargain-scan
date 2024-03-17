@@ -1,0 +1,35 @@
+<div id="chart">
+    <div class="container">
+        <div class="card">
+          <h3>Timed Scraping Request</h3>
+          <div class="drop_box">
+            <header>
+              <h4>Set the interval in days on how often scraping should run</h4>
+            </header>
+            <h4><mat-form-field>
+                <input #intervalInput
+                    type="number"
+                    class="form-control"
+                    matInput
+                    name="value"
+                    placeholder="Number of Days"
+                    formControlName="value">
+            </mat-form-field></h4>
+            <button class="btn" (click)="requestScraping(intervalInput.value)">Send Timed Scraping Request</button>
+          </div>    
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card">
+          <h3>Immediate Scraping Request</h3>
+          <div class="drop_box">
+            <header>
+              <h4>Send a scraping request that should start the scraping process right away</h4>
+            </header>
+            <p style="height: 50px;"></p>
+            <button class="btn" (click)="requestScraping(0)">Send TImmediate Scraping Request</button>
+          </div>    
+        </div>
+      </div>
+    </div>

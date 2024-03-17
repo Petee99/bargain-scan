@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+<form class="box">
+  <h1>Login</h1>
+  <input #usernameInput type="text" name="" placeholder="Username">
+  <input #passwordInput type="password" name="" placeholder="Password">
+  <input type="submit" name="" value="Login" (click)="onLoginButtonClick(usernameInput.value, passwordInput.value)">
+  <div class="alternative-option">Don't have an account yet? <a class="alternative-link" href="./register">Register here!</a></div>
+</form>
+
+  </body>
+</html>

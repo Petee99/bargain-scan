@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+<form class="box">
+  <h1>Register</h1>
+  <input #emailInput type="text" name="" placeholder="E-mail">
+  <input #usernameInput type="text" name="" placeholder="Username">
+  <input #passwordInput type="password" name="" placeholder="Password (at least 8 characters)" pattern=".{8,}" required title="8 characters minimum" onfocus="this.value=''" value="...">
+  <input type="submit" name="" value="Register" (click)="onRegButtonClick(emailInput.value, usernameInput.value, passwordInput.value)">
+  <div class="alternative-option">Already have an account? <a class="alternative-link" href="./login">Sign in here!</a></div>
+</form>
+
+  </body>
+</html>
