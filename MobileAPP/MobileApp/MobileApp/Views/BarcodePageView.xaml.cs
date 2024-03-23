@@ -34,15 +34,17 @@ namespace MobileApp.Views
 
         private void OnCamerasLoaded(object sender, EventArgs args)
         {
-            if(qrView.Cameras.Count > 0)
+            if (qrView.Cameras.Count <= 0)
             {
-                qrView.Camera = qrView.Cameras[0];
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await qrView.StopCameraAsync();
-                    await qrView.StartCameraAsync();
-                });
+                return;
             }
+
+            qrView.Camera = qrView.Cameras[0];
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await qrView.StopCameraAsync();
+                await qrView.StartCameraAsync();
+            });
         }
 
         private void OnBarcodeDetected(object sender, BarcodeEventArgs args)

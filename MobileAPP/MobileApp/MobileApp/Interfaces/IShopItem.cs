@@ -30,6 +30,10 @@ namespace MobileApp.Interfaces
 
         string SubCategory { get; set; }
 
+        string BarCode { get; }
+
+        bool TryUpdateBarCode(string barCode);
+
         #endregion
     }
 }

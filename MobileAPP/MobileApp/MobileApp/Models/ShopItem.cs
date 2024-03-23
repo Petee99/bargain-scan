@@ -4,6 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
+
 namespace MobileApp.Models
 {
     #region Imports
@@ -37,7 +39,21 @@ namespace MobileApp.Models
 
         [JsonPropertyName("subCategoryName")]
         public string SubCategory { get; set; }
-        
+
+        [JsonPropertyName("barCode")]
+        public string BarCode { get; private set; }
+
+        public bool TryUpdateBarCode(string barCode)
+        {
+            if (BarCode == string.Empty)
+            {
+                return false;
+            }
+
+            BarCode = barCode;
+            return true;
+        }
+
         #endregion
     }
 }

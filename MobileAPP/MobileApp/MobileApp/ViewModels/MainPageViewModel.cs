@@ -16,11 +16,13 @@ namespace MobileApp.ViewModels
 
     #endregion
 
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : PropertyChangedBase
     {
         #region Constants and Private Fields
 
         private ObservableCollection<IShopItem> _items = new();
+
+        private string _title;
 
         #endregion
 
@@ -32,23 +34,20 @@ namespace MobileApp.ViewModels
             set
             {
                 _items = value;
-                Title = _items.First().SubCategory;
-                OnPropertyChanged(nameof(ShopItems));
+                Title = _items.FirstOrDefault()?.SubCategory;
+                OnPropertyChanged();
+
             }
         }
 
-        public string Title { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-        #region Methods and Operators
-
-        protected virtual void OnPropertyChanged(string propertyName)
+        public string Title
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Title)));
+            get => _title; 
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
         }
 
         #endregion

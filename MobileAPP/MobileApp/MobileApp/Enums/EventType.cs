@@ -8,6 +8,8 @@ namespace MobileApp.Enums
 {
     public enum EventType
     {
-        CategorySelected
+        CategorySelected,
+
+        BarcodeRead
     }
 }

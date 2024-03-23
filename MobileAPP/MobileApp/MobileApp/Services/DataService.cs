@@ -6,6 +6,7 @@
 
 namespace MobileApp.Services
 {
+    using System.Collections.Generic;
     #region Imports
 
     using System.Text.Json;
@@ -25,7 +26,9 @@ namespace MobileApp.Services
 
         private readonly IOnlineDataService _onlineDataService = new OnlineDataService();
 
-        private readonly List<ICategory> _categories = new();
+        private readonly Dictionary<string, IList<IShopItem>> _shopItemBarcodeDictionary = new();
+
+        private readonly List<Category> _categories = new();
 
         private readonly List<Task> _loadingTasks;
 
@@ -84,6 +87,17 @@ namespace MobileApp.Services
             return await Task.FromResult(items ?? Enumerable.Empty<IShopItem>());
         }
 
+        public bool TryUpdateBarCode(IShopItem item, string barCode)
+        {
+            return !item.TryUpdateBarCode(barCode) && !TryAddBarcodeToDictionary(barCode, item);
+        }
+
+        public bool TryGetItem(string barCode, out IEnumerable<IShopItem> foundItems)
+        {
+            _shopItemBarcodeDictionary.TryGetValue(barCode, foundItems);
+            return foundItem != null;
+        }
+
         #endregion
 
         #region Private Methods
@@ -137,7 +151,31 @@ namespace MobileApp.Services
                 {
                     _shopItemsMap[containingCategory].Add(item);
                 }
+
+                if (item.BarCode != string.Empty)
+                {
+                    TryAddBarcodeToDictionary(item.BarCode, item);
+                }
             }
+        }
+
+        private bool TryAddBarcodeToDictionary(string barCode, IShopItem item)
+        {
+            _shopItemBarcodeDictionary.TryGetValue(barCode, out var shopItems);
+
+            if (shopItems is null)
+            {
+                _shopItemBarcodeDictionary.TryAdd(item.BarCode, new List<IShopItem> { item });
+                return true;
+            }
+
+            if (shopItems.Contains(item))
+            {
+                return false;
+            }
+
+            shopItems.Add(item);
+            return true;
         }
 
         private static void FixItemCategory(ShopItem item)

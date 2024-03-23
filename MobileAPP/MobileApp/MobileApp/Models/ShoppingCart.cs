@@ -20,15 +20,11 @@ namespace MobileApp.Models
 
         #endregion
 
-        #region Fields
-
-        public Guid ShoppingCartId = Guid.NewGuid();
-
-        #endregion
-
         #region Public Properties
 
-        public double SumAmount => CalculateSum();
+        public Guid ShoppingCartId { get; private set; }
+
+        public double Total => CalculateSum();
 
         public IEnumerable<IShopItem> Items => _items;
 
@@ -37,6 +33,8 @@ namespace MobileApp.Models
         public string Name { get; set; }
 
         #endregion
+
+
 
         #region Public Methods and Operators
 

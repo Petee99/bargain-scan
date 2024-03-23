@@ -37,9 +37,20 @@ namespace MobileApp.Models
 
         public IShoppingCart CreateShoppingCart()
         {
-            IShoppingCart cart = new ShoppingCart();
-            _shoppingCarts.Add(cart);
+            var cart = new ShoppingCart();
+            AddShoppingCart(cart);
             return cart;
+        }
+
+        public bool AddShoppingCart(IShoppingCart shoppingCart)
+        {
+            if (_shoppingCarts.Contains(shoppingCart))
+            {
+                return false;
+            }
+
+            _shoppingCarts.Add(shoppingCart);
+            return true;
         }
 
         #endregion
