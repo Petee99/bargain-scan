@@ -1,35 +1,62 @@
-﻿using MobileApp.Interfaces;
-using MobileApp.Models;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UserProfileViewModel.cs" owner="Peter Mako">
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace MobileApp.ViewModels;
-
-public class UserProfileViewModel : PropertyChangedBase
+namespace MobileApp.ViewModels
 {
-    private readonly IUserProfile _profile;
+    #region Imports
 
-    private IShoppingCart _activeShoppingCart;
+    using MobileApp.Interfaces;
+    using MobileApp.Models;
 
-    public IShoppingCart ActiveShoppingCart => _activeShoppingCart ?? GetDefaultShoppingCart();
+    #endregion
 
-    public string Name
+    public class UserProfileViewModel : PropertyChangedBase
     {
-        get => _profile.Name;
-        set
+        #region Constants and Private Fields
+
+        private readonly IUserProfile _profile;
+
+        private IShoppingCart _activeShoppingCart;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        public UserProfileViewModel(IUserProfile profile)
         {
-            _profile.Name = value;
-            OnPropertyChanged();
+            _profile = profile;
         }
-    }
 
-    public IEnumerable<IShoppingCart> ShoppingCarts => _profile.ShoppingCarts;
+        #endregion
 
-    public UserProfileViewModel(IUserProfile profile)
-    {
-        _profile = profile;
-    }
+        #region Public Properties
 
-    private IShoppingCart GetDefaultShoppingCart()
-    {
-        return _profile.ShoppingCarts.FirstOrDefault() ?? _profile.CreateShoppingCart();
+        public IEnumerable<IShoppingCart> ShoppingCarts => _profile.ShoppingCarts;
+
+        public IShoppingCart ActiveShoppingCart => _activeShoppingCart ??= GetDefaultShoppingCart();
+
+        public string Name
+        {
+            get => _profile.Name;
+            set
+            {
+                _profile.Name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private IShoppingCart GetDefaultShoppingCart()
+        {
+            return _profile.ShoppingCarts.FirstOrDefault() ?? _profile.CreateShoppingCart();
+        }
+
+        #endregion
     }
 }

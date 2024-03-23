@@ -22,9 +22,9 @@ namespace MobileApp.ViewModels
 
         private readonly ICategory _category;
 
-        private readonly IList<CategoryViewModel> _subCategories;
-
         private readonly IEventAggregator _eventAggregator;
+
+        private readonly IList<CategoryViewModel> _subCategories;
 
         private bool _isActive;
 
@@ -44,11 +44,6 @@ namespace MobileApp.ViewModels
 
         #region Public Properties
 
-        private void SelectCategory()
-        {
-            _eventAggregator.Publish(new EventMessageBase(_category, EventType.CategorySelected));
-        }
-
         public bool IsActive
         {
             get => _isActive;
@@ -62,7 +57,7 @@ namespace MobileApp.ViewModels
         public event EventHandler IsExpandedChanged;
 
         public ICommand SelectCommand { get; }
-        
+
         public IEnumerable<CategoryViewModel> SubCategories => _subCategories;
 
         public string IconPath => _category.IconPath;
@@ -76,6 +71,11 @@ namespace MobileApp.ViewModels
         private IList<CategoryViewModel> CreateSubCategoryViewModels(IEnumerable<ICategory> subCategories)
         {
             return subCategories.Select(subCategory => new CategoryViewModel(subCategory, _eventAggregator)).ToList();
+        }
+
+        private void SelectCategory()
+        {
+            _eventAggregator.Publish(new EventMessageBase(_category, EventType.CategorySelected));
         }
 
         #endregion

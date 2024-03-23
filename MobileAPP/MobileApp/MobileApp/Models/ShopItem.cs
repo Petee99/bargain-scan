@@ -4,8 +4,6 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
-
 namespace MobileApp.Models
 {
     #region Imports
@@ -45,7 +43,7 @@ namespace MobileApp.Models
 
         public bool TryUpdateBarCode(string barCode)
         {
-            if (BarCode == string.Empty)
+            if (BarCode == null)
             {
                 return false;
             }

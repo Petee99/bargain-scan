@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainPageView.xaml.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+// <copyright file="BarcodePageView.xaml.cs" owner="Peter Mako">
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -9,8 +9,6 @@ namespace MobileApp.Views
     #region Imports
 
     using Camera.MAUI.ZXingHelper;
-
-    using MobileApp.ViewModels;
 
     using ZXing;
 
@@ -23,14 +21,21 @@ namespace MobileApp.Views
         public BarcodePageView()
         {
             InitializeComponent();
-            qrView.BarCodeOptions = new BarcodeDecodeOptions()
+            /*
+            qrView.BarCodeOptions = new BarcodeDecodeOptions
             {
                 PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.CODE_39 }
             };
-            BindingContext = new BarcodePageViewModel();
         }
 
         #endregion
+
+        #region Private Methods
+
+        private void OnBarcodeDetected(object sender, BarcodeEventArgs args)
+        {
+            MainThread.BeginInvokeOnMainThread(() => { barcodeResult.Text = $"{args.Result[0].Text}"; });
+        }
 
         private void OnCamerasLoaded(object sender, EventArgs args)
         {
@@ -40,19 +45,16 @@ namespace MobileApp.Views
             }
 
             qrView.Camera = qrView.Cameras[0];
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await qrView.StopCameraAsync();
-                await qrView.StartCameraAsync();
-            });
+            MainThread.BeginInvokeOnMainThread(RefreshCameras);
         }
 
-        private void OnBarcodeDetected(object sender, BarcodeEventArgs args)
+        private async void RefreshCameras()
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                barcodeResult.Text = $"{args.Result[0].BarcodeFormat}: {args.Result[0].Text}";
-            });
+            await qrView.StopCameraAsync();
+            await qrView.StartCameraAsync();
+            */
         }
+
+        #endregion
     }
 }

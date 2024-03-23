@@ -12,7 +12,7 @@ namespace MobileApp.Interfaces
 
     #endregion
 
-    public interface IShopItem
+    public interface IShopItem : INamed
     {
         #region Public Properties
         
@@ -21,9 +21,7 @@ namespace MobileApp.Interfaces
         string Category { get; set; }
 
         string IconPath { get; set; }
-
-        string Name { get; set; }
-
+        
         string Price { get; set; }
 
         string ShopIconPath { get; }

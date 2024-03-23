@@ -30,7 +30,7 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-        <FlyoutItem>
+    <FlyoutItem>
         <ShellContent
             Title="Termékek"
             Icon="shopcart.png"
@@ -40,11 +40,11 @@
             Title="Vonalkód"
             Icon="barcode.png"
             ContentTemplate="{DataTemplate views:BarcodePageView}"
-            Route="MainPageView" />
+            Route="BarCodeView" />
         <ShellContent
             Title="Beállítások"
             Icon="settings.png"
-            ContentTemplate="{DataTemplate views:MainPageView}"
+            ContentTemplate="{DataTemplate views:BarcodePopupView}"
             Route="MainPageView" />
     </FlyoutItem>
 

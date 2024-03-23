@@ -1,16 +1,16 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IOnlineDataService.cs" owner="Peter Mako">
+// <copyright file="IResolverService.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace MobileApp.Interfaces
 {
-    public interface IOnlineDataService
+    public interface IResolverService
     {
         #region Public Methods and Operators
 
-        Task<string> LoadShopItemsFromApi();
+        object Resolve<TView>() where TView : class;
 
         #endregion
     }

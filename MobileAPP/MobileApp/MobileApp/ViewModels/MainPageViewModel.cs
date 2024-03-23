@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="MainPageViewModel.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -9,7 +9,6 @@ namespace MobileApp.ViewModels
     #region Imports
 
     using System.Collections.ObjectModel;
-    using System.ComponentModel;
 
     using MobileApp.Interfaces;
     using MobileApp.Models;
@@ -36,13 +35,12 @@ namespace MobileApp.ViewModels
                 _items = value;
                 Title = _items.FirstOrDefault()?.SubCategory;
                 OnPropertyChanged();
-
             }
         }
 
         public string Title
         {
-            get => _title; 
+            get => _title;
             set
             {
                 _title = value;

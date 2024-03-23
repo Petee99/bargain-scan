@@ -1,22 +1,45 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PropertyChangedBase.cs" owner="Peter Mako">
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace MobileApp.Models;
-
-public class PropertyChangedBase : INotifyPropertyChanged
+namespace MobileApp.Models
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    #region Imports
 
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
-    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+    #endregion
+
+    public class PropertyChangedBase : INotifyPropertyChanged
     {
-        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
+        #region Public Properties
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        #region Methods and Operators
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                return false;
+            }
+
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
+        #endregion
     }
 }

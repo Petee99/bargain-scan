@@ -33,9 +33,7 @@ namespace MobileApp.Models
         public string Name { get; set; }
 
         #endregion
-
-
-
+        
         #region Public Methods and Operators
 
         public bool AddItem(IShopItem item)

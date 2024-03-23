@@ -6,7 +6,6 @@
 
 namespace MobileApp.Services
 {
-    using System.Collections.Generic;
     #region Imports
 
     using System.Text.Json;
@@ -22,11 +21,13 @@ namespace MobileApp.Services
 
         private readonly Dictionary<ICategory, IList<IShopItem>> _shopItemsMap = new();
 
+        private readonly Dictionary<string, IList<IShopItem>> _shopItemBarcodeDictionary = new();
+
         private readonly IDataPersistenceService _persistenceService = new DataPersistenceService();
 
-        private readonly IOnlineDataService _onlineDataService = new OnlineDataService();
+        private readonly IFuzzySearch<IShopItem> _fuzzyItemRepository = new FuzzySearch<IShopItem>();
 
-        private readonly Dictionary<string, IList<IShopItem>> _shopItemBarcodeDictionary = new();
+        private readonly IOnlineDataService _onlineDataService = new OnlineDataService();
 
         private readonly List<Category> _categories = new();
 
@@ -40,8 +41,8 @@ namespace MobileApp.Services
         {
             _loadingTasks = new List<Task>
             {
-                Task.Run(LoadShopData)
-                //Task.Run(LoadOrCreateUserProfile)
+                Task.Run(LoadShopData),
+                Task.Run(LoadUserProfile)
             };
         }
 
@@ -54,6 +55,24 @@ namespace MobileApp.Services
         #endregion
 
         #region Public Methods and Operators
+
+        public bool TryUpdateBarCode(IShopItem item, string barCode)
+        {
+            return !item.TryUpdateBarCode(barCode) && !TryAddBarcodeToDictionary(barCode, item);
+        }
+
+        public async Task<IEnumerable<IShopItem>> GetShopItemsByBarcode(string barCode)
+        {
+            await EnsureDataLoaded();
+            _shopItemBarcodeDictionary.TryGetValue(barCode, out IList<IShopItem> foundItems);
+            return await Task.FromResult(foundItems);
+        }
+
+        public async Task<IEnumerable<IShopItem>> GetShopItemsBySearchTerm(string searchTerm)
+        {
+            await EnsureDataLoaded();
+            return await Task.FromResult(_fuzzyItemRepository.Search(searchTerm));
+        }
 
         public async Task<IEnumerable<ICategory>> GetMainCategories()
         {
@@ -87,20 +106,28 @@ namespace MobileApp.Services
             return await Task.FromResult(items ?? Enumerable.Empty<IShopItem>());
         }
 
-        public bool TryUpdateBarCode(IShopItem item, string barCode)
-        {
-            return !item.TryUpdateBarCode(barCode) && !TryAddBarcodeToDictionary(barCode, item);
-        }
-
-        public bool TryGetItem(string barCode, out IEnumerable<IShopItem> foundItems)
-        {
-            _shopItemBarcodeDictionary.TryGetValue(barCode, foundItems);
-            return foundItem != null;
-        }
-
         #endregion
 
         #region Private Methods
+
+        private bool TryAddBarcodeToDictionary(string barCode, IShopItem item)
+        {
+            _shopItemBarcodeDictionary.TryGetValue(barCode, out var shopItems);
+
+            if (shopItems is null)
+            {
+                _shopItemBarcodeDictionary.TryAdd(item.BarCode, new List<IShopItem> { item });
+                return true;
+            }
+
+            if (shopItems.Contains(item))
+            {
+                return false;
+            }
+
+            shopItems.Add(item);
+            return true;
+        }
 
         private ICategory GetItemContainingCategory(IShopItem item)
         {
@@ -118,13 +145,6 @@ namespace MobileApp.Services
         private async Task EnsureDataLoaded()
         {
             await Task.WhenAll(_loadingTasks);
-        }
-
-        private async Task LoadOrCreateUserProfile()
-        {
-            UserProfile = await _persistenceService.TryLoadLocalData(DataPersistenceService.UserProfileFileName) is { Length : > 0 } data
-                ? JsonSerializer.Deserialize<LocalUserProfile>(data)
-                : new LocalUserProfile();
         }
 
         private async Task LoadShopData()
@@ -150,32 +170,21 @@ namespace MobileApp.Services
                 if (!_shopItemsMap[containingCategory].Contains(item))
                 {
                     _shopItemsMap[containingCategory].Add(item);
+                    _fuzzyItemRepository.AddItem(item);
                 }
 
-                if (item.BarCode != string.Empty)
+                if (item.BarCode != null)
                 {
                     TryAddBarcodeToDictionary(item.BarCode, item);
                 }
             }
         }
 
-        private bool TryAddBarcodeToDictionary(string barCode, IShopItem item)
+        private async Task LoadUserProfile()
         {
-            _shopItemBarcodeDictionary.TryGetValue(barCode, out var shopItems);
-
-            if (shopItems is null)
-            {
-                _shopItemBarcodeDictionary.TryAdd(item.BarCode, new List<IShopItem> { item });
-                return true;
-            }
-
-            if (shopItems.Contains(item))
-            {
-                return false;
-            }
-
-            shopItems.Add(item);
-            return true;
+            UserProfile = await _persistenceService.TryLoadLocalData(DataPersistenceService.UserProfileFileName) is { Length : > 0 } data
+                ? JsonSerializer.Deserialize<LocalUserProfile>(data)
+                : new LocalUserProfile();
         }
 
         private static void FixItemCategory(ShopItem item)

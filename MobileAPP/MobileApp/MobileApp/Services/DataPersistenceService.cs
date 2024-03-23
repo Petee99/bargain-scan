@@ -16,6 +16,8 @@ namespace MobileApp.Services
     {
         #region Constants and Private Fields
 
+        private static string LocalPath => FileSystem.Current.AppDataDirectory;
+
         public const string ItemsFileName = "items.json";
 
         public const string UserProfileFileName = "userProfile.json";
@@ -41,7 +43,8 @@ namespace MobileApp.Services
         {
             try
             {
-                return await File.ReadAllTextAsync(Path.Combine(LocalPath, fileName));
+                string filePath = Path.Combine(LocalPath, fileName);
+                return File.Exists(filePath) ? await File.ReadAllTextAsync(filePath) : string.Empty;
             }
             catch (Exception e)
             {
@@ -50,7 +53,5 @@ namespace MobileApp.Services
         }
 
         #endregion
-
-        private static string LocalPath => FileSystem.Current.AppDataDirectory;
     }
 }

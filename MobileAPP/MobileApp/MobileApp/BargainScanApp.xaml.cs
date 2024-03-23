@@ -8,6 +8,7 @@ namespace MobileApp
 {
     #region Imports
 
+    using MobileApp.Interfaces;
     using MobileApp.Views;
 
     #endregion

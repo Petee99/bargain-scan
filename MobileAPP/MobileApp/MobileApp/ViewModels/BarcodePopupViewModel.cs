@@ -1,52 +1,124 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MobileApp.Events;
-using MobileApp.Enums;
-using MobileApp.Interfaces;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BarcodePopupViewModel.cs" owner="Peter Mako">
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace MobileApp.ViewModels
 {
-    public class BarcodePopupViewModel : IHandle<EventMessageBase>
+    #region Imports
+
+    using System.Collections.ObjectModel;
+    using System.Windows.Input;
+
+    using MobileApp.Enums;
+    using MobileApp.Events;
+    using MobileApp.Interfaces;
+    using MobileApp.Models;
+
+    #endregion
+
+    public class BarcodePopupViewModel : PropertyChangedBase, IHandle<EventMessageBase>
     {
+        #region Constants and Private Fields
+
+        private const int MaxPresentedItems = 10;
+
         private readonly IDataService _dataService;
+
+        private bool _isSearchVisible;
+
+        private string _barCode;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         public BarcodePopupViewModel(IDataService dataService)
         {
             _dataService = dataService;
+            StartSearchCommand = new Command(() => Task.Run(SearchItemsBySearchTerm));
         }
 
-        public string Title => "Termék adatok";
+        #endregion
 
-        public bool IsVisible { get; set; }
+        #region Public Properties
 
-        public bool IsSearchVisible { get; private set; }
-
-        public string SearchInput { get; set; }
-
-        public ObservableCollection<IShopItem> SearchResults { get; private set; }
-
-        public void Handle(EventMessageBase message)
+        public bool IsSearchVisible
         {
-            if (message is { EventType: EventType.BarcodeRead, Sender: BarcodePageViewModel readerViewModel })
+            get => _isSearchVisible;
+            private set
             {
-                Task.Run(ShowPopup);
+                _isSearchVisible = value;
+                OnPropertyChanged();
             }
         }
 
-        private void ShowPopup()
+        public ICommand StartSearchCommand { get; }
+
+        public ObservableCollection<IShopItem> SearchResults { get; } = new();
+
+        public string SearchInput { get; set; }
+
+        public string Title => "Termékek";
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        public void Handle(EventMessageBase message)
         {
-            IsVisible = true;
+            if (message is not { EventType: EventType.BarcodeRead, Sender: BarcodePageViewModel readerViewModel })
+            {
+                return;
+            }
+
+            _barCode = readerViewModel.BarCode;
+            Task.Run(GetItemsByBarcode);
         }
 
-        private Task<bool> GetItemByBarcode()
+        #endregion
+
+        #region Private Methods
+
+        private void AddItems(IEnumerable<IShopItem> items)
         {
-            if(_dataService.)
+            foreach (IShopItem item in items)
+            {
+                SearchResults.Add(item);
+
+                if (SearchResults.Count >= MaxPresentedItems)
+                {
+                    break;
+                }
+            }
         }
 
+        private void GetItemsByBarcode()
+        {
+            SearchResults.Clear();
 
+            if (_dataService.GetShopItemsByBarcode(_barCode).Result is not { } items)
+            {
+                IsSearchVisible = false;
+                return;
+            }
+
+            AddItems(items);
+
+            IsSearchVisible = SearchResults.Any();
+        }
+
+        private void SearchItemsBySearchTerm()
+        {
+            SearchResults.Clear();
+
+            if (_dataService.GetShopItemsBySearchTerm(SearchInput).Result is { } items)
+            {
+                AddItems(items);
+            }
+        }
+
+        #endregion
     }
 }

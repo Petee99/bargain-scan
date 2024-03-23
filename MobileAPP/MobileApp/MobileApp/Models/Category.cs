@@ -36,10 +36,10 @@ namespace MobileApp.Models
 
         #region Public Properties
 
-        public IEnumerable<ISubCategory> SubCategories => _subCategories;
-
         public virtual string IconPath => _iconPath
             ??= $"{RemoveDiacritics(Title.Replace(" ", "").Replace(",", "").ToLower())}.png";
+
+        public IEnumerable<ISubCategory> SubCategories => _subCategories;
 
         public string Title { get; }
 
@@ -47,9 +47,14 @@ namespace MobileApp.Models
 
         #region Public Methods and Operators
 
+        public bool RemoveSubCategory(ISubCategory subCategory)
+        {
+            return _subCategories.Remove(subCategory);
+        }
+
         public ISubCategory GetOrCreateSubCategory(string subCategoryTitle)
         {
-            if (_subCategories.Find(c => c.Title == subCategoryTitle) is {} subCategory)
+            if (_subCategories.Find(c => c.Title == subCategoryTitle) is { } subCategory)
             {
                 return subCategory;
             }
@@ -57,11 +62,6 @@ namespace MobileApp.Models
             subCategory = new SubCategory(subCategoryTitle);
             _subCategories.Add(subCategory);
             return subCategory;
-        }
-
-        public bool RemoveSubCategory(ISubCategory subCategory)
-        {
-            return _subCategories.Remove(subCategory);
         }
 
         #endregion
@@ -73,7 +73,7 @@ namespace MobileApp.Models
             string normalizedString = text.Normalize(NormalizationForm.FormD);
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (var c in normalizedString)
+            foreach (char c in normalizedString)
             {
                 UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
                 if (unicodeCategory != UnicodeCategory.NonSpacingMark)

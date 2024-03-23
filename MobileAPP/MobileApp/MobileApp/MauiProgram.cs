@@ -15,6 +15,7 @@ namespace MobileApp
     using epj.Expander.Maui;
 
     using MobileApp.Interfaces;
+    using MobileApp.Models;
     using MobileApp.Services;
 
     #endregion
@@ -82,42 +83,6 @@ namespace MobileApp
 
             viewInstance.BindingContext = ActivatorUtilities.CreateInstance(serviceProvider, viewModel);
             return viewInstance;
-        }
-
-        #endregion
-    }
-
-    public interface IResolverService
-    {
-        #region Public Methods and Operators
-
-        object Resolve<TView>() where TView : class;
-
-        #endregion
-    }
-
-    public class ResolverService : IResolverService
-    {
-        #region Constants and Private Fields
-
-        private readonly IServiceProvider _serviceProvider;
-
-        #endregion
-
-        #region Constructors and Destructors
-
-        public ResolverService(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
-
-        #endregion
-
-        #region Public Methods and Operators
-
-        public object Resolve<TView>() where TView : class
-        {
-            return _serviceProvider.GetService(typeof(TView));
         }
 
         #endregion

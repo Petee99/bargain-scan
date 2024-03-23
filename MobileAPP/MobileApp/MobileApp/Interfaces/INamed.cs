@@ -1,17 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IOnlineDataService.cs" owner="Peter Mako">
+// <copyright file="INamed.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace MobileApp.Interfaces
 {
-    public interface IOnlineDataService
+    public interface INamed
     {
-        #region Public Methods and Operators
-
-        Task<string> LoadShopItemsFromApi();
-
-        #endregion
+        string Name { get; set; }
     }
 }

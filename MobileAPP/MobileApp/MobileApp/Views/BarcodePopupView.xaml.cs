@@ -1,16 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IOnlineDataService.cs" owner="Peter Mako">
+// <copyright file="BarcodePopupView.xaml.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MobileApp.Interfaces
+namespace MobileApp.Views
 {
-    public interface IOnlineDataService
+    public partial class BarcodePopupView
     {
-        #region Public Methods and Operators
+        #region Constructors and Destructors
 
-        Task<string> LoadShopItemsFromApi();
+        public BarcodePopupView()
+        {
+            InitializeComponent();
+        }
 
         #endregion
     }
