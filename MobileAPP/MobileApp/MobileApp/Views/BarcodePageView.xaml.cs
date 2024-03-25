@@ -8,10 +8,6 @@ namespace MobileApp.Views
 {
     #region Imports
 
-    using Camera.MAUI.ZXingHelper;
-
-    using ZXing;
-
     #endregion
 
     public partial class BarcodePageView

@@ -8,6 +8,10 @@ namespace MobileApp.Models
 {
     #region Imports
 
+    using System.Text.RegularExpressions;
+
+    using MobileApp.Enums;
+    using MobileApp.Events;
     using MobileApp.Interfaces;
 
     #endregion
@@ -22,9 +26,11 @@ namespace MobileApp.Models
 
         #region Public Properties
 
-        public Guid ShoppingCartId { get; private set; }
-
         public double Total => CalculateSum();
+
+        public event EventHandler<ItemsChangedEventArgs> ItemsChanged;
+
+        public Guid ShoppingCartId { get; }
 
         public IEnumerable<IShopItem> Items => _items;
 
@@ -33,7 +39,7 @@ namespace MobileApp.Models
         public string Name { get; set; }
 
         #endregion
-        
+
         #region Public Methods and Operators
 
         public bool AddItem(IShopItem item)
@@ -44,12 +50,20 @@ namespace MobileApp.Models
             }
 
             _items.Add(item);
+            ItemsChanged?.Invoke(this, new ItemsChangedEventArgs(EventType.ItemAdded, item));
             return true;
         }
 
         public bool RemoveItem(IShopItem item)
         {
-            return _items.Remove(item);
+            if (!_items.Contains(item))
+            {
+                return false;
+            }
+
+            _items.Remove(item);
+            ItemsChanged?.Invoke(this, new ItemsChangedEventArgs(EventType.ItemRemoved, item));
+            return true;
         }
 
         #endregion
@@ -59,7 +73,7 @@ namespace MobileApp.Models
         private double CalculateSum()
         {
             double sum = 0;
-            _items.ForEach(i => sum += double.Parse(i.Price));
+            _items.ForEach(i => sum += double.Parse(Regex.Replace(i.Price, @"\D", "")));
             return sum;
         }
 

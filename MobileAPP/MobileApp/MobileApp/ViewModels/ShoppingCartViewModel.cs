@@ -8,6 +8,11 @@ namespace MobileApp.ViewModels
 {
     #region Imports
 
+    using System.Collections.ObjectModel;
+    using System.Windows.Input;
+
+    using MobileApp.Enums;
+    using MobileApp.Events;
     using MobileApp.Interfaces;
     using MobileApp.Models;
 
@@ -26,6 +31,8 @@ namespace MobileApp.ViewModels
         public ShoppingCartViewModel(IShoppingCart shoppingCart)
         {
             _shoppingCart = shoppingCart;
+            _shoppingCart.ItemsChanged += OnItemsChanged;
+            RemoveItemCommand = new Command<IShopItem>(item => _shoppingCart.RemoveItem(item));
         }
 
         #endregion
@@ -34,7 +41,9 @@ namespace MobileApp.ViewModels
 
         public double Total => _shoppingCart.Total;
 
-        public IEnumerable<IShopItem> Items => _shoppingCart.Items;
+        public ICommand RemoveItemCommand { get; }
+
+        public ObservableCollection<IShopItem> Items { get; } = new();
 
         public string Description
         {
@@ -58,37 +67,20 @@ namespace MobileApp.ViewModels
 
         #endregion
 
-        #region Public Methods and Operators
-
-        public bool AddItem(IShopItem item)
-        {
-            if (!_shoppingCart.AddItem(item))
-            {
-                return false;
-            }
-
-            FireItemsChanged();
-            return true;
-        }
-
-        public bool RemoveItem(IShopItem item)
-        {
-            if (!_shoppingCart.RemoveItem(item))
-            {
-                return false;
-            }
-
-            FireItemsChanged();
-            return true;
-        }
-
-        #endregion
-
         #region Private Methods
 
-        private void FireItemsChanged()
+        private void OnItemsChanged(object sender, ItemsChangedEventArgs e)
         {
-            OnPropertyChanged(nameof(Items));
+            if (Items.Contains(e.ChangedItem) && e.EventType is EventType.ItemRemoved)
+            {
+                Items.Remove(e.ChangedItem);
+            }
+
+            if (!Items.Contains(e.ChangedItem) && e.EventType is EventType.ItemAdded)
+            {
+                Items.Add(e.ChangedItem);
+            }
+
             OnPropertyChanged(nameof(Total));
         }
 

@@ -8,6 +8,10 @@ namespace MobileApp.Interfaces
 {
     public interface INamed
     {
+        #region Public Properties
+
         string Name { get; set; }
+
+        #endregion
     }
 }

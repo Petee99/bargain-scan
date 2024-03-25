@@ -1,7 +1,6 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileApp.ViewModels"
-             xmlns:maui="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="MobileApp.Views.BarcodePageView"
              x:DataType="viewModels:BarcodePageViewModel"
              Title="{Binding Title}"
@@ -13,8 +12,8 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Label x:Name="barcodeResult" Text="{Binding BarCode}"  FontSize="20" />
-<!--
+            <Label x:Name="barcodeResult" Text="{Binding BarCode}" FontSize="20" />
+            <!--
             <maui:CameraView x:Name="qrView" WidthRequest="300" HeightRequest="200" CamerasLoaded="OnCamerasLoaded"
                            BarCodeDetectionEnabled="True" BarcodeDetected="OnBarcodeDetected" />
 -->

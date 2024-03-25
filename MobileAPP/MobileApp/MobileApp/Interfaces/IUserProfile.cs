@@ -10,13 +10,21 @@ namespace MobileApp.Interfaces
     {
         #region Public Properties
 
+        event EventHandler ActiveShoppingCartChanged;
+
+        event EventHandler ShoppingCartsChanged;
+
         IEnumerable<IShoppingCart> ShoppingCarts { get; }
+
+        public IShoppingCart ActiveShoppingCart { get; }
 
         string Name { get; set; }
 
         #endregion
 
         #region Public Methods and Operators
+
+        bool ActivateShoppingCart(IShoppingCart shoppingCart);
 
         bool RemoveShoppingCart(IShoppingCart shoppingCart);
 

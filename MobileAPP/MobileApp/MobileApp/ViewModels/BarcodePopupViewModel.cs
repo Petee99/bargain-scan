@@ -24,9 +24,13 @@ namespace MobileApp.ViewModels
 
         private const int MaxPresentedItems = 10;
 
+        private const string ItemAddedAlert = "Termék sikeresen hozzáadva az aktív bevásárlókosárhoz.";
+
         private readonly IDataService _dataService;
 
         private bool _isSearchVisible;
+
+        private IShopItem _selectedItem;
 
         private string _barCode;
 
@@ -38,6 +42,8 @@ namespace MobileApp.ViewModels
         {
             _dataService = dataService;
             StartSearchCommand = new Command(() => Task.Run(SearchItemsBySearchTerm));
+            AssignBarcodeCommand = new Command<IShopItem>(item => _dataService.TryUpdateBarCode(item, _barCode));
+            SelectItemCommand = new Command<IShopItem>(item => SelectedItem = item);
         }
 
         #endregion
@@ -54,7 +60,22 @@ namespace MobileApp.ViewModels
             }
         }
 
+        public ICommand AssignBarcodeCommand { get; }
+
+        public ICommand SelectItemCommand { get; }
+
         public ICommand StartSearchCommand { get; }
+
+
+        public IShopItem SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<IShopItem> SearchResults { get; } = new();
 

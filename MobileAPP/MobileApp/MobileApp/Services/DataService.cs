@@ -61,19 +61,6 @@ namespace MobileApp.Services
             return !item.TryUpdateBarCode(barCode) && !TryAddBarcodeToDictionary(barCode, item);
         }
 
-        public async Task<IEnumerable<IShopItem>> GetShopItemsByBarcode(string barCode)
-        {
-            await EnsureDataLoaded();
-            _shopItemBarcodeDictionary.TryGetValue(barCode, out IList<IShopItem> foundItems);
-            return await Task.FromResult(foundItems);
-        }
-
-        public async Task<IEnumerable<IShopItem>> GetShopItemsBySearchTerm(string searchTerm)
-        {
-            await EnsureDataLoaded();
-            return await Task.FromResult(_fuzzyItemRepository.Search(searchTerm));
-        }
-
         public async Task<IEnumerable<ICategory>> GetMainCategories()
         {
             await EnsureDataLoaded();
@@ -104,6 +91,19 @@ namespace MobileApp.Services
             await EnsureDataLoaded();
             _shopItemsMap.TryGetValue(subCategory, out IList<IShopItem> items);
             return await Task.FromResult(items ?? Enumerable.Empty<IShopItem>());
+        }
+
+        public async Task<IEnumerable<IShopItem>> GetShopItemsByBarcode(string barCode)
+        {
+            await EnsureDataLoaded();
+            _shopItemBarcodeDictionary.TryGetValue(barCode, out IList<IShopItem> foundItems);
+            return await Task.FromResult(foundItems);
+        }
+
+        public async Task<IEnumerable<IShopItem>> GetShopItemsBySearchTerm(string searchTerm)
+        {
+            await EnsureDataLoaded();
+            return await Task.FromResult(_fuzzyItemRepository.Search(searchTerm));
         }
 
         #endregion

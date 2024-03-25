@@ -18,9 +18,12 @@ namespace MobileApp.Models
     public class ShopItem : IShopItem
     {
         #region Public Properties
-        
+
         [JsonPropertyName("shop")]
         public Shop Shop { get; set; }
+
+        [JsonPropertyName("barCode")]
+        public string BarCode { get; private set; }
 
         [JsonPropertyName("categoryName")]
         public string Category { get; set; }
@@ -38,8 +41,9 @@ namespace MobileApp.Models
         [JsonPropertyName("subCategoryName")]
         public string SubCategory { get; set; }
 
-        [JsonPropertyName("barCode")]
-        public string BarCode { get; private set; }
+        #endregion
+
+        #region Public Methods and Operators
 
         public bool TryUpdateBarCode(string barCode)
         {

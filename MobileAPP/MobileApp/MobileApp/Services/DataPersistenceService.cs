@@ -16,8 +16,6 @@ namespace MobileApp.Services
     {
         #region Constants and Private Fields
 
-        private static string LocalPath => FileSystem.Current.AppDataDirectory;
-
         public const string ItemsFileName = "items.json";
 
         public const string UserProfileFileName = "userProfile.json";
@@ -53,5 +51,7 @@ namespace MobileApp.Services
         }
 
         #endregion
+
+        private static string LocalPath => FileSystem.Current.AppDataDirectory;
     }
 }

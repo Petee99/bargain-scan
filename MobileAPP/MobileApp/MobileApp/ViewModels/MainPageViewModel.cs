@@ -10,6 +10,8 @@ namespace MobileApp.ViewModels
 
     using System.Collections.ObjectModel;
 
+    using CommunityToolkit.Maui.Alerts;
+
     using MobileApp.Interfaces;
     using MobileApp.Models;
 
@@ -19,13 +21,30 @@ namespace MobileApp.ViewModels
     {
         #region Constants and Private Fields
 
+        private const string ItemAddedAlert = "Termék sikeresen hozzáadva az aktív bevásárlókosárhoz.";
+
         private ObservableCollection<IShopItem> _items = new();
 
         private string _title;
 
         #endregion
 
+        #region Constructors and Destructors
+
+        public MainPageViewModel(IDataService dataService)
+        {
+            AddToShoppingCartCommand = new Command<IShopItem>(item =>
+            {
+                dataService.UserProfile.ActiveShoppingCart.AddItem(item);
+                Shell.Current.CurrentPage.DisplaySnackbar(ItemAddedAlert);
+            });
+        }
+
+        #endregion
+
         #region Public Properties
+
+        public Command<IShopItem> AddToShoppingCartCommand { get; }
 
         public ObservableCollection<IShopItem> ShopItems
         {

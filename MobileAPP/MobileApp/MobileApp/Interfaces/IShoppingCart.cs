@@ -4,19 +4,23 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.ComponentModel;
-
 namespace MobileApp.Interfaces
 {
+    #region Imports
+
+    using MobileApp.Events;
+
+    #endregion
+
     public interface IShoppingCart
     {
-        bool AddItem(IShopItem item);
-
-        bool RemoveItem(IShopItem item);
-
-        public Guid ShoppingCartId { get; }
+        #region Public Properties
 
         public double Total { get; }
+
+        event EventHandler<ItemsChangedEventArgs> ItemsChanged;
+
+        public Guid ShoppingCartId { get; }
 
         public IEnumerable<IShopItem> Items { get; }
 
@@ -24,5 +28,14 @@ namespace MobileApp.Interfaces
 
         public string Name { get; set; }
 
+        #endregion
+
+        #region Public Methods and Operators
+
+        bool AddItem(IShopItem item);
+
+        bool RemoveItem(IShopItem item);
+
+        #endregion
     }
 }

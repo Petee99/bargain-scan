@@ -10,6 +10,12 @@ namespace MobileApp.Enums
     {
         CategorySelected,
 
-        BarcodeRead
+        BarcodeRead,
+
+        ItemAdded,
+
+        ItemRemoved,
+
+        ItemExchangeNeeded
     }
 }

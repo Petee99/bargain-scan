@@ -39,13 +39,13 @@
         <ShellContent
             Title="Vonalkód"
             Icon="barcode.png"
-            ContentTemplate="{DataTemplate views:BarcodePageView}"
+            ContentTemplate="{DataTemplate views:BarcodePopupView}"
             Route="BarCodeView" />
         <ShellContent
-            Title="Beállítások"
+            Title="Kosár"
             Icon="settings.png"
-            ContentTemplate="{DataTemplate views:BarcodePopupView}"
-            Route="MainPageView" />
+            ContentTemplate="{DataTemplate views:UserProfileView}"
+            Route="UserProfileView" />
     </FlyoutItem>
 
 </Shell>

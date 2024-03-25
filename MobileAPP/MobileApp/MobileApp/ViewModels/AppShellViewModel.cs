@@ -17,7 +17,6 @@ namespace MobileApp.ViewModels
     using MobileApp.Enums;
     using MobileApp.Events;
     using MobileApp.Interfaces;
-    using MobileApp.Models;
 
     #endregion
 
@@ -101,13 +100,14 @@ namespace MobileApp.ViewModels
 
         private async Task SelectCategory(ICategory category)
         {
-            if (category is not ISubCategory subCategory || 
+            if (category is not ISubCategory subCategory ||
                 Shell.Current.CurrentPage?.BindingContext is not MainPageViewModel viewModel)
             {
                 return;
             }
-            
+
             Shell.Current.FlyoutIsPresented = false;
+
             viewModel.ShopItems = (await _dataService.GetShopItems(subCategory)).ToObservableCollection();
         }
 

@@ -18,11 +18,19 @@ namespace MobileApp.Models
 
         private readonly List<IShoppingCart> _shoppingCarts = new();
 
+        private IShoppingCart _activeShoppingCart;
+
         #endregion
 
         #region Public Properties
 
+        public event EventHandler ActiveShoppingCartChanged;
+
+        public event EventHandler ShoppingCartsChanged;
+
         public IEnumerable<IShoppingCart> ShoppingCarts => _shoppingCarts;
+
+        public IShoppingCart ActiveShoppingCart => _activeShoppingCart ??= GetDefaultShoppingCart();
 
         public string Name { get; set; }
 
@@ -30,16 +38,16 @@ namespace MobileApp.Models
 
         #region Public Methods and Operators
 
-        public bool RemoveShoppingCart(IShoppingCart shoppingCart)
+        public bool ActivateShoppingCart(IShoppingCart shoppingCart)
         {
-            return _shoppingCarts.Remove(shoppingCart);
-        }
+            if (!_shoppingCarts.Contains(shoppingCart))
+            {
+                return false;
+            }
 
-        public IShoppingCart CreateShoppingCart()
-        {
-            var cart = new ShoppingCart();
-            AddShoppingCart(cart);
-            return cart;
+            _activeShoppingCart = shoppingCart;
+            ActiveShoppingCartChanged?.Invoke(this, EventArgs.Empty);
+            return true;
         }
 
         public bool AddShoppingCart(IShoppingCart shoppingCart)
@@ -51,6 +59,27 @@ namespace MobileApp.Models
 
             _shoppingCarts.Add(shoppingCart);
             return true;
+        }
+
+        public bool RemoveShoppingCart(IShoppingCart shoppingCart)
+        {
+            return _shoppingCarts.Remove(shoppingCart);
+        }
+
+        public IShoppingCart CreateShoppingCart()
+        {
+            var cart = new ShoppingCart { Name = "Kosár#" + _shoppingCarts.Count };
+            AddShoppingCart(cart);
+            return cart;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private IShoppingCart GetDefaultShoppingCart()
+        {
+            return ShoppingCarts.FirstOrDefault() ?? CreateShoppingCart();
         }
 
         #endregion

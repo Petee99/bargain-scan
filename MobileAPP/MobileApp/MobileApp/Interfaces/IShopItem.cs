@@ -15,20 +15,24 @@ namespace MobileApp.Interfaces
     public interface IShopItem : INamed
     {
         #region Public Properties
-        
+
         Shop Shop { get; set; }
+
+        string BarCode { get; }
 
         string Category { get; set; }
 
         string IconPath { get; set; }
-        
+
         string Price { get; set; }
 
         string ShopIconPath { get; }
 
         string SubCategory { get; set; }
 
-        string BarCode { get; }
+        #endregion
+
+        #region Public Methods and Operators
 
         bool TryUpdateBarCode(string barCode);
 
