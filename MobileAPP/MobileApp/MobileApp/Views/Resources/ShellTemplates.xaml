@@ -1,66 +1,83 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:viewModels="clr-namespace:MobileApp.ViewModels"
+                    xmlns:properties="clr-namespace:MobileApp.Properties"
                     xmlns:maui="clr-namespace:epj.Expander.Maui;assembly=epj.Expander.Maui"
                     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
     <DataTemplate x:Key="FlyOutTemplate" x:DataType="viewModels:CategoryViewModel">
         <StackLayout>
-            <!-- Category -->
+
             <maui:Expander Animated="True"
                            CollapseDuration="100"
-                           ExpandDuration="200"
+                           ExpandDuration="100"
                            CollapseEasing="{x:Static Easing.SpringOut}"
                            ExpandEasing="{x:Static Easing.SpringIn}"
                            IsExpanded="{Binding IsActive, Mode=TwoWay}">
+
                 <maui:Expander.HeaderContent>
                     <Grid HeightRequest="65">
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
+
                         <StackLayout Margin="10" Grid.Row="0"
                                      Orientation="Horizontal"
                                      HorizontalOptions="Fill">
-                            <Image Source="{Binding IconPath}" MaximumHeightRequest="25"
-                                   MaximumWidthRequest="25">
+
+                            <Image Source="{Binding IconPath}"
+                                   MaximumHeightRequest="25" MaximumWidthRequest="25">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#512BD4" />
                                 </Image.Behaviors>
                             </Image>
+
                             <Label Padding="10"
                                    Text="{Binding Title}"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center" />
+
                         </StackLayout>
-                        <BoxView Margin="10,0,10,0" Grid.Row="1" HeightRequest="1" Color="Gray" />
+
+                        <BoxView Margin="10,0,10,0" Grid.Row="1"
+                                 HeightRequest="1" Color="Gray" />
+
                     </Grid>
                 </maui:Expander.HeaderContent>
+
                 <CollectionView ItemsSource="{Binding SubCategories}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
+
                             <Grid HeightRequest="70">
+
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
+
                                 <StackLayout Margin="50,10,10,10"
                                              HeightRequest="45"
                                              Orientation="Horizontal"
                                              HorizontalOptions="Fill"
                                              Grid.Row="0">
+
                                     <Image Source="{Binding IconPath}" MaximumHeightRequest="18">
                                         <Image.Behaviors>
                                             <toolkit:IconTintColorBehavior TintColor="#512BD4" />
                                         </Image.Behaviors>
                                     </Image>
-                                    <Button
-                                        Command="{Binding SelectCommand}"
-                                        Text="{Binding Title}"
-                                        HorizontalOptions="Fill"
-                                        BackgroundColor="White"
-                                        TextColor="Black" />
+
+                                    <Button Command="{Binding SelectCommand}"
+                                            Text="{Binding Title}"
+                                            HorizontalOptions="Fill"
+                                            BackgroundColor="White"
+                                            TextColor="Black" />
+
                                 </StackLayout>
+
                                 <BoxView Grid.Row="1" Margin="40,0,10,0" HeightRequest="1" Color="Gray" />
 
                             </Grid>
@@ -72,22 +89,28 @@
     </DataTemplate>
 
     <DataTemplate x:Key="MenuTemplate">
+
         <StackLayout Orientation="Horizontal"
                      HeightRequest="55"
                      HorizontalOptions="Fill"
                      VerticalOptions="Fill"
                      BackgroundColor="#512BD4">
-            <Image Source="shopcart.png" MaximumHeightRequest="30" Margin="10,0,0,0">
+
+            <Image Source="{x:Static properties:IconPaths.Categories}" 
+                   MaximumHeightRequest="30" Margin="10,0,0,0">
                 <Image.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="White" />
                 </Image.Behaviors>
             </Image>
-            <Label
-                Padding="10"
-                Text="Termékek"
-                TextColor="White"
-                FontSize="Medium"
-                VerticalOptions="Center" />
+
+            <Label Padding="10"
+                   Text="{x:Static properties:Resources.ItemsTitle}"
+                   TextColor="White"
+                   FontSize="Medium"
+                   VerticalOptions="Center" />
+
         </StackLayout>
+
     </DataTemplate>
+
 </ResourceDictionary>

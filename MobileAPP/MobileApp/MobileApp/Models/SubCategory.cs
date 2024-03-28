@@ -16,9 +16,18 @@ namespace MobileApp.Models
     {
         #region Constructors and Destructors
 
-        public SubCategory(string title) : base(title)
+        public SubCategory(string title, ICategory parent) : base(title)
         {
+            Parent = parent;
         }
+
+        #endregion
+
+        #region Public Properties
+
+        public override string IconPath => Parent.IconPath;
+
+        public ICategory Parent { get; }
 
         #endregion
     }

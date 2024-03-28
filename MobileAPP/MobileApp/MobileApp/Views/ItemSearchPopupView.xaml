@@ -1,30 +1,47 @@
 ﻿<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-               x:Class="MobileApp.Views.BarcodePopupView"
+               xmlns:properties="clr-namespace:MobileApp.Properties"
+               x:Class="MobileApp.Views.ItemSearchPopupView"
                Shell.PresentationMode="ModalAnimated">
 
     <StackLayout Padding="10">
 
         <SearchBar IsVisible="True" Text="{Binding SearchInput}"
-                   Placeholder="Keresés..." SearchCommand="{Binding StartSearchCommand}" />
+                   Placeholder="{x:Static properties:Resources.SearchPlaceholder}"
+                   SearchCommand="{Binding StartSearchCommand}" />
 
-        <CollectionView ItemsSource="{Binding SearchResults}" MaximumHeightRequest="300">
+        <CollectionView ItemsSource="{Binding SearchResults}"
+                        MaximumHeightRequest="300">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+
                     <VerticalStackLayout Spacing="5" Padding="5">
+
                         <Label Text="{Binding Name}" LineBreakMode="WordWrap" />
+
                         <HorizontalStackLayout Spacing="10">
+
                             <Label Text="{Binding Price, StringFormat='Ár: {0:C}'}" />
+
                             <Label Text="{Binding Shop, StringFormat='Bolt: {0}'}" />
+
                         </HorizontalStackLayout>
+
                         <HorizontalStackLayout HorizontalOptions="End" Spacing="10">
-                            <Button Text="Kosárba" FontSize="11" BorderWidth="0" HeightRequest="22" Padding="3"
-                                    Command="{Binding Path=BindingContext.SelectItemCommand, Source={RelativeSource AncestorType={x:Type toolkit:Popup}}}"
+
+                            <Button Text="Kosárba" FontSize="11"
+                                    BorderWidth="0" HeightRequest="22" Padding="3"
+                                    Command="{Binding Path=BindingContext.SelectItemCommand, 
+                                                Source={RelativeSource AncestorType={x:Type toolkit:Popup}}}"
                                     CommandParameter="{Binding .}" />
-                            <Button Text="Kiválasztás" FontSize="11" BorderWidth="0" HeightRequest="22" Padding="3"
-                                    Command="{Binding Path=BindingContext.SelectItemCommand, Source={RelativeSource AncestorType={x:Type toolkit:Popup}}}"
+
+                            <Button Text="Kiválasztás" FontSize="11"
+                                    BorderWidth="0" HeightRequest="22" Padding="3"
+                                    Command="{Binding Path=BindingContext.SelectItemCommand, 
+                                                Source={RelativeSource AncestorType={x:Type toolkit:Popup}}}"
                                     CommandParameter="{Binding .}" />
+
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </DataTemplate>

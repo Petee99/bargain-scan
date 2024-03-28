@@ -10,9 +10,12 @@ namespace MobileApp.Models
 
     using System.Text.RegularExpressions;
 
+    using CommunityToolkit.Maui.Alerts;
+
     using MobileApp.Enums;
     using MobileApp.Events;
     using MobileApp.Interfaces;
+    using MobileApp.Properties;
 
     #endregion
 

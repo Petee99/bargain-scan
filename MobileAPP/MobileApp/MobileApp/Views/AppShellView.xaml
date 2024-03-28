@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Shell
-    x:Class="MobileApp.Views.AppShellView"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewModels="clr-namespace:MobileApp.ViewModels"
-    xmlns:views="clr-namespace:MobileApp.Views"
-    FlyoutBehavior="Flyout"
-    FlyoutIcon="shopcart.png"
-    Shell.TabBarBackgroundColor="LightGray"
-    x:DataType="viewModels:AppShellViewModel">
+<Shell x:Class="MobileApp.Views.AppShellView"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:viewModels="clr-namespace:MobileApp.ViewModels"
+       xmlns:properties="clr-namespace:MobileApp.Properties"
+       xmlns:views="clr-namespace:MobileApp.Views"
+       Shell.TabBarBackgroundColor="LightGray"
+       FlyoutBehavior="Flyout"
+       FlyoutIcon="{x:Static properties:IconPaths.ShopCart}"
+       x:DataType="viewModels:AppShellViewModel">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -31,21 +29,25 @@
     </Shell.FlyoutHeaderTemplate>
 
     <FlyoutItem>
+
         <ShellContent
-            Title="Termékek"
-            Icon="shopcart.png"
+            Title="{x:Static properties:Resources.ItemsTitle}"
+            Icon="{x:Static properties:IconPaths.Items}"
             ContentTemplate="{DataTemplate views:MainPageView}"
             Route="MainPageView" />
+
         <ShellContent
-            Title="Vonalkód"
-            Icon="barcode.png"
-            ContentTemplate="{DataTemplate views:BarcodePopupView}"
+            Title="{x:Static properties:Resources.BarcodeTitle}"
+            Icon="{x:Static properties:IconPaths.BarCode}"
+            ContentTemplate="{DataTemplate views:BarcodePageView}"
             Route="BarCodeView" />
+
         <ShellContent
-            Title="Kosár"
-            Icon="settings.png"
+            Title="{x:Static properties:Resources.ShoppingCartTitle}"
+            Icon="{x:Static properties:IconPaths.ShopCart}"
             ContentTemplate="{DataTemplate views:UserProfileView}"
             Route="UserProfileView" />
+
     </FlyoutItem>
 
 </Shell>

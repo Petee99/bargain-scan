@@ -48,6 +48,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Properties\items.json" />
 	  <None Remove="Resources\Images\alapvetoelelmiszerek.png" />
 	  <None Remove="Resources\Images\aldi.png" />
 	  <None Remove="Resources\Images\alkoholositalok.png" />
@@ -56,6 +57,7 @@
 	  <None Remove="Resources\Images\babaapolas.png" />
 	  <None Remove="Resources\Images\babaetelital.png" />
 	  <None Remove="Resources\Images\barcode.png" />
+	  <None Remove="Resources\Images\categories.png" />
 	  <None Remove="Resources\Images\cosmetic.png" />
 	  <None Remove="Resources\Images\egyeb.png" />
 	  <None Remove="Resources\Images\fagyasztottelelmiszer.png" />
@@ -63,6 +65,7 @@
 	  <None Remove="Resources\Images\haztartas.png" />
 	  <None Remove="Resources\Images\hushalfelvagott.png" />
 	  <None Remove="Resources\Images\italok.png" />
+	  <None Remove="Resources\Images\items.png" />
 	  <None Remove="Resources\Images\metro.png" />
 	  <None Remove="Resources\Images\nassolnivalok.png" />
 	  <None Remove="Resources\Images\penny.png" />
@@ -74,17 +77,24 @@
 	  <None Remove="Resources\Images\zoldseggyumolcs.png" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\items.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 	
 	
 	
 	<ItemGroup>
-		<PackageReference Include="Camera.MAUI" Version="1.4.4" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
 		<PackageReference Include="epj.Expander.Maui" Version="1.0.2" />
 		<PackageReference Include="FuzzySharp" Version="2.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Syncfusion.Maui.Core" Version="23.1.44" />
 		<PackageReference Include="Syncfusion.Maui.TreeView" Version="23.1.44" />
+		<PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
+		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -95,8 +105,21 @@
 	  <Compile Update="BargainScanApp.xaml.cs">
 	    <DependentUpon>BargainScanApp.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Properties\IconPaths.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>IconPaths.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AppShellView.xaml.cs">
 	    <DependentUpon>AppShellView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ItemSearchPopupView.xaml.cs">
+	    <DependentUpon>ItemSearchPopupView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\MainPageView.xaml.cs">
 	    <DependentUpon>MainPageView.xaml</DependentUpon>
@@ -107,10 +130,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="Properties\IconPaths.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>IconPaths.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\BarcodePageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\BarcodePopupView.xaml">
+	  <MauiXaml Update="Views\ItemSearchPopupView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\UserProfileView.xaml">

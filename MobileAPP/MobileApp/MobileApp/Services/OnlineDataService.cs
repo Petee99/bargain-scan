@@ -16,7 +16,7 @@ namespace MobileApp.Services
     {
         #region Constants and Private Fields
 
-        private const string ApiUrl = "http://10.0.2.2:33272/api/shopitems";
+        private const string ApiUrl = "";
 
         #endregion
 

@@ -1,20 +1,20 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BarcodePopupView.xaml.cs" owner="Peter Mako">
+// <copyright file="BarcodeReadMessage.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MobileApp.Views
+namespace MobileApp.Events
 {
-    public partial class BarcodePopupView
-    {
-        #region Constructors and Destructors
+    using MobileApp.Enums;
 
-        public BarcodePopupView()
+    public class BarcodeMessage : EventMessageBase
+    {
+        public BarcodeMessage(object sender, EventType eventType, string barCode) : base(sender, eventType)
         {
-            InitializeComponent();
+            BarCode = barCode;
         }
 
-        #endregion
+        public string BarCode { get; }
     }
 }

@@ -59,7 +59,7 @@ namespace MobileApp.Models
                 return subCategory;
             }
 
-            subCategory = new SubCategory(subCategoryTitle);
+            subCategory = new SubCategory(subCategoryTitle, this);
             _subCategories.Add(subCategory);
             return subCategory;
         }

@@ -9,6 +9,7 @@ namespace MobileApp.Models
     #region Imports
 
     using MobileApp.Interfaces;
+    using MobileApp.Properties;
 
     #endregion
 
@@ -68,7 +69,7 @@ namespace MobileApp.Models
 
         public IShoppingCart CreateShoppingCart()
         {
-            var cart = new ShoppingCart { Name = "Kosár#" + _shoppingCarts.Count };
+            var cart = new ShoppingCart { Name = $"{Resources.ShoppingCartTitle}_{_shoppingCarts.Count + 1}" };
             AddShoppingCart(cart);
             return cart;
         }

@@ -8,5 +8,6 @@ namespace MobileApp.Interfaces
 {
     public interface ISubCategory : ICategory
     {
+        ICategory Parent { get; }
     }
 }

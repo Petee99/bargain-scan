@@ -1,33 +1,30 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MobileApp.Views.MainPageView"
+             xmlns:properties="clr-namespace:MobileApp.Properties"
              Title="{Binding Title}"
              BackgroundColor="AliceBlue">
 
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
+            Padding="20,0"
             VerticalOptions="Center">
 
             <CollectionView ItemsSource="{Binding ShopItems}" ItemsLayout="VerticalGrid, 2">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+
                         <Frame CornerRadius="10" Padding="10" Margin="5" BorderColor="LightGray"
                                BackgroundColor="White">
+
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="100" />
-                                    <!-- Image Row -->
-                                    <RowDefinition Height="150" />
-                                    <!-- Title Row -->
+                                    <RowDefinition Height="120" />
                                     <RowDefinition Height="Auto" />
-                                    <!-- Price Row -->
                                     <RowDefinition Height="Auto" />
-                                    <!-- Shop Row -->
                                 </Grid.RowDefinitions>
 
                                 <Image Grid.Row="0" Source="{Binding IconPath}" MaximumWidthRequest="60">
@@ -35,17 +32,22 @@
                                         <toolkit:IconTintColorBehavior TintColor="#512BD4" />
                                     </Image.Behaviors>
                                 </Image>
-                                <Label Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="Small"
-                                       MaxLines="5" />
+
+                                <Label Grid.Row="1" Text="{Binding Name}"
+                                       FontAttributes="Bold" FontSize="Small" MaxLines="5" />
+
                                 <Label Grid.Row="2" Text="{Binding Price}" FontSize="Small" />
 
-
                                 <StackLayout Grid.Row="3" Orientation="Vertical">
-                                    <Image Source="{Binding ShopIconPath}" MaximumWidthRequest="30"
-                                           HorizontalOptions="Start" />
-                                    <Button Text="Kosárba" Padding="3" Margin="10, 0, 0, 0" HeightRequest="25"
+
+                                    <Image Source="{Binding ShopIconPath}"
+                                           MaximumWidthRequest="30" HorizontalOptions="Start" />
+
+                                    <Button Text="{x:Static properties:Resources.ToShoppingCart}"
+                                            Padding="3" Margin="10, 0, 0, 0" HeightRequest="25"
                                             MaximumWidthRequest="100" FontSize="11"
-                                            Command="{Binding Path=BindingContext.AddToShoppingCartCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                            Command="{Binding Path=BindingContext.AddToShoppingCartCommand, 
+                                                        Source={RelativeSource AncestorType={x:Type ContentPage}}}"
                                             CommandParameter="{Binding .}" />
                                 </StackLayout>
 

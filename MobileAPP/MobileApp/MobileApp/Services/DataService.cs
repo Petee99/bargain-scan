@@ -58,7 +58,7 @@ namespace MobileApp.Services
 
         public bool TryUpdateBarCode(IShopItem item, string barCode)
         {
-            return !item.TryUpdateBarCode(barCode) && !TryAddBarcodeToDictionary(barCode, item);
+            return item.TryUpdateBarCode(barCode) && TryAddBarcodeToDictionary(barCode, item);
         }
 
         public async Task<IEnumerable<ICategory>> GetMainCategories()
@@ -97,13 +97,18 @@ namespace MobileApp.Services
         {
             await EnsureDataLoaded();
             _shopItemBarcodeDictionary.TryGetValue(barCode, out IList<IShopItem> foundItems);
-            return await Task.FromResult(foundItems);
+            return await Task.FromResult(foundItems ?? Enumerable.Empty<IShopItem>());
         }
 
         public async Task<IEnumerable<IShopItem>> GetShopItemsBySearchTerm(string searchTerm)
         {
             await EnsureDataLoaded();
             return await Task.FromResult(_fuzzyItemRepository.Search(searchTerm));
+        }
+
+        public void SaveApplicationData()
+        {
+            Task.Run(PersistData);
         }
 
         #endregion
@@ -161,6 +166,7 @@ namespace MobileApp.Services
             {
                 FixItemCategory(item);
                 ICategory containingCategory = GetItemContainingCategory(item);
+                item.IconPath = containingCategory.IconPath;
 
                 if (!_shopItemsMap.ContainsKey(containingCategory))
                 {
@@ -201,6 +207,16 @@ namespace MobileApp.Services
             }
 
             item.Category = item.SubCategory = "Egyéb";
+        }
+
+        private async void PersistData()
+        {
+            await EnsureDataLoaded();
+
+            List<IShopItem> items = _shopItemsMap.Values.SelectMany(itemList => itemList).ToList();
+
+            _persistenceService.TrySaveLocalData(DataPersistenceService.ItemsFileName, JsonSerializer.Serialize(items));
+            _persistenceService.TrySaveLocalData(DataPersistenceService.UserProfileFileName, JsonSerializer.Serialize(UserProfile));
         }
 
         #endregion

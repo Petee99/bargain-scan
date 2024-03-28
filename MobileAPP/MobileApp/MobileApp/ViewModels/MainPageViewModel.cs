@@ -20,9 +20,7 @@ namespace MobileApp.ViewModels
     public class MainPageViewModel : PropertyChangedBase
     {
         #region Constants and Private Fields
-
-        private const string ItemAddedAlert = "Termék sikeresen hozzáadva az aktív bevásárlókosárhoz.";
-
+        
         private ObservableCollection<IShopItem> _items = new();
 
         private string _title;
@@ -36,7 +34,6 @@ namespace MobileApp.ViewModels
             AddToShoppingCartCommand = new Command<IShopItem>(item =>
             {
                 dataService.UserProfile.ActiveShoppingCart.AddItem(item);
-                Shell.Current.CurrentPage.DisplaySnackbar(ItemAddedAlert);
             });
         }
 

@@ -8,13 +8,17 @@ namespace MobileApp.ViewModels
 {
     #region Imports
 
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Windows.Input;
 
+    using CommunityToolkit.Maui.Alerts;
+    using CommunityToolkit.Maui.Core.Extensions;
     using CommunityToolkit.Maui.Views;
 
     using MobileApp.Interfaces;
     using MobileApp.Models;
+    using MobileApp.Properties;
     using MobileApp.Views;
 
     #endregion
@@ -27,20 +31,28 @@ namespace MobileApp.ViewModels
 
         private readonly IUserProfile _profile;
 
+        private readonly IEventAggregator _eventAggregator;
+
         #endregion
 
         #region Constructors and Destructors
 
-        public UserProfileViewModel(IDataService dataService)
+        public UserProfileViewModel(IDataService dataService, IEventAggregator eventAggregator)
         {
             _profile = dataService.UserProfile;
             _profile.ActiveShoppingCartChanged += OnActiveShoppingCartChanged;
             _profile.ShoppingCartsChanged += OnShoppingCartsChanged;
             _dataService = dataService;
+            _eventAggregator = eventAggregator;
             ActiveShoppingCart = new ShoppingCartViewModel(_profile.ActiveShoppingCart);
             ActiveShoppingCart.PropertyChanged += OnActiveShoppingCartPropertyChanged;
-            AddShoppingCartCommand = new Command(() => _profile.CreateShoppingCart());
-            ExchangeItemCommand = new Command<IShopItem>(ExchangeItem);
+            SubstituteItemCommand = new Command<IShopItem>(SubstituteItem);
+            AddShoppingCartCommand = new Command(() =>
+            {
+                _profile.CreateShoppingCart();
+                OnPropertyChanged(nameof(ShoppingCarts));
+                Shell.Current.CurrentPage.DisplaySnackbar(Resources.ShoppingCartAddedAlert);
+            });
         }
 
         #endregion
@@ -49,9 +61,9 @@ namespace MobileApp.ViewModels
 
         public ICommand AddShoppingCartCommand { get; }
 
-        public ICommand ExchangeItemCommand { get; }
+        public ICommand SubstituteItemCommand { get; }
 
-        public IEnumerable<IShoppingCart> ShoppingCarts => _profile.ShoppingCarts;
+        public ObservableCollection<IShoppingCart> ShoppingCarts => _profile.ShoppingCarts.ToObservableCollection();
 
         public ShoppingCartViewModel ActiveShoppingCart { get; set; }
 
@@ -69,16 +81,16 @@ namespace MobileApp.ViewModels
 
         #region Private Methods
 
-        private async void ExchangeItem(IShopItem item)
+        private async void SubstituteItem(IShopItem item)
         {
-            var popupView = new BarcodePopupView
+            var popupView = new ItemSearchPopupView(_eventAggregator)
             {
-                BindingContext = new BarcodePopupViewModel(_dataService)
+                BindingContext = new ItemSearchPopupViewModel(_dataService, _eventAggregator)
             };
 
             await Shell.Current.CurrentPage.ShowPopupAsync(popupView);
 
-            if (popupView.BindingContext is not BarcodePopupViewModel { SelectedItem: not null } viewModel)
+            if (popupView.BindingContext is not ItemSearchPopupViewModel { SelectedItem: not null } viewModel)
             {
                 return;
             }
@@ -95,6 +107,8 @@ namespace MobileApp.ViewModels
                 return;
             }
 
+            ActiveShoppingCart.Dispose();
+            ActiveShoppingCart.PropertyChanged -= OnActiveShoppingCartPropertyChanged;
             ActiveShoppingCart = new ShoppingCartViewModel(_profile.ActiveShoppingCart);
             OnPropertyChanged(nameof(ActiveShoppingCart));
         }

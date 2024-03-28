@@ -28,6 +28,8 @@ namespace MobileApp.Interfaces
 
         Task<IEnumerable<IShopItem>> GetShopItemsBySearchTerm(string searchTerm);
 
+        void SaveApplicationData();
+
         #endregion
     }
 }

@@ -8,6 +8,8 @@ namespace MobileApp.Services
 {
     #region Imports
 
+    using System.Reflection;
+
     using MobileApp.Interfaces;
 
     #endregion
@@ -42,12 +44,35 @@ namespace MobileApp.Services
             try
             {
                 string filePath = Path.Combine(LocalPath, fileName);
-                return File.Exists(filePath) ? await File.ReadAllTextAsync(filePath) : string.Empty;
+
+                if (File.Exists(filePath))
+                {
+                    return await File.ReadAllTextAsync(filePath);
+                }
+
+                return await TryLoadEmbeddedResourceAsStringAsync(fileName);
             }
-            catch (Exception e)
+            catch
             {
-                return e.Message;
+                return string.Empty;
             }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        // Only for debug purposes
+        private static async Task<string> TryLoadEmbeddedResourceAsStringAsync(string resourceName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var fullyQualifiedResourceName = $"{assembly.GetName().Name}.Resources.{resourceName}";
+
+            await using Stream stream = assembly.GetManifestResourceStream(fullyQualifiedResourceName);
+            if (stream == null) throw new FileNotFoundException($"Resource {fullyQualifiedResourceName} not found.");
+
+            using StreamReader reader = new StreamReader(stream);
+            return await reader.ReadToEndAsync();
         }
 
         #endregion

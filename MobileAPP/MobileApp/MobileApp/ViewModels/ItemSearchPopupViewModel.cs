@@ -18,31 +18,28 @@ namespace MobileApp.ViewModels
 
     #endregion
 
-    public class BarcodePopupViewModel : PropertyChangedBase, IHandle<EventMessageBase>
+    public class ItemSearchPopupViewModel : PropertyChangedBase
     {
         #region Constants and Private Fields
 
         private const int MaxPresentedItems = 10;
-
-        private const string ItemAddedAlert = "Termék sikeresen hozzáadva az aktív bevásárlókosárhoz.";
-
+        
         private readonly IDataService _dataService;
 
-        private bool _isSearchVisible;
+        private readonly IEventAggregator _eventAggregator;
 
         private IShopItem _selectedItem;
-
-        private string _barCode;
 
         #endregion
 
         #region Constructors and Destructors
 
-        public BarcodePopupViewModel(IDataService dataService)
+        public ItemSearchPopupViewModel(IDataService dataService, IEventAggregator eventAggregator)
         {
             _dataService = dataService;
+            _eventAggregator = eventAggregator;
             StartSearchCommand = new Command(() => Task.Run(SearchItemsBySearchTerm));
-            AssignBarcodeCommand = new Command<IShopItem>(item => _dataService.TryUpdateBarCode(item, _barCode));
+            AddItemToActiveShoppingCarCommand = new Command<IShopItem>(item => _dataService.UserProfile.ActiveShoppingCart.AddItem(item));
             SelectItemCommand = new Command<IShopItem>(item => SelectedItem = item);
         }
 
@@ -50,22 +47,11 @@ namespace MobileApp.ViewModels
 
         #region Public Properties
 
-        public bool IsSearchVisible
-        {
-            get => _isSearchVisible;
-            private set
-            {
-                _isSearchVisible = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand AssignBarcodeCommand { get; }
+        public ICommand AddItemToActiveShoppingCarCommand { get; }
 
         public ICommand SelectItemCommand { get; }
 
         public ICommand StartSearchCommand { get; }
-
 
         public IShopItem SelectedItem
         {
@@ -73,6 +59,7 @@ namespace MobileApp.ViewModels
             set
             {
                 _selectedItem = value;
+                _eventAggregator.Publish(new EventMessageBase(this, EventType.PopupCloseInitiated));
                 OnPropertyChanged();
             }
         }
@@ -80,23 +67,6 @@ namespace MobileApp.ViewModels
         public ObservableCollection<IShopItem> SearchResults { get; } = new();
 
         public string SearchInput { get; set; }
-
-        public string Title => "Termékek";
-
-        #endregion
-
-        #region Public Methods and Operators
-
-        public void Handle(EventMessageBase message)
-        {
-            if (message is not { EventType: EventType.BarcodeRead, Sender: BarcodePageViewModel readerViewModel })
-            {
-                return;
-            }
-
-            _barCode = readerViewModel.BarCode;
-            Task.Run(GetItemsByBarcode);
-        }
 
         #endregion
 
@@ -113,21 +83,6 @@ namespace MobileApp.ViewModels
                     break;
                 }
             }
-        }
-
-        private void GetItemsByBarcode()
-        {
-            SearchResults.Clear();
-
-            if (_dataService.GetShopItemsByBarcode(_barCode).Result is not { } items)
-            {
-                IsSearchVisible = false;
-                return;
-            }
-
-            AddItems(items);
-
-            IsSearchVisible = SearchResults.Any();
         }
 
         private void SearchItemsBySearchTerm()

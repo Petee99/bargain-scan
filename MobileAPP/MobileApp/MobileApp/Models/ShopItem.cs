@@ -47,7 +47,7 @@ namespace MobileApp.Models
 
         public bool TryUpdateBarCode(string barCode)
         {
-            if (BarCode == null)
+            if (BarCode != null)
             {
                 return false;
             }

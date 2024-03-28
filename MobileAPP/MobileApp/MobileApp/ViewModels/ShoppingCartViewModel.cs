@@ -11,14 +11,17 @@ namespace MobileApp.ViewModels
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
+    using CommunityToolkit.Maui.Alerts;
+
     using MobileApp.Enums;
     using MobileApp.Events;
     using MobileApp.Interfaces;
     using MobileApp.Models;
+    using MobileApp.Properties;
 
     #endregion
 
-    public class ShoppingCartViewModel : PropertyChangedBase
+    public class ShoppingCartViewModel : PropertyChangedBase, IDisposable
     {
         #region Constants and Private Fields
 
@@ -67,6 +70,15 @@ namespace MobileApp.ViewModels
 
         #endregion
 
+        #region Public Methods and Operators
+
+        public void Dispose()
+        {
+            _shoppingCart.ItemsChanged -= OnItemsChanged;
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void OnItemsChanged(object sender, ItemsChangedEventArgs e)
@@ -74,11 +86,13 @@ namespace MobileApp.ViewModels
             if (Items.Contains(e.ChangedItem) && e.EventType is EventType.ItemRemoved)
             {
                 Items.Remove(e.ChangedItem);
+                Shell.Current.CurrentPage.DisplaySnackbar(Resources.ItemRemovedAlert);
             }
 
             if (!Items.Contains(e.ChangedItem) && e.EventType is EventType.ItemAdded)
             {
                 Items.Add(e.ChangedItem);
+                Shell.Current.CurrentPage.DisplaySnackbar(Resources.ItemAddedAlert);
             }
 
             OnPropertyChanged(nameof(Total));

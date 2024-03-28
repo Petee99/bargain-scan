@@ -9,7 +9,7 @@ namespace MobileApp
     #region Imports
 
     using System.Reflection;
-
+    
     using CommunityToolkit.Maui;
 
     using epj.Expander.Maui;
@@ -17,6 +17,8 @@ namespace MobileApp
     using MobileApp.Interfaces;
     using MobileApp.Models;
     using MobileApp.Services;
+
+    using ZXing.Net.Maui.Controls;
 
     #endregion
 
@@ -33,6 +35,7 @@ namespace MobileApp
                 .UseMauiCommunityToolkit()
                 .RegisterServices()
                 .RegisterViewModelBindings()
+                .UseBarcodeReader()
                 .UseExpander()
                 .ConfigureFonts(fonts =>
                 {

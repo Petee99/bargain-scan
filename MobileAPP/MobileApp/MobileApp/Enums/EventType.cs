@@ -16,6 +16,6 @@ namespace MobileApp.Enums
 
         ItemRemoved,
 
-        ItemExchangeNeeded
+        PopupCloseInitiated
     }
 }

@@ -8,49 +8,62 @@ namespace MobileApp.Views
 {
     #region Imports
 
+    using MobileApp.Enums;
+    using MobileApp.Events;
+    using MobileApp.Interfaces;
+
+    using ZXing.Net.Maui;
+
     #endregion
 
     public partial class BarcodePageView
     {
+        #region Constants and Private Fields
+
+        private readonly IEventAggregator _eventAggregator;
+
+        #endregion
+
         #region Constructors and Destructors
 
-        public BarcodePageView()
+        public BarcodePageView(IEventAggregator eventAggregator)
         {
-            InitializeComponent();
-            /*
-            qrView.BarCodeOptions = new BarcodeDecodeOptions
-            {
-                PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.CODE_39 }
-            };
+            _eventAggregator = eventAggregator;
+            RefreshView();
+        }
+
+        #endregion
+
+        #region Methods and Operators
+
+        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            base.OnNavigatedTo(args);
         }
 
         #endregion
 
         #region Private Methods
 
-        private void OnBarcodeDetected(object sender, BarcodeEventArgs args)
+        private void OnBarcodeDetected(object sender, BarcodeDetectionEventArgs e)
         {
-            MainThread.BeginInvokeOnMainThread(() => { barcodeResult.Text = $"{args.Result[0].Text}"; });
+            _eventAggregator.Publish(new BarcodeMessage(this, EventType.BarcodeRead, e.Results[0].Value));
         }
 
-        private void OnCamerasLoaded(object sender, EventArgs args)
+        private void RefreshView()
         {
-            if (qrView.Cameras.Count <= 0)
+            InitializeComponent();
+
+            BarcodeReader.Options = new BarcodeReaderOptions
             {
-                return;
-            }
+                Formats = BarcodeFormat.Ean13,
+                AutoRotate = true,
+                Multiple = false
+            };
 
-            qrView.Camera = qrView.Cameras[0];
-            MainThread.BeginInvokeOnMainThread(RefreshCameras);
+            BarcodeReader.BarcodesDetected += OnBarcodeDetected;
         }
-
-        private async void RefreshCameras()
-        {
-            await qrView.StopCameraAsync();
-            await qrView.StartCameraAsync();
-            */
-        }
-
+        
         #endregion
     }
 }

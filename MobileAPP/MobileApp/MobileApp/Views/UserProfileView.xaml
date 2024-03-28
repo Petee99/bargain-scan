@@ -1,5 +1,6 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:properties="clr-namespace:MobileApp.Properties"
              x:Class="MobileApp.Views.UserProfileView">
 
     <VerticalStackLayout Spacing="10" Padding="10">
@@ -9,7 +10,7 @@
             <Picker Title="{Binding ActiveShoppingCart.Name, StringFormat='Aktív kosár: {0}'}"
                     ItemsSource="{Binding ShoppingCarts}"
                     ItemDisplayBinding="{Binding Name}"
-                    SelectedItem="{Binding ActiveShoppingCart}" MinimumWidthRequest="300" />
+                    SelectedItem="{Binding ActiveShoppingCart}" MinimumWidthRequest="250" />
 
             <Button Text="Hozzáadás" Padding="3" HeightRequest="25" MaximumWidthRequest="100"
                     Command="{Binding AddShoppingCartCommand}" HorizontalOptions="End" />
@@ -17,28 +18,45 @@
         </HorizontalStackLayout>
 
         <Entry Text="{Binding ActiveShoppingCart.Name}"
-               FontAttributes="Bold" Placeholder="Bevásárlókosár neve" />
+               FontAttributes="Bold" Placeholder="{x:Static properties:Resources.ShoppingCartNamePlaceholder}" />
 
         <Entry Text="{Binding ActiveShoppingCart.Description}"
-               Placeholder="Leírás" />
+               Placeholder="{x:Static properties:Resources.DescriptionPlaceholder}" />
 
-        <CollectionView MaximumHeightRequest="450" BackgroundColor="FloralWhite"
-                        BindingContext="{Binding ActiveShoppingCart}" ItemsSource="{Binding Items}">
+        <CollectionView MaximumHeightRequest="300" BackgroundColor="FloralWhite" VerticalScrollBarVisibility="Always"
+                        BindingContext="{Binding ActiveShoppingCart}"
+                        ItemsSource="{Binding Items}">
+
             <CollectionView.ItemTemplate>
+
                 <DataTemplate>
+
                     <VerticalStackLayout Spacing="5" Padding="5">
+
                         <Label Text="{Binding Name}" LineBreakMode="WordWrap" />
+
                         <HorizontalStackLayout Spacing="10">
+
                             <Label Text="{Binding Price, StringFormat='Ár: {0:C}'}" />
+
                             <Label Text="{Binding Shop, StringFormat='Bolt: {0}'}" />
+
                         </HorizontalStackLayout>
+
                         <HorizontalStackLayout HorizontalOptions="End" Spacing="10">
-                            <Button Text="Törlés" FontSize="11" BorderWidth="0" HeightRequest="22" Padding="3"
-                                    Command="{Binding Path=BindingContext.RemoveItemCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+
+                            <Button Text="{x:Static properties:Resources.Delete}" FontSize="11"
+                                    BorderWidth="0" HeightRequest="22" Padding="3"
+                                    Command="{Binding Path=BindingContext.RemoveItemCommand, 
+                                                Source={RelativeSource AncestorType={x:Type CollectionView}}}"
                                     CommandParameter="{Binding .}" />
-                            <Button Text="Helyettesítés" FontSize="11" BorderWidth="0" HeightRequest="22" Padding="3"
-                                    Command="{Binding Path=BindingContext.ExchangeItemCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+
+                            <Button Text="{x:Static properties:Resources.Substitute}" FontSize="11"
+                                    BorderWidth="0" HeightRequest="22" Padding="3"
+                                    Command="{Binding Path=BindingContext.SubstituteItemCommand, 
+                                                Source={RelativeSource AncestorType={x:Type ContentPage}}}"
                                     CommandParameter="{Binding .}" />
+
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </DataTemplate>

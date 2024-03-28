@@ -1,23 +1,53 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:MobileApp.ViewModels"
+             xmlns:properties="clr-namespace:MobileApp.Properties"
+             xmlns:controls="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              x:Class="MobileApp.Views.BarcodePageView"
-             x:DataType="viewModels:BarcodePageViewModel"
-             Title="{Binding Title}"
+             Title="{x:Static properties:Resources.BarcodePageTitle}"
              BackgroundColor="AliceBlue">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <VerticalStackLayout Spacing="120"
+                             Padding="30,0"
+                             VerticalOptions="Start">
 
-            <Label x:Name="barcodeResult" Text="{Binding BarCode}" FontSize="20" />
-            <!--
-            <maui:CameraView x:Name="qrView" WidthRequest="300" HeightRequest="200" CamerasLoaded="OnCamerasLoaded"
-                           BarCodeDetectionEnabled="True" BarcodeDetected="OnBarcodeDetected" />
--->
+            <controls:CameraBarcodeReaderView x:Name="BarcodeReader" HeightRequest="200" />
+
+            <Label IsVisible="{Binding IsAssignBarcodePossible}"
+                   Text="{x:Static properties:Resources.NoItemsFoundForBarcode}" />
+
+            <Button 
+                    Command="{Binding AssignBarcodeCommand}"
+                    Text="{x:Static properties:Resources.SearchItems}" />
+
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label Text="{Binding Name}" LineBreakMode="WordWrap" />
+
+                            <HorizontalStackLayout Spacing="10">
+
+                                <Label Text="{Binding Price, StringFormat='Ár: {0:C}'}" />
+                                <Label Text="{Binding Shop, StringFormat='Bolt: {0}'}" />
+
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout HorizontalOptions="End" Spacing="10">
+
+                                <Button Text="{x:Static properties:Resources.ToShoppingCart}" FontSize="11"
+                                        BorderWidth="0" HeightRequest="22" Padding="3"
+                                        Command="{Binding Path=BindingContext.AddItemToActiveShoppingCarCommand, 
+                                                    Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                        CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
