@@ -15,7 +15,7 @@ namespace MobileApp.Services
 
     #endregion
 
-    internal class DataService : IDataService
+    public class DataService : IDataService
     {
         #region Constants and Private Fields
 
@@ -23,11 +23,11 @@ namespace MobileApp.Services
 
         private readonly Dictionary<string, IList<IShopItem>> _shopItemBarcodeDictionary = new();
 
-        private readonly IDataPersistenceService _persistenceService = new DataPersistenceService();
+        private readonly IDataPersistenceService _persistenceService;
 
         private readonly IFuzzySearch<IShopItem> _fuzzyItemRepository = new FuzzySearch<IShopItem>();
 
-        private readonly IOnlineDataService _onlineDataService = new OnlineDataService();
+        private readonly IOnlineDataService _onlineDataService;
 
         private readonly List<Category> _categories = new();
 
@@ -37,8 +37,11 @@ namespace MobileApp.Services
 
         #region Constructors and Destructors
 
-        public DataService()
+        public DataService(IOnlineDataService onlineDataService, IDataPersistenceService dataPersistenceService)
         {
+            _onlineDataService = onlineDataService;
+            _persistenceService = dataPersistenceService;
+
             _loadingTasks = new List<Task>
             {
                 Task.Run(LoadShopData),

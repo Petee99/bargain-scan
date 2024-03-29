@@ -7,6 +7,7 @@
        Shell.TabBarBackgroundColor="LightGray"
        FlyoutBehavior="Flyout"
        FlyoutIcon="{x:Static properties:IconPaths.ShopCart}"
+       FlyoutIsPresented="{Binding IsFlyOutOpen}"
        x:DataType="viewModels:AppShellViewModel">
 
     <Shell.Resources>

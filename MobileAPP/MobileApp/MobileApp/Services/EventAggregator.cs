@@ -12,7 +12,7 @@ namespace MobileApp.Services
 
     #endregion
 
-    internal class EventAggregator : IEventAggregator
+    public class EventAggregator : IEventAggregator
     {
         #region Constants and Private Fields
 

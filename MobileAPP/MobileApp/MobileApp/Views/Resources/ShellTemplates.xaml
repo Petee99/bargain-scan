@@ -13,7 +13,7 @@
                            ExpandDuration="100"
                            CollapseEasing="{x:Static Easing.SpringOut}"
                            ExpandEasing="{x:Static Easing.SpringIn}"
-                           IsExpanded="{Binding IsActive, Mode=TwoWay}">
+                           IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
 
                 <maui:Expander.HeaderContent>
                     <Grid HeightRequest="65">

@@ -8,12 +8,14 @@ namespace MobileApp.Models
 {
     #region Imports
 
+    using System.Text.Json.Serialization;
+
     using MobileApp.Interfaces;
     using MobileApp.Properties;
 
     #endregion
 
-    internal class LocalUserProfile : IUserProfile
+    public class LocalUserProfile : IUserProfile
     {
         #region Constants and Private Fields
 
@@ -59,12 +61,19 @@ namespace MobileApp.Models
             }
 
             _shoppingCarts.Add(shoppingCart);
+            FireCartsChanged();
             return true;
         }
 
         public bool RemoveShoppingCart(IShoppingCart shoppingCart)
         {
-            return _shoppingCarts.Remove(shoppingCart);
+            if (!_shoppingCarts.Remove(shoppingCart))
+            {
+                return false;
+            }
+
+            FireCartsChanged();
+            return true;
         }
 
         public IShoppingCart CreateShoppingCart()
@@ -81,6 +90,11 @@ namespace MobileApp.Models
         private IShoppingCart GetDefaultShoppingCart()
         {
             return ShoppingCarts.FirstOrDefault() ?? CreateShoppingCart();
+        }
+
+        private void FireCartsChanged()
+        {
+            ShoppingCartsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

@@ -22,7 +22,7 @@ namespace MobileApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class IconPaths {
+    public class IconPaths {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MobileApp.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MobileApp.Properties.IconPaths", typeof(IconPaths).Assembly);
@@ -51,7 +51,7 @@ namespace MobileApp.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to barcode.png.
         /// </summary>
-        internal static string BarCode {
+        public static string BarCode {
             get {
                 return ResourceManager.GetString("BarCode", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to categories.png.
         /// </summary>
-        internal static string Categories {
+        public static string Categories {
             get {
                 return ResourceManager.GetString("Categories", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to items.png.
         /// </summary>
-        internal static string Items {
+        public static string Items {
             get {
                 return ResourceManager.GetString("Items", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to settings.png.
         /// </summary>
-        internal static string Settings {
+        public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to shopcart.png.
         /// </summary>
-        internal static string ShopCart {
+        public static string ShopCart {
             get {
                 return ResourceManager.GetString("ShopCart", resourceCulture);
             }

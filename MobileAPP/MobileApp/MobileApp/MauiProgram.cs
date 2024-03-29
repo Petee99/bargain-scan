@@ -9,13 +9,12 @@ namespace MobileApp
     #region Imports
 
     using System.Reflection;
-    
+
     using CommunityToolkit.Maui;
 
     using epj.Expander.Maui;
 
     using MobileApp.Interfaces;
-    using MobileApp.Models;
     using MobileApp.Services;
 
     using ZXing.Net.Maui.Controls;
@@ -52,6 +51,8 @@ namespace MobileApp
         private static MauiAppBuilder RegisterServices(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddSingleton<IDataService, DataService>();
+            mauiAppBuilder.Services.AddSingleton<IOnlineDataService, OnlineDataService>();
+            mauiAppBuilder.Services.AddSingleton<IDataPersistenceService, DataPersistenceService>();
             mauiAppBuilder.Services.AddSingleton<IEventAggregator, EventAggregator>();
             mauiAppBuilder.Services.AddSingleton<IResolverService, ResolverService>();
 

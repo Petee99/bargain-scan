@@ -4,6 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Text.Json.Serialization;
+
 namespace MobileApp.Interfaces
 {
     public interface IUserProfile

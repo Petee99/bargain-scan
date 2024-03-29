@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MobileApp.Models
+namespace MobileApp.Services
 {
     #region Imports
 

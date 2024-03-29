@@ -47,6 +47,8 @@ namespace MobileApp.ViewModels
 
         #region Public Properties
 
+        public bool IsFlyOutOpen { get; set; }
+
         public ICommand ToggleCategoryCommand { get; private set; }
 
         public ObservableCollection<CategoryViewModel> Categories
@@ -100,13 +102,18 @@ namespace MobileApp.ViewModels
 
         private async Task SelectCategory(ICategory category)
         {
-            if (category is not ISubCategory subCategory ||
-                Shell.Current.CurrentPage?.BindingContext is not MainPageViewModel viewModel)
+            if (category is not ISubCategory subCategory)
             {
                 return;
             }
 
-            Shell.Current.FlyoutIsPresented = false;
+            IsFlyOutOpen = false;
+            OnPropertyChanged(nameof(IsFlyOutOpen));
+
+            if (Shell.Current.CurrentPage?.BindingContext is not MainPageViewModel viewModel)
+            {
+                return;
+            }
 
             viewModel.ShopItems = (await _dataService.GetShopItems(subCategory)).ToObservableCollection();
         }
@@ -118,7 +125,7 @@ namespace MobileApp.ViewModels
                 return;
             }
 
-            category.IsActive = !category.IsActive;
+            category.IsExpanded = !category.IsExpanded;
             OnPropertyChanged(nameof(Categories));
         }
 

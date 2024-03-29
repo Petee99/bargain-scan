@@ -19,7 +19,7 @@ namespace MobileApp.Models
 
     #endregion
 
-    internal class ShoppingCart : IShoppingCart
+    public class ShoppingCart : IShoppingCart
     {
         #region Constants and Private Fields
 
@@ -33,7 +33,7 @@ namespace MobileApp.Models
 
         public event EventHandler<ItemsChangedEventArgs> ItemsChanged;
 
-        public Guid ShoppingCartId { get; }
+        public Guid ShoppingCartId { get; private set; } = new ();
 
         public IEnumerable<IShopItem> Items => _items;
 

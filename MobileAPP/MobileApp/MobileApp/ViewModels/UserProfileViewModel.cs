@@ -29,9 +29,9 @@ namespace MobileApp.ViewModels
 
         private readonly IDataService _dataService;
 
-        private readonly IUserProfile _profile;
-
         private readonly IEventAggregator _eventAggregator;
+
+        private readonly IUserProfile _profile;
 
         #endregion
 
@@ -51,7 +51,10 @@ namespace MobileApp.ViewModels
             {
                 _profile.CreateShoppingCart();
                 OnPropertyChanged(nameof(ShoppingCarts));
-                Shell.Current.CurrentPage.DisplaySnackbar(Resources.ShoppingCartAddedAlert);
+                if (Shell.Current?.CurrentPage is { } currentPage)
+                {
+                    currentPage.DisplaySnackbar(Resources.ShoppingCartAddedAlert);
+                }
             });
         }
 
@@ -81,25 +84,6 @@ namespace MobileApp.ViewModels
 
         #region Private Methods
 
-        private async void SubstituteItem(IShopItem item)
-        {
-            var popupView = new ItemSearchPopupView(_eventAggregator)
-            {
-                BindingContext = new ItemSearchPopupViewModel(_dataService, _eventAggregator)
-            };
-
-            await Shell.Current.CurrentPage.ShowPopupAsync(popupView);
-
-            if (popupView.BindingContext is not ItemSearchPopupViewModel { SelectedItem: not null } viewModel)
-            {
-                return;
-            }
-
-            int index = ActiveShoppingCart.Items.IndexOf(item);
-            ActiveShoppingCart.Items.RemoveAt(index);
-            ActiveShoppingCart.Items.Insert(index, viewModel.SelectedItem);
-        }
-
         private void OnActiveShoppingCartChanged(object sender, EventArgs e)
         {
             if (sender is not IUserProfile)
@@ -124,6 +108,30 @@ namespace MobileApp.ViewModels
             {
                 OnPropertyChanged(nameof(ShoppingCarts));
             }
+        }
+
+        private async void SubstituteItem(IShopItem item)
+        {
+            var popupView = new ItemSearchPopupView(_eventAggregator)
+            {
+                BindingContext = new ItemSearchPopupViewModel(_dataService, _eventAggregator)
+            };
+            
+            if (Shell.Current?.CurrentPage is not { } currentPage)
+            {
+                return;
+            }
+            
+            await currentPage.ShowPopupAsync(popupView);
+
+            if (popupView.BindingContext is not ItemSearchPopupViewModel { SelectedItem: not null } viewModel)
+            {
+                return;
+            }
+
+            int index = ActiveShoppingCart.Items.IndexOf(item);
+            ActiveShoppingCart.Items.RemoveAt(index);
+            ActiveShoppingCart.Items.Insert(index, viewModel.SelectedItem);
         }
 
         #endregion

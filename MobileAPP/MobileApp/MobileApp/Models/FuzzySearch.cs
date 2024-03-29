@@ -71,7 +71,7 @@ namespace MobileApp.Models
 
         #region Private Methods
 
-        private IEnumerable<string> GenerateNGrams(string input, int n)
+        private static IEnumerable<string> GenerateNGrams(string input, int n)
         {
             for (int i = 0; i < input.Length - n + 1; i++)
             {

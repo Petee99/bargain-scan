@@ -22,7 +22,7 @@ namespace MobileApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MobileApp.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MobileApp.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace MobileApp.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Vonalkód beolvasása.
         /// </summary>
-        internal static string BarcodePageTitle {
+        public static string BarcodePageTitle {
             get {
                 return ResourceManager.GetString("BarcodePageTitle", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Keresés a termékek között.
         /// </summary>
-        internal static string BarcodePopupViewTitle {
+        public static string BarcodePopupViewTitle {
             get {
                 return ResourceManager.GetString("BarcodePopupViewTitle", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Vonalkód.
         /// </summary>
-        internal static string BarcodeTitle {
+        public static string BarcodeTitle {
             get {
                 return ResourceManager.GetString("BarcodeTitle", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Törlés.
         /// </summary>
-        internal static string Delete {
+        public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Leírás.
         /// </summary>
-        internal static string DescriptionPlaceholder {
+        public static string DescriptionPlaceholder {
             get {
                 return ResourceManager.GetString("DescriptionPlaceholder", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Termék sikeresen hozzáadva az aktív bevásárlókosárhoz..
         /// </summary>
-        internal static string ItemAddedAlert {
+        public static string ItemAddedAlert {
             get {
                 return ResourceManager.GetString("ItemAddedAlert", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Termék sikeresen eltávolítva az aktív bevásárlókosárból..
         /// </summary>
-        internal static string ItemRemovedAlert {
+        public static string ItemRemovedAlert {
             get {
                 return ResourceManager.GetString("ItemRemovedAlert", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Termékek.
         /// </summary>
-        internal static string ItemsTitle {
+        public static string ItemsTitle {
             get {
                 return ResourceManager.GetString("ItemsTitle", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Nem található termék a vonalkódhoz, az alábbi gomb segítségével hozzárendelheti egy létező termékhez..
         /// </summary>
-        internal static string NoItemsFoundForBarcode {
+        public static string NoItemsFoundForBarcode {
             get {
                 return ResourceManager.GetString("NoItemsFoundForBarcode", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Ár.
         /// </summary>
-        internal static string Price {
+        public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Termék keresése.
         /// </summary>
-        internal static string SearchItems {
+        public static string SearchItems {
             get {
                 return ResourceManager.GetString("SearchItems", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Keresés....
         /// </summary>
-        internal static string SearchPlaceholder {
+        public static string SearchPlaceholder {
             get {
                 return ResourceManager.GetString("SearchPlaceholder", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Bolt.
         /// </summary>
-        internal static string Shop {
+        public static string Shop {
             get {
                 return ResourceManager.GetString("Shop", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Bevásárlókosár sikeresen létrehozva..
         /// </summary>
-        internal static string ShoppingCartAddedAlert {
+        public static string ShoppingCartAddedAlert {
             get {
                 return ResourceManager.GetString("ShoppingCartAddedAlert", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Bevásárlókosár neve.
         /// </summary>
-        internal static string ShoppingCartNamePlaceholder {
+        public static string ShoppingCartNamePlaceholder {
             get {
                 return ResourceManager.GetString("ShoppingCartNamePlaceholder", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Bevásárlókosár.
         /// </summary>
-        internal static string ShoppingCartTitle {
+        public static string ShoppingCartTitle {
             get {
                 return ResourceManager.GetString("ShoppingCartTitle", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Helyettesítés.
         /// </summary>
-        internal static string Substitute {
+        public static string Substitute {
             get {
                 return ResourceManager.GetString("Substitute", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace MobileApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Kosárba.
         /// </summary>
-        internal static string ToShoppingCart {
+        public static string ToShoppingCart {
             get {
                 return ResourceManager.GetString("ToShoppingCart", resourceCulture);
             }

@@ -75,6 +75,7 @@ namespace MobileApp.ViewModels
         public void Dispose()
         {
             _shoppingCart.ItemsChanged -= OnItemsChanged;
+            GC.SuppressFinalize(this);
         }
 
         #endregion
@@ -86,16 +87,33 @@ namespace MobileApp.ViewModels
             if (Items.Contains(e.ChangedItem) && e.EventType is EventType.ItemRemoved)
             {
                 Items.Remove(e.ChangedItem);
-                Shell.Current.CurrentPage.DisplaySnackbar(Resources.ItemRemovedAlert);
             }
 
             if (!Items.Contains(e.ChangedItem) && e.EventType is EventType.ItemAdded)
             {
                 Items.Add(e.ChangedItem);
-                Shell.Current.CurrentPage.DisplaySnackbar(Resources.ItemAddedAlert);
             }
 
+            ShowConfirmation(e.EventType);
             OnPropertyChanged(nameof(Total));
+        }
+
+        private static void ShowConfirmation(EventType eventType)
+        {
+            if (Shell.Current?.CurrentPage is not { } currentPage)
+            {
+                return;
+            }
+
+            switch (eventType)
+            {
+                case EventType.ItemAdded:
+                    currentPage.DisplaySnackbar(Resources.ItemAddedAlert);
+                    break;
+                case EventType.ItemRemoved:
+                    currentPage.DisplaySnackbar(Resources.ItemRemovedAlert);
+                    break;
+            }
         }
 
         #endregion

@@ -89,7 +89,10 @@ namespace MobileApp.ViewModels
                 BindingContext = new ItemSearchPopupViewModel(_dataService, _eventAggregator)
             };
 
-            await Shell.Current.CurrentPage.ShowPopupAsync(popupView);
+            if (Shell.Current?.CurrentPage is {} currentPage)
+            {
+                await currentPage.ShowPopupAsync(popupView);
+            }
 
             if (popupView.BindingContext is not ItemSearchPopupViewModel { SelectedItem: not null } viewModel)
             {

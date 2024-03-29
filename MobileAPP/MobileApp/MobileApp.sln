@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApp", "MobileApp\MobileApp.csproj", "{5E0DE54D-404C-4E0D-95E0-5E6B8A3BA6F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApp.Test", "MobileApp.Test\MobileApp.Test.csproj", "{19CB6EC4-0DE7-40B4-89D9-BB1BA21F465E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApp.Tests", "MobileApp.Tests\MobileApp.Tests.csproj", "{688C7883-7D6B-422E-A248-C429C1765E6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,10 @@ Global
 		{5E0DE54D-404C-4E0D-95E0-5E6B8A3BA6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E0DE54D-404C-4E0D-95E0-5E6B8A3BA6F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E0DE54D-404C-4E0D-95E0-5E6B8A3BA6F7}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{19CB6EC4-0DE7-40B4-89D9-BB1BA21F465E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19CB6EC4-0DE7-40B4-89D9-BB1BA21F465E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19CB6EC4-0DE7-40B4-89D9-BB1BA21F465E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19CB6EC4-0DE7-40B4-89D9-BB1BA21F465E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688C7883-7D6B-422E-A248-C429C1765E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688C7883-7D6B-422E-A248-C429C1765E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688C7883-7D6B-422E-A248-C429C1765E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688C7883-7D6B-422E-A248-C429C1765E6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

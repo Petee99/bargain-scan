@@ -14,7 +14,7 @@ namespace MobileApp.Services
 
     #endregion
 
-    internal class DataPersistenceService : IDataPersistenceService
+    public class DataPersistenceService : IDataPersistenceService
     {
         #region Constants and Private Fields
 

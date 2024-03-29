@@ -26,7 +26,7 @@ namespace MobileApp.ViewModels
 
         private readonly IList<CategoryViewModel> _subCategories;
 
-        private bool _isActive;
+        private bool _isExpanded;
 
         #endregion
 
@@ -44,13 +44,13 @@ namespace MobileApp.ViewModels
 
         #region Public Properties
 
-        public bool IsActive
+        public bool IsExpanded
         {
-            get => _isActive;
+            get => _isExpanded;
             set
             {
                 IsExpandedChanged?.Invoke(this, EventArgs.Empty);
-                _isActive = value;
+                _isExpanded = value;
             }
         }
 
