@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ApiControllerBase.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,10 +12,10 @@ namespace WebAPI.Controllers
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    using WebAPI.Interfaces;
     using WebAPI.Models.Authentication;
     using WebAPI.Properties;
-    using WebAPI.Services;
-
+    
     #endregion
 
     [Authorize]
@@ -23,15 +23,15 @@ namespace WebAPI.Controllers
     {
         #region Fields
 
-        protected readonly DataBaseService<T> dataBaseService;
+        protected readonly IDataBaseService<T> DataBaseService;
 
         #endregion
 
         #region Constructors and Destructors
 
-        public ApiControllerBase(DataBaseService<T> dataBaseService)
+        public ApiControllerBase(IDataBaseService<T> dataBaseService)
         {
-            this.dataBaseService = dataBaseService;
+            this.DataBaseService = dataBaseService;
         }
 
         #endregion
@@ -44,8 +44,9 @@ namespace WebAPI.Controllers
         protected string RefreshTokenCookie =>
             Request.Cookies.First(cookie => cookie.Key.Equals(Constants.RefreshToken)).Value;
 
-        protected string? RequestUserName => JwtAuthenticationManager.GetPrincipalFromExpiredToken(AccessTokenCookie)
-            ?.Identities?.FirstOrDefault()?.Name;
+        protected string? RequestUserName => JwtAuthenticationManager
+            .GetPrincipalFromExpiredToken(AccessTokenCookie, Environment.GetEnvironmentVariable(Constants.SymmetricKeyVariable)!)
+            .Identities.FirstOrDefault()?.Name;
 
         #endregion
 
@@ -54,7 +55,7 @@ namespace WebAPI.Controllers
         [HttpDelete(Constants.ID)]
         public virtual async Task<IActionResult> Delete([FromRoute] string id)
         {
-            await dataBaseService.Delete(id);
+            await DataBaseService.Delete(id);
 
             return Ok();
         }
@@ -62,7 +63,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> Post([FromBody] T model)
         {
-            await dataBaseService.Create(model);
+            await DataBaseService.Create(model);
 
             return Ok();
         }
@@ -70,15 +71,15 @@ namespace WebAPI.Controllers
         [HttpGet]
         public virtual async Task<List<T>> Get()
         {
-            return await dataBaseService.GetAll();
+            return await DataBaseService.GetAll();
         }
 
         [HttpPut(Constants.ID)]
         public virtual async Task<T?> Put([FromBody] T model)
         {
-            await dataBaseService.Update(model);
+            await DataBaseService.Update(model);
 
-            return await dataBaseService.GetById(model);
+            return await DataBaseService.GetById(model);
         }
 
         #endregion

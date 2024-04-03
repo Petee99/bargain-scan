@@ -1,47 +1,52 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AldiScraper.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+// <copyright file="RokshScraper.cs" owner="Peter Mako">
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Services
 {
     #region Imports
-    
+
+    using OpenAI_API;
+
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.UI;
 
     using WebAPI.Enums;
     using WebAPI.Interfaces;
     using WebAPI.Models.WebScraping;
+    using WebAPI.Properties;
 
     #endregion
 
-    public class RokshScraper(IWebDriver webDriver, Shop selectedShop, IList<ShopItemCategory> defaultCategories) : IShopScraper
+    public class RokshScraper(IWebDriver webDriver, IOpenAiOptimizer openAiOptimizer, Shop selectedShop, IList<IShopItemCategory> defaultCategories) : IShopScraper
     {
         #region Constants and Private Fields
 
         private const string CategoryCssSelector =
             "a[class='category-page-sidebar-category-link category-page-sidebar-category-text collapsed']";
 
-        private static readonly Dictionary<Shop, string> shopUrls = new()
+        private static readonly Dictionary<Shop, string> ShopUrls = new()
         {
             { Shop.Aldi, "https://shop.aldi.hu" },
             { Shop.Penny, "https://www.roksh.com/penny-hu/kinalat" },
             { Shop.Metro, "https://www.roksh.com/metro_hu/kinalat" }
         };
-        
-        private List<IShopItemCategory> allCategories = new();
 
-        private static readonly List<Shop> availableShops = new() { Shop.Penny, Shop.Metro, Shop.Aldi };
+        private static readonly List<Shop> Shops = new() { Shop.Penny, Shop.Metro, Shop.Aldi };
 
-        private readonly Shop selectedShop = selectedShop;
+        private readonly IList<IShopItemCategory> _allCategories = new List<IShopItemCategory>();
+
+        #endregion
+
+        #region Public Properties
+
+        public static IList<Shop> AvailableShops => Shops;
 
         #endregion
 
         #region Public Methods and Operators
-
-        public static IList<Shop> AvailableShops => availableShops;
 
         public async Task<IEnumerable<IShopItem>> ScrapeAllItemsAsync()
         {
@@ -56,17 +61,16 @@ namespace WebAPI.Services
 
                     webDriver.Quit();
 
-                    await OpenAiOptimizer.OptimizeCategoriesToMatchSchema(allCategories, defaultCategories.Cast<IShopItemCategory>().ToList());
+                    await openAiOptimizer.OptimizeCategoriesToMatchSchema(_allCategories, defaultCategories.Cast<IShopItemCategory>().ToList());
 
                     return items;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     attempts++;
 
                     if (attempts > maxAttempts)
                     {
-                        Console.WriteLine(e);
                         break;
                     }
                 }
@@ -91,44 +95,46 @@ namespace WebAPI.Services
                 IWebElement categoryElement = webDriver.FindElements(By.CssSelector(CategoryCssSelector))[index];
                 categoryElement.Click();
 
-                ShopItemCategory category = new(categoryElement.Text, categoryElement.GetAttribute("href"), String.Empty);
+                ShopItemCategory category = new(categoryElement.Text, categoryElement.GetAttribute("href"), string.Empty);
 
-                List<IShopItemCategory> subCategories = new();
+                List<IShopItemCategory> subCategories = categoryElement.FindElement(By.XPath(".."))
+                    .FindElements(By.CssSelector("a[class='category-page-sidebar-subcategory-link']"))
+                    .Select(subCategory => 
+                        new ShopItemCategory(subCategory.FindElement(By.CssSelector("span")).Text, subCategory.GetAttribute("href"), category.Name))
+                    .Cast<IShopItemCategory>()
+                    .ToList();
 
-                foreach (var subCategory in categoryElement.FindElement(By.XPath(".."))
-                             .FindElements(By.CssSelector("a[class='category-page-sidebar-subcategory-link']")))
-                    subCategories.Add(new ShopItemCategory(subCategory.FindElement(By.CssSelector("span")).Text,
-                        subCategory.GetAttribute("href"), category.Name));
-
-                if (subCategories.Count is 0) subCategories.Add(new ShopItemCategory(category.Name, category.Link, category.Name));
+                if (subCategories.Count is 0)
+                {
+                    subCategories.Add(new ShopItemCategory(category.Name, category.Link, category.Name));
+                }
 
                 categoriesWithSubCategories.Add(category, subCategories);
             }
-            
+
             return categoriesWithSubCategories;
         }
-        
+
 
         private IEnumerable<IShopItem> ScrapeShopItemsAsync()
         {
-            webDriver.Navigate().GoToUrl(shopUrls[selectedShop]);
+            webDriver.Navigate().GoToUrl(ShopUrls[selectedShop]);
 
             IList<IShopItem> items = new List<IShopItem>();
-            
-            foreach (var category in GetCategoriesWithSubcategories())
-            {
-                foreach (var subCategory in category.Value)
-                {
-                    allCategories.Add(subCategory);
-                    webDriver.Navigate().GoToUrl(subCategory.Link);
-                    ScrollTillEnd("div[itemprop='item']");
 
-                    foreach (var item in webDriver.FindElements(By.CssSelector("div[itemprop='item']")))
-                        items.Add(new ShopItem(
-                            item.FindElement(By.CssSelector("span[itemprop='name']")).Text,
-                            subCategory,
-                            item.FindElement(By.CssSelector("span[itemprop='price']")).Text + " Ft",
-                            selectedShop));
+            foreach (var subCategory in GetCategoriesWithSubcategories().SelectMany(category => category.Value))
+            {
+                _allCategories.Add(subCategory);
+                webDriver.Navigate().GoToUrl(subCategory.Link);
+                ScrollTillEnd("div[itemprop='item']");
+
+                foreach (var item in webDriver.FindElements(By.CssSelector("div[itemprop='item']")))
+                {
+                    items.Add(new ShopItem(
+                        item.FindElement(By.CssSelector("span[itemprop='name']")).Text,
+                        subCategory,
+                        item.FindElement(By.CssSelector("span[itemprop='price']")).Text + " Ft",
+                        selectedShop));
                 }
             }
 

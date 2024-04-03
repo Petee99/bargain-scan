@@ -1,11 +1,10 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="JwtAuthenticationManager.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Models.Authentication
-
 {
     #region Imports
 
@@ -19,7 +18,6 @@ namespace WebAPI.Models.Authentication
     using WebAPI.Interfaces;
     using WebAPI.Models.DataModels;
     using WebAPI.Properties;
-    using WebAPI.Services;
 
     #endregion
 
@@ -27,29 +25,30 @@ namespace WebAPI.Models.Authentication
     {
         #region Constants and Private Fields
 
-        private readonly DataBaseService<UserModel> dataBaseService;
-        private readonly string key;
+        private readonly IDataBaseService<UserModel> _dataBaseService;
+        
+        private readonly string _key;
 
         #endregion
 
         #region Constructors and Destructors
 
-        public JwtAuthenticationManager(string key, DataBaseService<UserModel> dataBaseService)
+        public JwtAuthenticationManager(IDataBaseService<UserModel> dataBaseService)
         {
-            this.key = key;
-            this.dataBaseService = dataBaseService;
+            this._key = Environment.GetEnvironmentVariable(Constants.JwtKeyVariable)!;
+            this._dataBaseService = dataBaseService;
         }
 
         #endregion
 
         #region Public Methods and Operators
 
-        public static ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
+        public static ClaimsPrincipal GetPrincipalFromExpiredToken(string token, string symmetricSecurityKey)
         {
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Constants.Key)),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(symmetricSecurityKey)),
                 ValidateIssuer = false,
                 ValidateAudience = false,
                 ValidateLifetime = false
@@ -60,15 +59,18 @@ namespace WebAPI.Models.Authentication
 
             if (securityToken is not JwtSecurityToken jwtSecurityToken ||
                 !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
-                    StringComparison.InvariantCultureIgnoreCase)) throw new SecurityTokenException();
+                    StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new SecurityTokenException();
+            }
 
             return principal;
         }
 
         public string GenerateAccessToken(IEnumerable<Claim> claims)
         {
-            var tokenhandler = new JwtSecurityTokenHandler();
-            var tokenKey = Encoding.ASCII.GetBytes(key);
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenKey = Encoding.ASCII.GetBytes(_key);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
@@ -77,8 +79,8 @@ namespace WebAPI.Models.Authentication
                     SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token = tokenhandler.CreateToken(tokenDescriptor);
-            return tokenhandler.WriteToken(token);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
         public string GenerateRefreshToken()
@@ -92,7 +94,10 @@ namespace WebAPI.Models.Authentication
 
         public async Task<string> Authenticate(IAuthInformation authInformation)
         {
-            if (!await IsRightUsernamePasswordCombination(authInformation)) return string.Empty;
+            if (!await IsRightUsernamePasswordCombination(authInformation))
+            {
+                return string.Empty;
+            }
 
             var claims = new Claim[]
                 { new(ClaimTypes.Name, authInformation.UserName) };
@@ -106,11 +111,11 @@ namespace WebAPI.Models.Authentication
 
         private async Task<bool> IsRightUsernamePasswordCombination(IAuthInformation authInformation)
         {
-            List<UserModel> users = await dataBaseService.GetAll();
+            List<UserModel> users = await _dataBaseService.GetAll();
 
             UserModel user = users.First(user => user.UserName == authInformation.UserName);
 
-            return user != null && user.IsValidPassword(authInformation.Password);
+            return user.IsValidPassword(authInformation.Password);
         }
 
         #endregion

@@ -1,27 +1,32 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="IShopItemCategory.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Interfaces
 {
-    using MongoDB.Bson.Serialization.Attributes;
-    using MongoDB.Bson;
+    #region Imports
+
     using System.Text.Json.Serialization;
+
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
+
+    #endregion
 
     public interface IShopItemCategory
     {
         #region Public Properties
 
-        string Parent { get; set; }
+        public static string CollectionName { get; } = null!;
 
         [JsonIgnore]
         string Link { get; }
 
         string Name { get; set; }
 
-        public static string CollectionName { get; }
+        string Parent { get; set; }
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

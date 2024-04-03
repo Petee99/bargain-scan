@@ -1,22 +1,20 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ShopItemCategory.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Models.WebScraping
-
 {
-    using MongoDB.Bson.Serialization.Attributes;
-    using MongoDB.Bson;
-
-    using WebAPI.Properties;
-
     #region Imports
 
     using System.Text.Json.Serialization;
 
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
+
     using WebAPI.Interfaces;
+    using WebAPI.Properties;
 
     #endregion
 
@@ -24,14 +22,14 @@ namespace WebAPI.Models.WebScraping
     {
         #region Public Properties
 
-        public string Parent { get; set; } = parent;
+        public static string CollectionName => Constants.ShopItemCategoryCollectionName;
 
         [JsonIgnore]
         public string Link => link;
 
         public string Name { get; set; } = name;
 
-        public static string CollectionName => Constants.ShopItemCategoryCollectionName;
+        public string Parent { get; set; } = parent;
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

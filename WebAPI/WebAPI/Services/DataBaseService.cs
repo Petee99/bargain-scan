@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="DataBaseService.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -16,8 +16,23 @@ namespace WebAPI.Services
 
     #endregion
 
-    public class DataBaseService<T> : IDataService<T>
+    public class DataBaseService<T> : IDataBaseService<T>
     {
+        #region Constants and Private Fields
+
+        private readonly IMongoDbService _mongoDbService;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        public DataBaseService(IMongoDbService mongoDbService)
+        {
+            _mongoDbService = mongoDbService;
+        }
+
+        #endregion
+
         #region Public Methods and Operators
 
         public Task Create(T model)
@@ -27,7 +42,7 @@ namespace WebAPI.Services
             return collection.InsertOneAsync(model);
         }
 
-        public Task CreateMany(IEnumerable<T> models)
+        public Task CreateMany(IEnumerable<T>? models)
         {
             IMongoCollection<T> collection = GetCollection();
 
@@ -71,12 +86,10 @@ namespace WebAPI.Services
 
             var resultList = results.ToList();
 
-            if (resultList.Count < 1) return default;
-
-            return resultList.First();
+            return resultList.Count < 1 ? default : resultList.First();
         }
 
-        public async Task<T> GetById(T model)
+        public async Task<T?> GetById(T model)
         {
             IMongoCollection<T> collection = GetCollection();
 
@@ -84,7 +97,7 @@ namespace WebAPI.Services
 
             IAsyncCursor<T> results = await collection.FindAsync(filter);
 
-            return results.ToList().First();
+            return results.ToList().FirstOrDefault();
         }
 
         #endregion
@@ -95,21 +108,18 @@ namespace WebAPI.Services
         {
             string id = string.Empty;
 
-            if (model is IDataModel dataModel) id = dataModel.ID ?? id;
+            if (model is IDataModel dataModel)
+            {
+                id = dataModel.ID ?? id;
+            }
 
             return Builders<T>.Filter.Eq(Constants.IdPropertyString, new BsonObjectId(new ObjectId(id)));
         }
 
-        private static IMongoCollection<T> GetCollection()
+        private IMongoCollection<T> GetCollection()
         {
-            var settings = MongoClientSettings.FromConnectionString(Constants.ConnectionString);
-            var client = new MongoClient(settings);
-
-            IMongoDatabase db = client.GetDatabase(Constants.DatabaseName);
-
             string? collectionName = typeof(T).GetProperty(Constants.CollectionPropertyString)?.GetValue(null)?.ToString();
-
-            return db.GetCollection<T>(collectionName);
+            return _mongoDbService.GetDatabase().GetCollection<T>(collectionName);
         }
 
         #endregion

@@ -1,45 +1,58 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ShopItem.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Models.WebScraping
-
 {
-    using MongoDB.Bson.Serialization.Attributes;
+    #region Imports
+
+    #region Imports
+
     using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    using WebAPI.Properties;
-
-    #region Imports
-
     using WebAPI.Enums;
     using WebAPI.Interfaces;
+    using WebAPI.Properties;
+
+    #endregion
+
     #endregion
 
     public class ShopItem(string name, IShopItemCategory? category, string price, Shop shop) : IShopItem
     {
-        private string categoryName = String.Empty;
-        private string subCategoryName = String.Empty;
+        #region Constants and Private Fields
 
+        private string _categoryName = string.Empty;
+
+        private string _subCategoryName = string.Empty;
+
+        #endregion
 
         #region Public Properties
+
+        [BsonIgnore]
+        public IShopItemCategory Category { get; set; } = category!;
 
         [BsonRepresentation(BsonType.String)]
         [JsonConverter(typeof(StringEnumConverter))]
         public Shop Shop { get; set; } = shop;
-        
+
         [BsonRepresentation(BsonType.String)]
         [BsonElement("Category")]
         public string CategoryName
         {
-            get => Category?.Parent ?? categoryName;
-            set => categoryName = value;
+            get => Category?.Parent ?? _categoryName;
+            set => _categoryName = value;
         }
+
+        [BsonIgnore]
+        public static string CollectionName => Constants.ShopItemCollectionName;
 
         public string Name { get; set; } = name;
 
@@ -49,15 +62,9 @@ namespace WebAPI.Models.WebScraping
         [BsonElement("SubCategory")]
         public string SubCategoryName
         {
-            get => Category?.Name ?? subCategoryName;
-            set => subCategoryName = value;
+            get => Category?.Name ?? _subCategoryName;
+            set => _subCategoryName = value;
         }
-
-        [BsonIgnore]
-        public IShopItemCategory Category { get; set; } = category;
-
-        [BsonIgnore]
-        public static string CollectionName => Constants.ShopItemCollectionName;
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

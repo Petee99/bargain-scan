@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Constants.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -22,18 +22,13 @@ namespace WebAPI.Properties
 
         public const string AuthenticateRoute = "authenticate";
 
-        public const string ShopItemsRoute = "api/shopitems";
-
         public const string ClientDomain = "http://localhost:4200";
 
         public const string CollectionPropertyString = "CollectionName";
-
-        public const string ConnectionString =
-            "mongodb://mako99:FingerBoard101499@cluster0-shard-00-00.vf2zk.mongodb.net:27017,cluster0-shard-00-01.vf2zk.mongodb.net:27017,cluster0-shard-00-02.vf2zk.mongodb.net:27017/?ssl=true&replicaSet=atlas-lkoynm-shard-0&authSource=admin&retryWrites=true&w=majority";
-
+        
         public const string CorsPolicyKey = "ApiCorsPolicy";
 
-        public const string DatabaseName = "wt2-database";
+        public const string DatabaseNameVariable = "DatabaseNameVariable";
 
         public const string DeleteMethod = "DELETE";
 
@@ -51,11 +46,13 @@ namespace WebAPI.Properties
 
         public const string IsAuthenticatedRoute = "isauthenticated";
 
-        public const string Key = "8Jo1zQHUrtFf4hSsLDoasVDJmwqAr2qcZH8lcc2ErLnH8AKNekpcnsiPTs1";
-
+        public const string JwtKeyVariable = "JwtKeyVariable";
+        
         public const string LogOutRoute = "logout";
 
-        public const string MongoDBKey = "MongoDB";
+        public const string MongoDbKeyVariable = "MongoDBKey";
+
+        public const string OpenAiApiKeyVariable = "OpenAiApiKey";
 
         public const string OptionsMethod = "OPTIONS";
 
@@ -74,18 +71,22 @@ namespace WebAPI.Properties
         public const string RefreshTokenField = "refreshtoken";
 
         public const string RoleField = "role";
-        
+
         public const string SetScraperServiceRoute = "api/scraper-service";
+
+        public const string ShopItemCategoryCollectionName = "sub-categories";
+
+        public const string ShopItemCollectionName = "shop-items";
+
+        public const string ShopItemsRoute = "api/shopitems";
+
+        public const string SymmetricKeyVariable = "SymmetricKeyVariable";
 
         public const string UploadDataFromWeb = "itemlist-upload";
 
         public const string User = "User";
 
         public const string UserCollectionName = "users";
-
-        public const string ShopItemCollectionName = "shop-items";
-
-        public const string ShopItemCategoryCollectionName = "sub-categories";
 
         public const string UserName = "UserName";
 

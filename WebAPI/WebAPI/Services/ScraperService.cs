@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ScraperService.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -8,33 +8,42 @@ namespace WebAPI.Services
 {
     #region Imports
 
+    using OpenAI_API;
+
     using OpenQA.Selenium.Chrome;
 
     using WebAPI.Interfaces;
     using WebAPI.Models.WebScraping;
+    using WebAPI.Properties;
 
     #endregion
-
-    public class ScraperService
+    
+    public class ScraperService : IScraperService
     {
         #region Constants and Private Fields
 
-        private readonly Timer _scraperTimer;
-        private readonly DataBaseService<ShopItem> _shopItemService;
-        private readonly DataBaseService<ShopItemCategory> _shopItemCategoryService;
-        private readonly IList<IShopScraper> scrapers = new List<IShopScraper>();
         private readonly ChromeOptions _options = new();
 
+        private readonly IDataBaseService<ShopItem> _shopItemService;
+
+        private readonly IDataBaseService<ShopItemCategory> _shopItemCategoryService;
+
+        private readonly IList<IShopScraper> _scrapers = new List<IShopScraper>();
+
+        private readonly IOpenAiOptimizer _openAiOptimizer = 
+            new OpenAiOptimizer(new OpenAIAPI(Environment.GetEnvironmentVariable(Constants.OpenAiApiKeyVariable)));
+
+        private readonly Timer _scraperTimer;
 
         #endregion
 
         #region Constructors and Destructors
 
-        public ScraperService(DataBaseService<ShopItem> shopItemService, DataBaseService<ShopItemCategory> shopItemCategoryService)
+        public ScraperService(IDataBaseService<ShopItem> shopItemService, IDataBaseService<ShopItemCategory> shopItemCategoryService)
         {
             _shopItemService = shopItemService;
             _shopItemCategoryService = shopItemCategoryService;
-            _scraperTimer = new Timer(new TimerCallback(ScraperTimeElapsed), this, Timeout.Infinite, Timeout.Infinite);
+            _scraperTimer = new Timer(ScraperTimeElapsed, this, Timeout.Infinite, Timeout.Infinite);
 
             _options.AddArguments("--headless");
             _options.AddArguments("--disable-gpu");
@@ -42,7 +51,6 @@ namespace WebAPI.Services
         }
 
         #endregion
-        
 
         #region Public Methods and Operators
 
@@ -50,15 +58,10 @@ namespace WebAPI.Services
         {
             await SetUpScrapers();
 
-            var tasks = new List<Task<IEnumerable<IShopItem>>>();
-
-            foreach (IShopScraper scraper in scrapers)
-            {
-                tasks.Add(scraper.ScrapeAllItemsAsync());
-            }
+            var tasks = _scrapers.Select(scraper => scraper.ScrapeAllItemsAsync()).ToList();
 
             var results = await Task.WhenAll(tasks);
-            List<ShopItem> shopItems = new();
+            List<ShopItem>? shopItems = new();
 
             foreach (var result in results)
             {
@@ -79,19 +82,20 @@ namespace WebAPI.Services
 
         private async Task SetUpScrapers()
         {
-            scrapers.Clear();
+            _scrapers.Clear();
 
             var categories = await _shopItemCategoryService.GetAll();
 
             foreach (var shop in RokshScraper.AvailableShops)
             {
-                scrapers.Add(new RokshScraper(new ChromeDriver(_options), shop, categories));
+                _scrapers.Add(new RokshScraper(
+                    new ChromeDriver(_options), _openAiOptimizer, shop, categories.Cast<IShopItemCategory>().ToList()));
             }
         }
 
         private static void ScraperTimeElapsed(object? state)
         {
-            if(state is ScraperService service)
+            if (state is ScraperService service)
             {
                 _ = service.ScrapeAllShops();
             }

@@ -1,19 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IAuthInformation.cs" owner="Peter Mako">
+// <copyright file="IOpenAiAOptimizer.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Interfaces
 {
-    public interface IAuthInformation
+    public interface IOpenAiOptimizer
     {
-        #region Public Properties
-
-        public string Password { get; set; }
-
-        public string UserName { get; set; }
-
-        #endregion
+        public Task OptimizeCategoriesToMatchSchema(IList<IShopItemCategory> categories, IList<IShopItemCategory> schemaCategories);
     }
 }

@@ -1,22 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SensorDataController.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+// <copyright file="ShopItemController.cs" owner="Peter Mako">
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Controllers
-
 {
     #region Imports
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Web.Http.Results;
-    using WebAPI.Enums;
-    using WebAPI.Models.DataModels;
+
+    using WebAPI.Interfaces;
     using WebAPI.Models.WebScraping;
     using WebAPI.Properties;
-    using WebAPI.Services;
 
     #endregion
 
@@ -25,7 +22,7 @@ namespace WebAPI.Controllers
     {
         #region Constructors and Destructors
 
-        public ShopItemController(DataBaseService<ShopItem> dataBaseService)
+        public ShopItemController(IDataBaseService<ShopItem> dataBaseService)
             : base(dataBaseService)
         {
         }
@@ -38,30 +35,7 @@ namespace WebAPI.Controllers
         [AllowAnonymous]
         public override async Task<IActionResult> Post([FromBody] ShopItem model)
         {
-            await dataBaseService.Create(model);
-
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route(Constants.UploadDataFromWeb)]
-        public async Task<IActionResult> UploadDataFromWebsite([FromBody] IEnumerable<ShopItem> models)
-        {
-            if(models is null || models.Count() is 0)
-            {
-                return StatusCode(500);
-            }
-
-            foreach(var model in models)
-            {
-                if(model.Name is null || model.CategoryName is null || 
-                    model.SubCategoryName is null || model.Price is null)
-                {
-                    return StatusCode(500);
-                }
-            }
-
-            await dataBaseService.CreateMany(models);
+            await DataBaseService.Create(model);
 
             return Ok();
         }
@@ -71,7 +45,26 @@ namespace WebAPI.Controllers
         [AllowAnonymous]
         public override async Task<List<ShopItem>> Get()
         {
-            return await dataBaseService.GetAll();
+            return await DataBaseService.GetAll();
+        }
+
+        [HttpPost]
+        [Route(Constants.UploadDataFromWeb)]
+        public async Task<IActionResult> UploadDataFromWebsite([FromBody] IEnumerable<ShopItem>? models)
+        {
+            if (models?.ToList() is not { Count: > 0 } itemList)
+            {
+                return StatusCode(500);
+            }
+
+            if (itemList.Any(item => item is not { Name: not null, CategoryName: not null, SubCategoryName: not null, Price: not null }))
+            {
+                return StatusCode(500);
+            }
+
+            await DataBaseService.CreateMany(itemList);
+
+            return Ok();
         }
 
         #endregion

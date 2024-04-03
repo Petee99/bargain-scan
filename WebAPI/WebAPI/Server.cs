@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Server.cs" owner="Peter Mako">
-//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2023
+//   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,7 +11,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-using WebAPI.Models;
+using WebAPI.Interfaces;
+using WebAPI.Models.Authentication;
 using WebAPI.Models.DataModels;
 using WebAPI.Models.WebScraping;
 using WebAPI.Properties;
@@ -45,7 +46,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddCors(options => options.AddPolicy(Constants.CorsPolicyKey, builder => builder
+builder.Services.AddCors(options => options.AddPolicy(Constants.CorsPolicyKey, b => b
     .WithOrigins(Constants.ClientDomain, Constants.ClientDomain)
     .SetIsOriginAllowedToAllowWildcardSubdomains()
     .AllowAnyHeader()
@@ -54,13 +55,13 @@ builder.Services.AddCors(options => options.AddPolicy(Constants.CorsPolicyKey, b
     .SetPreflightMaxAge(TimeSpan.FromSeconds(Constants.PreFlightMaxTimeInSeconds)
     )));
 
-builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(Constants.MongoDBKey));
-
-builder.Services.AddSingleton<DataBaseService<UserModel>>();
-builder.Services.AddSingleton<DataBaseService<ShopItem>>();
-builder.Services.AddSingleton<DataBaseService<ShopItemCategory>>();
-builder.Services.AddSingleton<DataBaseService<ScrapeRequest>>();
-builder.Services.AddSingleton<ScraperService>();
+builder.Services.AddSingleton<IDataBaseService<UserModel>, DataBaseService<UserModel>>();
+builder.Services.AddSingleton<IDataBaseService<AdminModel>, DataBaseService<AdminModel>>();
+builder.Services.AddSingleton<IDataBaseService<ShopItem>, DataBaseService <ShopItem>>();
+builder.Services.AddSingleton<IDataBaseService<ShopItemCategory>, DataBaseService<ShopItemCategory>>();
+builder.Services.AddSingleton<IDataBaseService<ScrapeRequest>, DataBaseService<ScrapeRequest>>();
+builder.Services.AddSingleton<IScraperService, ScraperService>();
+builder.Services.AddSingleton<IMongoDbService, MongoDbService>();
 
 builder.Services.AddAuthentication(option =>
 {
@@ -73,7 +74,7 @@ builder.Services.AddAuthentication(option =>
     option.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Constants.Key)),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable(Constants.JwtKeyVariable)!)),
         ValidateIssuer = false,
         ValidateAudience = false
     };
@@ -92,7 +93,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 WebApplication app = builder.Build();
 
-app.UseCors(builder => builder
+app.UseCors(b => b
     .WithOrigins(Constants.ClientDomain, Constants.ClientDomain)
     .SetIsOriginAllowedToAllowWildcardSubdomains()
     .AllowAnyHeader()
@@ -105,6 +106,7 @@ app.UseCors(builder => builder
 
 
 #region Pipeline
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

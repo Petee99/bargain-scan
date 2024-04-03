@@ -1,18 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IAuthInformation.cs" owner="Peter Mako">
+// <copyright file="IScraperService.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Interfaces
 {
-    public interface IAuthInformation
+    public interface IScraperService
     {
-        #region Public Properties
+        #region Public Methods and Operators
 
-        public string Password { get; set; }
+        Task ScrapeAllShops();
 
-        public string UserName { get; set; }
+        void SetUpScrapeInterval(TimeSpan timeSpan);
 
         #endregion
     }

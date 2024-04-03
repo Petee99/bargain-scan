@@ -1,18 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IAuthInformation.cs" owner="Peter Mako">
+// <copyright file="IMongoDbService.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace WebAPI.Interfaces
 {
-    public interface IAuthInformation
+    #region Imports
+
+    using MongoDB.Driver;
+
+    #endregion
+
+    public interface IMongoDbService
     {
-        #region Public Properties
+        #region Public Methods and Operators
 
-        public string Password { get; set; }
-
-        public string UserName { get; set; }
+        IMongoDatabase GetDatabase();
 
         #endregion
     }
