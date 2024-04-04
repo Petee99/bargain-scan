@@ -89,7 +89,7 @@ namespace WebAPI.Services
             return resultList.Count < 1 ? default : resultList.First();
         }
 
-        public async Task<T?> GetById(T model)
+        public async Task<T?> GetByModel(T model)
         {
             IMongoCollection<T> collection = GetCollection();
 
@@ -106,14 +106,9 @@ namespace WebAPI.Services
 
         private static FilterDefinition<T> GetIdFilter(T model)
         {
-            string id = string.Empty;
-
-            if (model is IDataModel dataModel)
-            {
-                id = dataModel.ID ?? id;
-            }
-
-            return Builders<T>.Filter.Eq(Constants.IdPropertyString, new BsonObjectId(new ObjectId(id)));
+            return model is not IDataModel { ID.Length: >0 } dataModel 
+                ? Builders<T>.Filter.Empty 
+                : Builders<T>.Filter.Eq(Constants.IdPropertyString, new BsonObjectId(new ObjectId(dataModel.ID)));
         }
 
         private IMongoCollection<T> GetCollection()

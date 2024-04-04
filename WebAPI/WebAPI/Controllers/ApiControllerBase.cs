@@ -79,7 +79,7 @@ namespace WebAPI.Controllers
         {
             await DataBaseService.Update(model);
 
-            return await DataBaseService.GetById(model);
+            return await DataBaseService.GetByModel(model);
         }
 
         #endregion

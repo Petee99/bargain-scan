@@ -176,7 +176,7 @@ namespace WebAPI.Controllers
 
             UserModel? userModel = (await DataBaseService.GetAll()).FirstOrDefault(user => user.Email == userParam.Email);
 
-            if (userModel?.ID != null)
+            if (userModel is { ID: not null} )
             {
                 await DataBaseService.Delete(userModel.ID);
             }

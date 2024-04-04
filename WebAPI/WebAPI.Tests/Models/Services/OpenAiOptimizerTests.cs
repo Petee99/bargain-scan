@@ -9,5 +9,6 @@ namespace WebAPI.Tests.Models.Services
     [TestClass]
     public class OpenAiOptimizerTests
     {
+
     }
 }

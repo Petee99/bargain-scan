@@ -22,7 +22,7 @@ namespace WebAPI.Interfaces
 
         public Task<T?> GetById(string id);
 
-        public Task<T?> GetById(T model);
+        public Task<T?> GetByModel(T model);
 
         #endregion
     }
