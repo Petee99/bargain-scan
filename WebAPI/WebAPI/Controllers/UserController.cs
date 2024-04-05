@@ -53,11 +53,12 @@ namespace WebAPI.Controllers
                 return BadRequest();
             }
 
+            string password = model.Password;
             model.HashPassword();
             model.Role = Constants.User;
 
             await DataBaseService.Create(model);
-            await Authenticate(new AuthInformation(model.UserName, model.Password));
+            await Authenticate(new AuthInformation(model.UserName, password));
 
             return Ok();
         }
@@ -65,7 +66,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public override async Task<List<UserModel>> Get()
         {
-            if (!(await IsAdmin()))
+            if (!await IsAdmin())
             {
                 return new List<UserModel>();
             }
@@ -108,12 +109,7 @@ namespace WebAPI.Controllers
 
             AdminModel? model = await _adminDataBaseService.GetById(userModel.ID);
 
-            if (model is null)
-            {
-                return false;
-            }
-
-            return true;
+            return model is not null;
         }
 
         [HttpPost(Constants.AddAdminRoute)]
@@ -126,7 +122,7 @@ namespace WebAPI.Controllers
 
             UserModel? userModel = (await DataBaseService.GetAll()).FirstOrDefault(user => user.Email == userParam.Email);
 
-            if (userModel is null)
+            if (userModel is null || userParam.Email is null)
             {
                 return BadRequest();
             }
@@ -176,7 +172,7 @@ namespace WebAPI.Controllers
 
             UserModel? userModel = (await DataBaseService.GetAll()).FirstOrDefault(user => user.Email == userParam.Email);
 
-            if (userModel is { ID: not null} )
+            if (userModel is { ID: not null })
             {
                 await DataBaseService.Delete(userModel.ID);
             }

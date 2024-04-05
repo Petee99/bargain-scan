@@ -39,8 +39,7 @@ namespace WebAPI.Controllers
 
             return Ok();
         }
-
-
+        
         [HttpGet]
         [AllowAnonymous]
         public override async Task<List<ShopItem>> Get()

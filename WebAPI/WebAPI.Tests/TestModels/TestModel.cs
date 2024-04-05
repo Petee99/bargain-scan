@@ -1,32 +1,29 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IScraperService.cs" owner="Peter Mako">
+// <copyright file="TestModel.cs" owner="Peter Mako">
 //   Thesis work by Peter Mako for Obuda University / Business Informatics MSc. 2024
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace WebAPI.Interfaces
+namespace WebAPI.Tests.TestModels
 {
     #region Imports
 
-    using WebAPI.Enums;
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
+
+    using WebAPI.Interfaces;
 
     #endregion
 
-    public interface IScraperService
+    public class TestModel : IDataModel
     {
         #region Public Properties
 
-        IEnumerable<IShopScraper> ActiveScrapers { get; }
-
-        #endregion
-
-        #region Public Methods and Operators
-
-        Task CreateScraper(Shop shop);
-
-        Task ScrapeAllShops();
-
-        void SetUpScrapeInterval(TimeSpan timeSpan);
+        public static string CollectionName => nameof(TestModel);
+        
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? ID { get; set; }
 
         #endregion
     }

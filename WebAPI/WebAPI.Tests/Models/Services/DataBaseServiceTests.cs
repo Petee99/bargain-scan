@@ -17,6 +17,7 @@ namespace WebAPI.Tests.Models.Services
 
     using WebAPI.Interfaces;
     using WebAPI.Services;
+    using WebAPI.Tests.TestModels;
 
     #endregion
 
@@ -148,19 +149,5 @@ namespace WebAPI.Tests.Models.Services
         }
 
         #endregion
-
-        public class TestModel : IDataModel
-        {
-            #region Public Properties
-
-            public static string CollectionName => nameof(TestModel);
-
-
-            [BsonId]
-            [BsonRepresentation(BsonType.ObjectId)]
-            public string? ID { get; set; }
-
-            #endregion
-        }
     }
 }

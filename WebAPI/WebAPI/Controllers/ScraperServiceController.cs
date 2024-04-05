@@ -14,7 +14,6 @@ namespace WebAPI.Controllers
     using WebAPI.Interfaces;
     using WebAPI.Models.WebScraping;
     using WebAPI.Properties;
-    using WebAPI.Services;
 
     #endregion
 
@@ -23,13 +22,13 @@ namespace WebAPI.Controllers
     {
         #region Constants and Private Fields
 
-        private readonly ScraperService _scraperService;
+        private readonly IScraperService _scraperService;
 
         #endregion
 
         #region Constructors and Destructors
 
-        public ScraperServiceController(IDataBaseService<ScrapeRequest> dataBaseService, ScraperService scraperService)
+        public ScraperServiceController(IDataBaseService<ScrapeRequest> dataBaseService, IScraperService scraperService)
             : base(dataBaseService)
         {
             _scraperService = scraperService;
@@ -44,7 +43,7 @@ namespace WebAPI.Controllers
         {
             if (request.Type is ScrapeRequestType.Immediate)
             {
-                Task.Run(_scraperService.ScrapeAllShops);
+                Task.Run(ScrapeAllShops);
             }
             else
             {
@@ -52,6 +51,20 @@ namespace WebAPI.Controllers
             }
 
             return Task.FromResult<IActionResult>(Ok());
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private async Task ScrapeAllShops()
+        {
+            foreach (Shop shop in Enum.GetValues<Shop>())
+            {
+                await _scraperService.CreateScraper(shop);
+            }
+
+            await _scraperService.ScrapeAllShops();
         }
 
         #endregion
