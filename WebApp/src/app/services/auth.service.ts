@@ -4,7 +4,9 @@ import { shareReplay, tap, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Observable,throwError } from 'rxjs';
 import { User } from '../models/models'
+import { environment } from 'src/environments/environment';
 
+const apiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +14,16 @@ import { User } from '../models/models'
 export class AuthService {
 
   constructor(private httpClient:HttpClient, private router: Router){
-    console.log("Auth online")
   }
 
   login(username: string, password:string){
-      this.httpClient.post('http://localhost:33272/api/user/authenticate', {
+      this.httpClient.post(apiUrl+'user/authenticate', {
         username,
         password
       }, {withCredentials:true}).subscribe(
         data=>{
           alert("Successfully logged in!");
-          this.router.navigate(['/sensor-data'])
+          this.router.navigate(['/retailer-data'])
           .then(() => window.location.reload())
         },
         error => {
@@ -34,7 +35,7 @@ export class AuthService {
   }
 
   register(email: string, username: string, password:string){
-    return this.httpClient.post('http://localhost:33272/api/user', {
+    return this.httpClient.post(apiUrl+'user', {
     email,
     username,
     password
@@ -54,7 +55,7 @@ export class AuthService {
   }
 
   getAllUsers(){
-    return this.httpClient.get<User[]>('http://localhost:33272/api/user', {withCredentials:true})
+    return this.httpClient.get<User[]>(apiUrl+'user', {withCredentials:true})
     .pipe(
       map((res) => {
         return <User[]>res;
@@ -63,7 +64,7 @@ export class AuthService {
   }
 
   refreshAccessToken(){
-    return this.httpClient.post('http://localhost:33272/api/user/refresh', {}, {withCredentials:true})
+    return this.httpClient.post(apiUrl+'user/refresh', {}, {withCredentials:true})
     .pipe(
       map((res) => {
         return res;
@@ -74,7 +75,7 @@ export class AuthService {
   setAdmin(emailText: string){
     let user = new User();
     user.email = emailText;
-    return this.httpClient.post('http://localhost:33272/api/user/add_admin', user, {withCredentials:true})
+    return this.httpClient.post(apiUrl+'user/add_admin', user, {withCredentials:true})
     .pipe(
       map((res) => {
         return res;
@@ -85,7 +86,7 @@ export class AuthService {
   deleteUser(emailText: string){
     let user = new User();
     user.email = emailText;
-    return this.httpClient.post('http://localhost:33272/api/user/deleteuser', user, {withCredentials:true})
+    return this.httpClient.post(apiUrl+'user/deleteuser', user, {withCredentials:true})
     .pipe(
       map((res) => {
         return res;
@@ -94,18 +95,18 @@ export class AuthService {
   }
 
   signout(){
-    let request = this.httpClient.post('http://localhost:33272/api/user/logout',{}, {withCredentials:true});
+    let request = this.httpClient.post(apiUrl+'user/logout',{}, {withCredentials:true});
 
     request.subscribe(()=>{});
   }
 
   isLoggedIn(){
-    return(this.httpClient.post('http://localhost:33272/api/user/isauthenticated', {}, {withCredentials:true})
+    return(this.httpClient.post(apiUrl+'user/isauthenticated', {}, {withCredentials:true})
     .toPromise());
   }
 
   navToTasks(){
-    this.router.navigate(['/sensor-data']);
+    this.router.navigate(['/retailer-data']);
   }
 
   navToLogin(){

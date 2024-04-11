@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SensorDataComponent } from './sensor-data.component';
+import { RetailerDataComponent } from './retailer-data.component';
 
-describe('SensorDataComponent', () => {
-  let component: SensorDataComponent;
-  let fixture: ComponentFixture<SensorDataComponent>;
+describe('RetailerDataComponent', () => {
+  let component: RetailerDataComponent;
+  let fixture: ComponentFixture<RetailerDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SensorDataComponent ]
+      declarations: [ RetailerDataComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SensorDataComponent);
+    fixture = TestBed.createComponent(RetailerDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

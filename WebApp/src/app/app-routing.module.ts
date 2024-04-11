@@ -5,7 +5,7 @@ import { RegistrationComponent } from './components/authentication/registration/
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { SetAdminComponent } from './components/authentication/set-admin/set-admin.component';
-import { SensorDataComponent } from './components/sensor-data/sensor-data.component';
+import { RetailerDataComponent } from './components/retailer-data/retailer-data.component';
 import { WebScrapingComponent } from './components/web-scraping/web-scraping.component';
 
 
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: AuthenticationComponent},
   { path: 'register', component: RegistrationComponent},
   { path: 'users', component: SetAdminComponent, canActivate:[AuthGuardGuard]},
-  { path: 'sensor-data', component: SensorDataComponent, canActivate:[AuthGuardGuard]},
+  { path: 'retailer-data', component: RetailerDataComponent, canActivate:[AuthGuardGuard]},
   { path: 'web-scraping', component: WebScrapingComponent, canActivate:[AuthGuardGuard]}
 ];
 

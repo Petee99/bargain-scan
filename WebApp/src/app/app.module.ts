@@ -27,8 +27,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { SetAdminComponent } from './components/authentication/set-admin/set-admin.component';
-import { SensorDataComponent } from './components/sensor-data/sensor-data.component';
 import { WebScrapingComponent } from './components/web-scraping/web-scraping.component';
+import { RetailerDataComponent } from './components/retailer-data/retailer-data.component';
 
 
 @NgModule({
@@ -40,8 +40,8 @@ import { WebScrapingComponent } from './components/web-scraping/web-scraping.com
     HomeComponent,
     SetAdminComponent,
     SetAdminComponent,
-    SensorDataComponent,
-    WebScrapingComponent
+    WebScrapingComponent,
+    RetailerDataComponent
   ],
   imports: [
     BrowserModule,

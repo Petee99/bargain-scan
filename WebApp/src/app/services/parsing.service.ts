@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { environment } from 'src/environments/environment';
 import * as Parser from 'papaparse';
+
+const apiUrl = environment.apiUrl;
 
 @Injectable({
     providedIn: 'root'
@@ -44,7 +47,7 @@ import * as Parser from 'papaparse';
             return;
         }
 
-        this.httpClient.post('http://localhost:33272/api/shopitems/itemlist-upload', this.jsonData, {withCredentials:true}).subscribe(
+        this.httpClient.post(apiUrl+'shopitems/itemlist-upload', this.jsonData, {withCredentials:true}).subscribe(
           data=>{
             alert("Successfully uploaded the files!");
         },

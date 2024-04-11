@@ -3,11 +3,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ParsingService } from 'src/app/services/parsing.service';
 
 @Component({
-  selector: 'app-sensor-data',
-  templateUrl: './sensor-data.component.html',
-  styleUrls: ['./sensor-data.component.scss']
+  selector: 'app-retailer-data',
+  templateUrl: './retailer-data.component.html',
+  styleUrls: ['./retailer-data.component.scss']
 })
-export class SensorDataComponent implements OnInit {
+export class RetailerDataComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor( private authService: AuthService, private parsingService: ParsingService) { }
