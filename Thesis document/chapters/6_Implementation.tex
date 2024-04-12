@@ -430,3 +430,179 @@ Even though that the web application only serves administrative purposes, it was
 
 \subsection{Mobile Application}
 
+\subsubsection{Introduction}
+
+The following chapter of this thesis discusses the mobile application I created using the \textbf{.NET MAUI} framework. .NET MAUI is a modern cross-platform development tool that enables applications to be easily adapted to a variety of operating systems, including Android, iOS, TizenOS, and macOS. I used several NuGet packages during the application's development, which significantly increased functionality and user experience. These packages include CommunityToolkit.Maui, which supports specific user interface elements, FuzzySharp, which enables fuzzy search based on product names, and ZXing.Net.Maui, which helps with barcode reading and decoding.
+
+During the project's development, I used the \textbf{MVVM} (Model-View-ViewModel) design pattern, which is a common architectural pattern in modern application development. The benefit of MVVM is that it effectively separates the user interface (View), data model (Model), and presentation logic (ViewModel). This separation simplifies the development process by allowing components to be tested and maintained more easily. The ViewModel serves as an intermediary between the model and the view, reducing direct dependencies and increasing the application's flexibility, making it easier for developers to manage business logic and user interface.
+
+The current application can be compared to a Minimum Viable Product (\textbf{MVP}), as it demonstrates basic functionality and serves as a solid foundation for future development. The MVP approach allows for the collection of user feedback in the early stages of a project, which can then be used to better determine future development directions. The scope of the project is extensive, and many ideas have yet to be implemented. In the field of software development, it is common to adapt and redesign in comparison to the original plans, which is difficult, but the MVP approach used allows the application to gradually develop further, achieving a balance between user needs and project framework.
+
+In the following sections, I will discuss the architecture of the application, the persistence of data, I will highlight some interesting solutions that have been implemented, and I will provide an overall general idea of how the application functions.
+
+\pagebreak
+
+\subsubsection{Service layer}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/app_services.png}
+	\caption{Mobile App Services}
+	\label{fig:appservices}
+\end{figure}
+
+Visible on figure \ref{fig:appservices}, the MauiProgram is the application's entry point, and it properly builds the BargainScanApp by injecting all of the required services into the dependency injection container. These services are required for the application to function properly while adhering to the key MVVM principles.
+
+\noindent\textbf{ResolverService}
+
+The ResolverService in automatically links Views to the ViewModels that go with them. It uses a naming convention where the ViewModel is called the same thing as the View, but with "Model" added at the end.
+
+This service is registered with the dependency injection container, just like any other service. All classes that end in "View" or "ViewModel" are looked for in the app. It finds the ViewModel that goes with each View and registers a factory method that makes the View and sets its DataContext to a ViewModel instance.
+
+With this method, setting the DataContext for a View is done automatically, so modules don't have to care for it. There is a separation of concerns with this approach, as Views are not connected to the creation and retrieval of their ViewModels.
+
+\noindent\textbf{EventAggregator}
+
+The EventAggregator is a communication mechanism that enables loosely coupled interactions between application components. It includes Publish, Subscribe, and UnSubscribe methods that allow components to communicate without using direct references.
+
+In the MVVM pattern, the EventAggregator replaces standard .NET events to reduce coupling and improve modularity. It enables components to communicate without knowing each other, thereby increasing reusability and testability. This is especially important in MVVM, where separation of concerns and loose coupling are fundamental principles.
+
+\noindent\textbf{OnlineDataService and DataPersistenceService}
+
+It is the OnlineDataService's responsibility to communicate with the API; however, it is only used when the application lacks data or has outdated data about the products contained in the API. The DataPersistenceService is used to load and save retrieved shop items, the local user profile, the user's registered shopping carts, and descriptive information.
+
+\noindent\textbf{DataService}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/app_dataservice.png}
+	\caption{Mobile App DataService}
+	\label{fig:appdataservice}
+\end{figure}
+
+The \textbf{DataService}, visible on figure \ref{fig:appdataservice}, is the primary service that allows users to access and manipulate application data across the entirety of the application. It makes use of IDataPersistenceService for the purpose of saving and loading local data, and it makes use of IOnlineDataService for the purpose of accessing data from the API. 
+
+It is responsible for implementing the IDataService interface, which defines the methods that the service offers. Through the process of build-up, the service is injected into the application, which guarantees that it will be accessible throughout the entirety of the runtime. It is possible to execute the majority of the DataService's methods in an asynchronous manner, which guarantees that the user interface will not become unresponsive in situations where a lot of computational power is required. 
+
+The modules that make use of it are able to access shop items classified into particular categories or subcategories, as well as search for those items using barcodes or search terms, with the latter method employing fuzzy string matching for improved performance. It also manages the process of assigning a barcode to a product in the event that the product has not yet been assigned with a barcode. 
+
+\pagebreak
+
+The service is also in charge of handling data for the local user profile, managing registered shopping carts, determining which shopping cart is active, and allowing the metadata and content of the shopping carts to be modified.
+
+Additionally, it offers a method for saving application data on the fly, and it is responsible for loading information from either local or online sources when the application is started up. It is important to note that the data that is saved locally is saved in the data folder of the application using the JSON format. This ensures that the data is secure and invisible to any malicious attempts. 
+
+\noindent\textbf{FuzzySearch}
+
+As part of DataService a generic class called FuzzySearch is used to perform fuzzy searches on a group of objects of type T that implement the INamed interface. Similarity scores are computed using the Fuzz class from the FuzzySharp NuGet package.
+
+The class keeps an index that is reversed for effective searching. The AddItem(T item) function creates n-grams from the item's name in order to add it to the index.
+
+Fuzzy search is carried out by the Search(string searchTerm) method, which generates n-grams from the search term, retrieves matching items from the index, uses Fuzz's PartialRatio to calculate a score for each item, and returns items sorted by score if their score is higher than a threshold.
+
+\begin{algorithm}
+	\caption{Search Method}
+	\begin{algorithmic}
+		\State Initialize set $candidates$
+		\For{each n-gram in GenerateNGrams($searchTerm$, 3)}
+		\If{n-gram is in \_invertedIndex}
+		\For{each item in \_invertedIndex[n-gram]}
+		\State Add item to $candidates$
+		\EndFor
+		\EndIf
+		\EndFor
+		\State Initialize list $matchedItems$
+		\For{each candidate in $candidates$}
+		\State Calculate $score$ as Fuzz.PartialRatio of $searchTerm$ and candidate's name
+		\If{$score$ is greater than ThresholdScore}
+		\State Add candidate to $matchedItems$
+		\EndIf
+		\EndFor
+		\State Sort $matchedItems$ by score in descending order
+		\newline
+		\Return $matchedItems$
+	\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Model layer}
+
+Each and every significant data model that is required for data handling and manipulation is contained within the Model layer. 
+
+The ShopItem, ShoppingCart, and UserProfile classes have been implemented in such a way that they contain JSON attributes for relevant properties. This ensures that the data is retrieved, saved, and loaded correctly. Additionally, it ensures that important information is not lost during the process of serializing and deserializing the data. 
+
+In general, the models are implemented with properties and methods that adhere to naming conventions that make it simple to deduce the responsibilities and logic that lie behind them. Models that were utilized in the application are depicted in the figure that can be found on figure \ref{fig:appmodels} below.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/app_models.png}
+	\caption{Mobile App Models}
+	\label{fig:appmodels}
+\end{figure}
+
+\subsubsection{Presentation layer (View, ViewModel)}
+
+Due to the fact that both the View and ViewModel layers are accountable for the configuration of the user interface, they are discussed together in this instance. 
+
+The user interface of the application can be broken down into four primary sections: \begin{itemize}
+	\item the shell, which provides a menu for navigating between categories;
+	\item the main page, which is in charge of presenting the items for a particular category;
+	\item the bar code page, which is in charge of scanning barcodes;
+	\item  and the user profile page, which is responsible for accessing shopping carts.
+\end{itemize} 
+Additionally there's a popup for searching for items by their name.
+
+Since the application is heavily dependent on the MVVM design pattern, the ViewModels implement INotifyPropertyChanged in order to update the View with information about changed properties. Additionally, the ViewModels implement the IHandle interface in order to handle messages that are published by the EventAggregator. The Views are being initialized and registered through the use of ResolverService, and I have avoided using the code-behind as much as possible because doing so is also a violation of the pattern.
+
+There are additional ViewModels which are not matched by their own Views. The reason behind this is that the models used in this case are not enough by themselves and they need an extra layer of presentation logic to make sense for the user interface.
+
+The general architecture of the layer can be seen on figure \ref{fig:appviewmodels} below.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/app_viewmodels.png}
+	\caption{Mobile App Views and ViewModels}
+	\label{fig:appviewmodels}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{img/app_itemspage.png}
+	\caption{Mobile App Main Page}
+	\label{fig:appitemspage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{img/app_barcodepage.png}
+	\caption{Mobile App Barcode Page}
+	\label{fig:appbarcodepage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{img/app_shoppingcartpage.png}
+	\caption{Mobile App User Profile Page}
+	\label{fig:appshoppingcartspage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{img/app_search.png}
+	\caption{Mobile App Search Popup}
+	\label{fig:appsearchpopup}
+\end{figure}
+
+
+ideas:
+
+- map based suggestions of where you should go shopping
+- price based calculation algorithm to choose the best shop and substitute items from it for the items in shoppingcart
+- contract with retailers/barcode repository for retrieval of barcodes
+- improve and simplify webscraping with google's upcoming AI
+- online userprofile and authentication on mobile app (the api is ready to do that)
+- change the persistence to a local database
+- possibly compile to iOS
+- !!!!!dont forget to say something about the documentation in the application
+- implement free version with ads (banners) and paid version that is ad-free (possibly tie extra features to it)
+

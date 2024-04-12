@@ -62,7 +62,11 @@
 \contentsline {subsubsection}{\numberline {6.4.1}Introduction}{42}{subsubsection.6.4.1}%
 \contentsline {subsubsection}{\numberline {6.4.2}Architecture}{43}{subsubsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.5}Mobile Application}{47}{subsection.6.5}%
-\contentsline {section}{\numberline {7}BIBLIOGRAPHY}{48}{section.7}%
-\contentsline {section}{\numberline {8}LIST OF FIGURES}{50}{section.8}%
-\contentsline {section}{\numberline {9}LIST OF TABLES}{51}{section.9}%
+\contentsline {subsubsection}{\numberline {6.5.1}Introduction}{47}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}Service layer}{48}{subsubsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.3}Model layer}{51}{subsubsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.4}Presentation layer (View, ViewModel)}{52}{subsubsection.6.5.4}%
+\contentsline {section}{\numberline {7}BIBLIOGRAPHY}{56}{section.7}%
+\contentsline {section}{\numberline {8}LIST OF FIGURES}{58}{section.8}%
+\contentsline {section}{\numberline {9}LIST OF TABLES}{59}{section.9}%
 \contentsfinish 
