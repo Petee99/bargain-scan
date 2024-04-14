@@ -69,7 +69,7 @@ namespace WebAPI.Tests.Models.Services
             scraperService.SetUpScrapeInterval(TimeSpan.FromMilliseconds(1));
 
             // Act
-            Thread.Sleep(10);
+            Task.Delay(100).Wait();
 
             // Assert
             _mockDataBaseService.Verify(x => x.CreateMany(It.IsAny<IEnumerable<ShopItem>>()), Times.AtLeastOnce);

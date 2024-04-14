@@ -32,7 +32,8 @@ namespace WebAPI.Tests.Controllers
             var request = new ScrapeRequest(ScrapeRequestType.Immediate, 0);
 
             // Act
-            var result = controller.Post(request).Result;
+            controller.Post(request).Wait();
+            Task.Delay(10000).Wait();
 
             // Assert
             scraperService.Verify(service => service.ScrapeAllShops(), Times.Once);

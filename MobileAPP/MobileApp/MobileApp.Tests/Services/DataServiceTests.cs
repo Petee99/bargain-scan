@@ -216,6 +216,8 @@ namespace MobileApp.Tests.Services
             dataService.SaveApplicationData();
 
             // Assert
+
+            await Task.Delay(1000);
             _dataPersistenceServiceMock.Verify(x => x.TrySaveLocalData(DataPersistenceService.ItemsFileName, itemData), Times.Once);
             _dataPersistenceServiceMock.Verify(x => x.TrySaveLocalData(DataPersistenceService.UserProfileFileName,
                 It.Is<string>(s => s.Contains(userProfileData))), Times.Once);

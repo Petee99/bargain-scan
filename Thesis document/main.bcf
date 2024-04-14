@@ -2391,6 +2391,13 @@
     <bcf:citekey order="24" intorder="1">maradokapenzemnel2021</bcf:citekey>
     <bcf:citekey order="25" intorder="1">mvp</bcf:citekey>
     <bcf:citekey order="26" intorder="1">userFriendly</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">whatIsSoftwareTesting1</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">whatIsSoftwareTesting2</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">postman</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">moq</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">cleancode</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">agile</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">agile</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

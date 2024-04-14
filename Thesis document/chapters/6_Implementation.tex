@@ -89,7 +89,7 @@ To sum up, the decision to use ASP.NET Core with C\# for the API is a smart move
 
 \subsubsection{Entry Point}
 
-The setup process revolves around WebApplicationBuilder. This builder lets developers configure app services and settings. CORS policies instruct the web app how to handle requests from different domains. This is crucial for modern web apps that use resources or APIs from different domains to ensure safety and functionality. Configuration includes database service setup. User model, shop item, shop item category, and shop scraping services are added as singletons, meaning they are used once throughout the application.
+The setup process revolves around \textbf{WebApplicationBuilder}. This builder lets developers configure app services and settings. CORS policies instruct the web app how to handle requests from different domains. This is crucial for modern web apps that use resources or APIs from different domains to ensure safety and functionality. Configuration includes database service setup. User model, shop item, shop item category, and shop scraping services are added as singletons, meaning they are used once throughout the application.
 
 The code also configures JWT authentication. This is crucial to modern web apps because it restricts access to resources and endpoints to verified users. This app uses these tokens to verify users' identities and manage them well, such as by getting them from cookies.
 
@@ -442,7 +442,7 @@ In the following sections, I will discuss the architecture of the application, t
 
 \pagebreak
 
-\subsubsection{Service layer}
+\subsubsection{Service Layer}
 
 \begin{figure}[H]
 	\centering
@@ -524,7 +524,7 @@ Fuzzy search is carried out by the Search(string searchTerm) method, which gener
 	\end{algorithmic}
 \end{algorithm}
 
-\subsubsection{Model layer}
+\subsubsection{Model Layer}
 
 Each and every significant data model that is required for data handling and manipulation is contained within the Model layer. 
 
@@ -539,7 +539,7 @@ In general, the models are implemented with properties and methods that adhere t
 	\label{fig:appmodels}
 \end{figure}
 
-\subsubsection{Presentation layer (View, ViewModel)}
+\subsubsection{Presentation Layer (View, ViewModel)}
 
 Due to the fact that both the View and ViewModel layers are accountable for the configuration of the user interface, they are discussed together in this instance. 
 
@@ -564,13 +564,28 @@ The general architecture of the layer can be seen on figure \ref{fig:appviewmode
 	\label{fig:appviewmodels}
 \end{figure}
 
+\noindent\textbf{Main page and Shell Fly-Out}
+
+All of the items that fall under the chosen category are displayed on the main page. Every time a new category is chosen, the content is automatically updated in a dynamic manner. Each of these items displays the name of the store from which they originate and can be added to the shopping cart that is currently active. 
+
+The flyout of the shell is utilized for the purpose of presenting the list of categories and subcategories that are available. The list of subcategories expands and shrinks depending on whether the main category is clicked on or not. 
+
+The UI implementation is presented on figure \ref{fig:appitemspage} below.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{img/app_itemspage.png}
-	\caption{Mobile App Main Page}
+	\includegraphics[width=0.5\linewidth]{img/app_itemspage.png}
+	\caption{Mobile App Main Page and Shell Fly-out}
 	\label{fig:appitemspage}
 \end{figure}
+
+\noindent\textbf{Barcode Page}
+
+The barcode page includes a camera-view for reading item barcodes. After reading the code for an item, the app attempts to locate it in the repository. If it contains matching item(s), they are displayed and can be added to the current shopping cart. 
+
+If no items match, the user can manually assign the code to any items that do not already have a code assigned. For this purpose, the search popup shown in figure \ref{fig:appsearchpopup} is used.
+
+Figure \ref{fig:appbarcodepage} on the next page shows how the barcode page was implemented.
 
 \begin{figure}[H]
 	\centering
@@ -579,6 +594,8 @@ The general architecture of the layer can be seen on figure \ref{fig:appviewmode
 	\label{fig:appbarcodepage}
 \end{figure}
 
+\noindent\textbf{User profile / Shopping Carts Page}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\linewidth]{img/app_shoppingcartpage.png}
@@ -586,23 +603,23 @@ The general architecture of the layer can be seen on figure \ref{fig:appviewmode
 	\label{fig:appshoppingcartspage}
 \end{figure}
 
+The way the presentation for the user profile and its associated shopping carts is implemented is visible on figure \ref{fig:appshoppingcartspage} above.
+
+The page displays the active shopping cart and allows the user to switch between carts.  A scrollable popup allows users to switch between shopping carts. Selecting a shopping cart activates it. The shopping carts include metadata such as name and description. All shopping carts contain and store the items that the user adds to them. 
+
+The shopping cart view shows the current items in the cart as well as the total number of items included; the user can also remove or substitute items. The substitution makes use of the previously mentioned item searching popup, as shown on figure \ref{fig:appsearchpopup}.
+
+\noindent\textbf{Search Popup}
+
+Finally, let's discuss the popup that allows the user to search for items stored in the repository. To return results, the search must contain at least three characters. If there are too many results, the user will be shown the top ten.  Scrolling through the popup reveals the hidden hits. 
+
+The popup displays the select command for modules that use it. When an item is selected, the calling module receives the item's reference. It also includes a "Add to cart" command so that users can easily add items to their shopping cart if they discover something they forgot to add previously.
+
+The realized user interface of the popup is visible on figure \ref{fig:appsearchpopup} below.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\linewidth]{img/app_search.png}
 	\caption{Mobile App Search Popup}
 	\label{fig:appsearchpopup}
 \end{figure}
-
-
-ideas:
-
-- map based suggestions of where you should go shopping
-- price based calculation algorithm to choose the best shop and substitute items from it for the items in shoppingcart
-- contract with retailers/barcode repository for retrieval of barcodes
-- improve and simplify webscraping with google's upcoming AI
-- online userprofile and authentication on mobile app (the api is ready to do that)
-- change the persistence to a local database
-- possibly compile to iOS
-- !!!!!dont forget to say something about the documentation in the application
-- implement free version with ads (banners) and paid version that is ad-free (possibly tie extra features to it)
-
