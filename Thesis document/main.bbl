@@ -19,23 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{barcode2023}{online}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{title}{History of Barcodes}
-      \field{urlday}{14}
-      \field{urlmonth}{4}
-      \field{urlyear}{2024}
-      \field{year}{2023}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://www.barcodeproducts.co.nz/frequently_asked_questions_faq/barcodes_info
-      \endverb
-      \verb{url}
-      \verb https://www.barcodeproducts.co.nz/frequently_asked_questions_faq/barcodes_info
-      \endverb
-    \endentry
     \entry{weightman2015}{online}{}
       \name{author}{1}{}{%
         {{hash=9ece763778b5ca3d4fe55066f179c213}{%
@@ -50,8 +33,8 @@
       \strng{authorbibnamehash}{9ece763778b5ca3d4fe55066f179c213}
       \strng{authornamehash}{9ece763778b5ca3d4fe55066f179c213}
       \strng{authorfullhash}{9ece763778b5ca3d4fe55066f179c213}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The History of the Bar Code}
@@ -81,8 +64,8 @@
       \strng{authorbibnamehash}{5dc46ab32619487fcbd3b48ec12674ab}
       \strng{authornamehash}{5dc46ab32619487fcbd3b48ec12674ab}
       \strng{authorfullhash}{5dc46ab32619487fcbd3b48ec12674ab}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{History of QR code}
@@ -122,8 +105,8 @@
       \strng{authorbibnamehash}{790cdfa6f2ab7010b92755df28f2e069}
       \strng{authornamehash}{790cdfa6f2ab7010b92755df28f2e069}
       \strng{authorfullhash}{790cdfa6f2ab7010b92755df28f2e069}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{MIS Quarterly}
@@ -148,8 +131,8 @@
       \strng{authorbibnamehash}{128e0a2fec1be0b38f507b6838138e6c}
       \strng{authornamehash}{128e0a2fec1be0b38f507b6838138e6c}
       \strng{authorfullhash}{128e0a2fec1be0b38f507b6838138e6c}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
@@ -185,8 +168,8 @@
       \strng{authorbibnamehash}{33204b58aa99a4580dd706bb8973566e}
       \strng{authornamehash}{33204b58aa99a4580dd706bb8973566e}
       \strng{authorfullhash}{33204b58aa99a4580dd706bb8973566e}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal of Retail and Distribution Management}
@@ -216,8 +199,8 @@
       \strng{authorbibnamehash}{32110b4fbbe355e566ff6e87bd501d1d}
       \strng{authornamehash}{32110b4fbbe355e566ff6e87bd501d1d}
       \strng{authorfullhash}{32110b4fbbe355e566ff6e87bd501d1d}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computers in Human Behavior}
@@ -251,8 +234,8 @@
       \strng{authorbibnamehash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
       \strng{authornamehash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
       \strng{authorfullhash}{a51398c4ee53fd3e3f31c96e7d9b01e1}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Retailing}
@@ -262,6 +245,22 @@
       \field{year}{2011}
       \field{pages}{1\bibrangedash 6}
       \range{pages}{6}
+    \endentry
+    \entry{barcodetypes}{online}{}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labeltitlesource}{title}
+      \field{title}{Types of Barcodes}
+      \field{urlday}{14}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.scandit.com/resources/guides/types-of-barcodes-choosing-the-right-barcode/
+      \endverb
+      \verb{url}
+      \verb https://www.scandit.com/resources/guides/types-of-barcodes-choosing-the-right-barcode/
+      \endverb
     \endentry
     \entry{Forbes2005}{online}{}
       \name{author}{1}{}{%
@@ -723,9 +722,73 @@
       \verb https://www.ailoitte.com/blog/ui-design-mobile-apps/
       \endverb
     \endentry
-    \entry{whatIsSoftwareTesting1}{online}{}
+    \entry{mongodb}{online}{}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{What is MongoDB?}
+      \field{urlday}{14}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.mongodb.com/docs/manual/
+      \endverb
+      \verb{url}
+      \verb https://www.mongodb.com/docs/manual/
+      \endverb
+    \endentry
+    \entry{aspnet}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Learn ASP.NET Core}
+      \field{urlday}{14}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://dotnet.microsoft.com/en-us/learn/aspnet
+      \endverb
+      \verb{url}
+      \verb https://dotnet.microsoft.com/en-us/learn/aspnet
+      \endverb
+    \endentry
+    \entry{angular}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Angular}
+      \field{urlday}{14}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://angular.io/docs
+      \endverb
+      \verb{url}
+      \verb https://angular.io/docs
+      \endverb
+    \endentry
+    \entry{maui}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{title}{.NET Multi-platform App UI documentation}
+      \field{urlday}{14}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/dotnet/maui
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/dotnet/maui
+      \endverb
+    \endentry
+    \entry{whatIsSoftwareTesting1}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{month}{3}
       \field{title}{What is Software Testing?}
@@ -755,8 +818,8 @@
       \strng{authorbibnamehash}{be7db481c2ccccc1a56786c2d91c6897}
       \strng{authornamehash}{be7db481c2ccccc1a56786c2d91c6897}
       \strng{authorfullhash}{be7db481c2ccccc1a56786c2d91c6897}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{1}
@@ -774,8 +837,8 @@
       \endverb
     \endentry
     \entry{postman}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Learning Center | Postman}
       \field{urlday}{14}
@@ -819,8 +882,8 @@
       \strng{authorbibnamehash}{152a03b99ee9210ee5715aeff46572fe}
       \strng{authornamehash}{152a03b99ee9210ee5715aeff46572fe}
       \strng{authorfullhash}{152a03b99ee9210ee5715aeff46572fe}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{9}
@@ -838,8 +901,8 @@
       \endverb
     \endentry
     \entry{agile}{online}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{title}{What is Agile? What is Scrum?}
       \field{urlday}{14}

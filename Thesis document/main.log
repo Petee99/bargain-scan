@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.24)  14 APR 2024 18:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.24)  15 APR 2024 19:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1258,12 +1258,6 @@ l.28 \newpage
 (chapters/2_Background.tex) [3
 
 ] (chapters/3_Analysis_Of_Related_Software.tex
-
-LaTeX Warning: Citation '' on page 4 undefined on input line 1.
-
-
-LaTeX Warning: Citation '' on page 4 undefined on input line 3.
-
 [4
 
 ] [5] [6] [7] [8]) [9] (chapters/4_Vision.tex [10
@@ -1384,165 +1378,165 @@ Underfull \hbox (badness 10000) in paragraph at lines 295--295
 <img/architecturePlan.png, id=765, 770.88pt x 770.88pt>
 File: img/architecturePlan.png Graphic file (type png)
 <use img/architecturePlan.png>
-Package pdftex.def Info: img/architecturePlan.png  used on input line 52.
+Package pdftex.def Info: img/architecturePlan.png  used on input line 53.
 (pdftex.def)             Requested size: 213.39568pt x 213.38654pt.
  [24 <./img/architecturePlan.png>]
 <img/ui_mockup.png, id=775, 503.8825pt x 498.86375pt>
 File: img/ui_mockup.png Graphic file (type png)
 <use img/ui_mockup.png>
-Package pdftex.def Info: img/ui_mockup.png  used on input line 83.
+Package pdftex.def Info: img/ui_mockup.png  used on input line 84.
 (pdftex.def)             Requested size: 128.0387pt x 126.76326pt.
  [25 <./img/ui_mockup.png>]) [26] (chapters/6_Implementation.tex
 [27
 
 ] [28]
-<img/Users_erd.png, id=795, 200.24812pt x 237.13594pt>
+<img/Users_erd.png, id=804, 200.24812pt x 237.13594pt>
 File: img/Users_erd.png Graphic file (type png)
 <use img/Users_erd.png>
 Package pdftex.def Info: img/Users_erd.png  used on input line 46.
-(pdftex.def)             Requested size: 170.71393pt x 202.17438pt.
+(pdftex.def)             Requested size: 153.64514pt x 181.95839pt.
  [29 <./img/Users_erd.png>]
-<img/shop_items_erd.png, id=804, 563.10374pt x 457.71pt>
+<img/shop_items_erd.png, id=813, 563.10374pt x 457.71pt>
 File: img/shop_items_erd.png Graphic file (type png)
 <use img/shop_items_erd.png>
 Package pdftex.def Info: img/shop_items_erd.png  used on input line 59.
 (pdftex.def)             Requested size: 362.77525pt x 294.87498pt.
  [30 <./img/shop_items_erd.png (PNG copy)>] [31] [32]
-<img/controller_classdiagram.png, id=819, 780.9175pt x 702.625pt>
+<img/controller_classdiagram.png, id=829, 780.9175pt x 702.625pt>
 File: img/controller_classdiagram.png Graphic file (type png)
 <use img/controller_classdiagram.png>
 Package pdftex.def Info: img/controller_classdiagram.png  used on input line 11
-4.
+5.
 (pdftex.def)             Requested size: 426.79135pt x 384.0005pt.
  [33 <./img/controller_classdiagram.png (PNG copy)>]
-<img/code_auth.png, id=825, 1856.9375pt x 843.15pt>
+<img/code_auth.png, id=835, 1856.9375pt x 843.15pt>
 File: img/code_auth.png Graphic file (type png)
 <use img/code_auth.png>
-Package pdftex.def Info: img/code_auth.png  used on input line 127.
+Package pdftex.def Info: img/code_auth.png  used on input line 128.
 (pdftex.def)             Requested size: 426.79135pt x 193.7789pt.
-<img/authentication_classdiagram.png, id=826, 553.31718pt x 299.61937pt>
+<img/authentication_classdiagram.png, id=836, 553.31718pt x 299.61937pt>
 File: img/authentication_classdiagram.png Graphic file (type png)
 <use img/authentication_classdiagram.png>
 Package pdftex.def Info: img/authentication_classdiagram.png  used on input lin
-e 145.
+e 146.
 (pdftex.def)             Requested size: 341.43437pt x 184.8843pt.
  [34 <./img/code_auth.png>]
-<img/code_jwt.png, id=834, 1975.38pt x 1441.385pt>
+<img/code_jwt.png, id=844, 1975.38pt x 1441.385pt>
 File: img/code_jwt.png Graphic file (type png)
 <use img/code_jwt.png>
-Package pdftex.def Info: img/code_jwt.png  used on input line 154.
+Package pdftex.def Info: img/code_jwt.png  used on input line 155.
 (pdftex.def)             Requested size: 426.79135pt x 311.4093pt.
  [35 <./img/authentication_classdiagram.png> <./img/code_jwt.png>]
-<img/datamodel_classdiagram.png, id=845, 906.38625pt x 467.49657pt>
+<img/datamodel_classdiagram.png, id=855, 906.38625pt x 467.49657pt>
 File: img/datamodel_classdiagram.png Graphic file (type png)
 <use img/datamodel_classdiagram.png>
-Package pdftex.def Info: img/datamodel_classdiagram.png  used on input line 173
+Package pdftex.def Info: img/datamodel_classdiagram.png  used on input line 174
 .
 (pdftex.def)             Requested size: 426.79135pt x 220.13002pt.
 
 [36 <./img/datamodel_classdiagram.png>]
-<img/scraping_classdiagram.png, id=853, 782.925pt x 350.81062pt>
+<img/scraping_classdiagram.png, id=863, 782.925pt x 350.81062pt>
 File: img/scraping_classdiagram.png Graphic file (type png)
 <use img/scraping_classdiagram.png>
-Package pdftex.def Info: img/scraping_classdiagram.png  used on input line 193.
+Package pdftex.def Info: img/scraping_classdiagram.png  used on input line 194.
 
 (pdftex.def)             Requested size: 426.79135pt x 191.23885pt.
  [37 <./img/scraping_classdiagram.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 218.
+put line 219.
 
 [38] [39] [40]
-<img/openai_sequence.png, id=880, 711.65875pt x 323.2075pt>
+<img/openai_sequence.png, id=890, 711.65875pt x 323.2075pt>
 File: img/openai_sequence.png Graphic file (type png)
 <use img/openai_sequence.png>
-Package pdftex.def Info: img/openai_sequence.png  used on input line 312.
+Package pdftex.def Info: img/openai_sequence.png  used on input line 313.
 (pdftex.def)             Requested size: 426.79135pt x 193.82736pt.
  [41 <./img/openai_sequence.png (PNG copy)>] [42]
-<img/website_structure.png, id=892, 1027.84pt x 653.44125pt>
+<img/website_structure.png, id=903, 1027.84pt x 653.44125pt>
 File: img/website_structure.png Graphic file (type png)
 <use img/website_structure.png>
-Package pdftex.def Info: img/website_structure.png  used on input line 343.
+Package pdftex.def Info: img/website_structure.png  used on input line 345.
 (pdftex.def)             Requested size: 426.79135pt x 271.3326pt.
  [43 <./img/website_structure.png (PNG copy)>]
-<img/auth_web_ss.png, id=899, 599.99156pt x 322.20375pt>
+<img/auth_web_ss.png, id=910, 599.99156pt x 322.20375pt>
 File: img/auth_web_ss.png Graphic file (type png)
 <use img/auth_web_ss.png>
-Package pdftex.def Info: img/auth_web_ss.png  used on input line 360.
+Package pdftex.def Info: img/auth_web_ss.png  used on input line 362.
 (pdftex.def)             Requested size: 298.75264pt x 160.43776pt.
-<img/scraping_web_ss.png, id=901, 807.7678pt x 539.76656pt>
+<img/scraping_web_ss.png, id=912, 807.7678pt x 539.76656pt>
 File: img/scraping_web_ss.png Graphic file (type png)
 <use img/scraping_web_ss.png>
-Package pdftex.def Info: img/scraping_web_ss.png  used on input line 370.
+Package pdftex.def Info: img/scraping_web_ss.png  used on input line 372.
 (pdftex.def)             Requested size: 384.1096pt x 256.67181pt.
  [44 <./img/auth_web_ss.png> <./img/scraping_web_ss.png>]
-<img/users_ss.png, id=911, 808.52063pt x 508.14844pt>
+<img/users_ss.png, id=922, 808.52063pt x 508.14844pt>
 File: img/users_ss.png Graphic file (type png)
 <use img/users_ss.png>
-Package pdftex.def Info: img/users_ss.png  used on input line 381.
+Package pdftex.def Info: img/users_ss.png  used on input line 383.
 (pdftex.def)             Requested size: 341.43437pt x 214.59169pt.
-<img/product_data_ss.png, id=913, 807.7678pt x 508.14844pt>
+<img/product_data_ss.png, id=924, 807.7678pt x 508.14844pt>
 File: img/product_data_ss.png Graphic file (type png)
 <use img/product_data_ss.png>
-Package pdftex.def Info: img/product_data_ss.png  used on input line 392.
+Package pdftex.def Info: img/product_data_ss.png  used on input line 394.
 (pdftex.def)             Requested size: 277.41176pt x 174.51276pt.
  [45 <./img/users_ss.png> <./img/product_data_ss.png>]
-<img/cookies_ss.png, id=923, 933.4875pt x 107.65219pt>
+<img/cookies_ss.png, id=934, 933.4875pt x 107.65219pt>
 File: img/cookies_ss.png Graphic file (type png)
 <use img/cookies_ss.png>
-Package pdftex.def Info: img/cookies_ss.png  used on input line 411.
+Package pdftex.def Info: img/cookies_ss.png  used on input line 413.
 (pdftex.def)             Requested size: 426.79135pt x 49.21835pt.
  [46 <./img/cookies_ss.png>] [47]
-<img/app_services.png, id=935, 1110.1475pt x 312.16624pt>
+<img/app_services.png, id=948, 1110.1475pt x 312.16624pt>
 File: img/app_services.png Graphic file (type png)
 <use img/app_services.png>
-Package pdftex.def Info: img/app_services.png  used on input line 449.
+Package pdftex.def Info: img/app_services.png  used on input line 452.
 (pdftex.def)             Requested size: 426.79135pt x 120.01051pt.
  [48 <./img/app_services.png (PNG copy)>]
-<img/app_dataservice.png, id=942, 1360.08125pt x 524.96124pt>
+<img/app_dataservice.png, id=955, 1360.08125pt x 524.96124pt>
 File: img/app_dataservice.png Graphic file (type png)
 <use img/app_dataservice.png>
-Package pdftex.def Info: img/app_dataservice.png  used on input line 478.
+Package pdftex.def Info: img/app_dataservice.png  used on input line 481.
 (pdftex.def)             Requested size: 426.79135pt x 164.73085pt.
  [49 <./img/app_dataservice.png (PNG copy)>] [50]
-<img/app_models.png, id=955, 1064.97874pt x 868.24374pt>
+<img/app_models.png, id=968, 1064.97874pt x 868.24374pt>
 File: img/app_models.png Graphic file (type png)
 <use img/app_models.png>
-Package pdftex.def Info: img/app_models.png  used on input line 537.
+Package pdftex.def Info: img/app_models.png  used on input line 540.
 (pdftex.def)             Requested size: 426.79135pt x 347.9405pt.
  [51 <./img/app_models.png (PNG copy)>]
-<img/app_viewmodels.png, id=962, 1536.74126pt x 787.94376pt>
+<img/app_viewmodels.png, id=975, 1536.74126pt x 787.94376pt>
 File: img/app_viewmodels.png Graphic file (type png)
 <use img/app_viewmodels.png>
-Package pdftex.def Info: img/app_viewmodels.png  used on input line 562.
+Package pdftex.def Info: img/app_viewmodels.png  used on input line 565.
 (pdftex.def)             Requested size: 426.79135pt x 218.83131pt.
  [52 <./img/app_viewmodels.png (PNG copy)>]
-<img/app_itemspage.png, id=969, 1124.70187pt x 1076.52188pt>
+<img/app_itemspage.png, id=982, 1124.70187pt x 1076.52188pt>
 File: img/app_itemspage.png Graphic file (type png)
 <use img/app_itemspage.png>
-Package pdftex.def Info: img/app_itemspage.png  used on input line 577.
+Package pdftex.def Info: img/app_itemspage.png  used on input line 580.
 (pdftex.def)             Requested size: 213.39568pt x 204.2456pt.
-<img/app_barcodepage.png, id=972, 1124.70187pt x 1078.78032pt>
+<img/app_barcodepage.png, id=985, 1124.70187pt x 1078.78032pt>
 File: img/app_barcodepage.png Graphic file (type png)
 <use img/app_barcodepage.png>
-Package pdftex.def Info: img/app_barcodepage.png  used on input line 592.
+Package pdftex.def Info: img/app_barcodepage.png  used on input line 595.
 (pdftex.def)             Requested size: 256.07741pt x 245.6122pt.
  [53 <./img/app_itemspage.png>]
-<img/app_shoppingcartpage.png, id=982, 1124.70187pt x 1074.26344pt>
+<img/app_shoppingcartpage.png, id=995, 1124.70187pt x 1074.26344pt>
 File: img/app_shoppingcartpage.png Graphic file (type png)
 <use img/app_shoppingcartpage.png>
-Package pdftex.def Info: img/app_shoppingcartpage.png  used on input line 601.
+Package pdftex.def Info: img/app_shoppingcartpage.png  used on input line 604.
 (pdftex.def)             Requested size: 256.07741pt x 244.58382pt.
  [54 <./img/app_barcodepage.png> <./img/app_shoppingcartpage.png>]
-<img/app_search.png, id=993, 542.025pt x 1078.78032pt>
+<img/app_search.png, id=1006, 542.025pt x 1078.78032pt>
 File: img/app_search.png Graphic file (type png)
 <use img/app_search.png>
-Package pdftex.def Info: img/app_search.png  used on input line 622.
+Package pdftex.def Info: img/app_search.png  used on input line 625.
 (pdftex.def)             Requested size: 128.0387pt x 254.83028pt.
 ) [55 <./img/app_search.png>]
 (chapters/7_testing.tex [56
 
 ]
-<img/testcoverage.png, id=1011, 648.92438pt x 405.76593pt>
+<img/testcoverage.png, id=1024, 648.92438pt x 405.76593pt>
 File: img/testcoverage.png Graphic file (type png)
 <use img/testcoverage.png>
 Package pdftex.def Info: img/testcoverage.png  used on input line 25.
@@ -1557,12 +1551,6 @@ LaTeX Font Info:    Trying to load font information for T1+pcr on input line 76
 (C:\Users\Peter\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Overfull \hbox (49.98885pt too wide) in paragraph at lines 76--76
-[]\T1/ptm/m/n/12 ^^P  His-tory of bar-codes.^^Q (2023), [On-line]. Avail-able: 
-[]$\T1/pcr/m/n/12 https : / / www . barcodeproducts .
- []
-
-
 Overfull \hbox (18.6575pt too wide) in paragraph at lines 76--76
 \T1/pcr/m/n/12 pricegrabber -[] launches -[] mobile -[] shopping -[] app$[] \T1
 /ptm/m/n/12 (vis-ited on 04/14/2024). 
@@ -1612,13 +1600,13 @@ Overfull \hbox (9.9575pt too wide) in paragraph at lines 76--76
 ptm/m/n/12 (vis-ited on 04/14/2024). 
  []
 
-
+[62]
 Overfull \hbox (24.8575pt too wide) in paragraph at lines 76--76
 \T1/pcr/m/n/12 geeksforgeeks . org / software -[] testing -[] basics/$[] \T1/pt
 m/m/n/12 (vis-ited on 04/14/2024). 
  []
 
-[62]
+
 Overfull \hbox (24.05026pt too wide) in paragraph at lines 76--76
 \T1/pcr/m/n/12 / / www . guru99 . com / software -[] testing -[] introduction -
 [] importance .
@@ -1670,10 +1658,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26237 strings out of 474587
- 459294 string characters out of 5745701
+ 26253 strings out of 474587
+ 459814 string characters out of 5745701
  1940558 words of memory out of 5000000
- 47844 multiletter control sequences out of 15000+600000
+ 47856 multiletter control sequences out of 15000+600000
  581330 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,17n,114p,1471b,2255s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1685,9 +1673,9 @@ blic/amsfonts/cm/cmsy10.pfb><C:/Users/Peter/AppData/Local/Programs/MiKTeX/fonts
 ts/type1/urw/times/utmb8a.pfb><C:/Users/Peter/AppData/Local/Programs/MiKTeX/fon
 ts/type1/urw/times/utmr8a.pfb><C:/Users/Peter/AppData/Local/Programs/MiKTeX/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (74 pages, 5228054 bytes).
+Output written on main.pdf (74 pages, 5232599 bytes).
 PDF statistics:
- 1237 PDF objects out of 1440 (max. 8388607)
- 213 named destinations out of 1000 (max. 500000)
+ 1262 PDF objects out of 1440 (max. 8388607)
+ 217 named destinations out of 1000 (max. 500000)
  800 words of extra memory for PDF output out of 10000 (max. 10000000)
 

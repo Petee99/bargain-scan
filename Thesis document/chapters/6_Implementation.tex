@@ -6,7 +6,7 @@ The sections on each part of my solution will start with a reason why I chose ea
 
 I will also carefully look over all the details of the implementation process. This includes the structure and architecture of each module, the design patterns that were used (if any), and the addition of different frameworks and libraries that made the system work better and be more useful. This section will not only explain these parts, but it will also include code examples to help you understand how they work in a clear and useful way.
 
-Dealing with the different problems and challenges that come up along the way is an important part of this project. This part of my thesis, I want to talk about the problems I faced personally when trying to solve these problems, the plans I made to get past them, and the insights I gained from these experiences. These thoughts are meant to give you a realistic picture of the implementation process, focusing on both its successes and problems.
+Dealing with the different problems and challenges that come up along the way is an important part of this project. This part of my thesis, I want to talk about the problems I faced personally when trying to solve these problems, the plans I made to get past them, and the insights I gained from these experiences. These thoughts are meant to give a realistic picture of the implementation process, focusing on both its successes and problems.
 
 In summary, this section will focus on the practical aspects of my thesis, specifically the implementation of certain components, their interplay, encountered challenges, acquired experiences, and the strategies employed to address said issues.
 
@@ -14,23 +14,23 @@ In summary, this section will focus on the practical aspects of my thesis, speci
 
 \subsubsection{Introduction}
 
-With rapid technological advancement and digital transformation, internet data is becoming incomprehensible. It is essential for managing complex, often misformatted, and abundant data. NoSQL database MongoDB is not a relational database. It is ideal for applications that must manage massive amounts of data and are in rapid development, requiring the database to adapt quickly. 
+With the quick rate of technological progress and digital change, the massive volume of data on the Internet can sometimes appear overwhelming and chaotic. Effective handling of this complicated, frequently badly structured, and abundant data is critical. MongoDB is a NoSQL database that varies from typical relational databases. It is appropriate for dynamic, changing situations since it can manage massive volumes of data and is flexible enough to swiftly react to changes.
 
 In my situation, MongoDB was an ideal choice for the solution because maintaining an extensive amount of shop item data and the necessity for quick queries required the use of a technology like this. In this section, I will highlight the primary benefits of MongoDB to justify its use, and then show how the database and its collections were configured for the solution.
 
-\noindent\textbf{Why MongoDB}
+\noindent\textbf{Why MongoDB} 
 
-\textbf{Flexibility and Scalability:} The schema-less nature provides enormous flexibility, allowing for the easy integration of diverse and growing data formats. This helps with shop item data, which may have multiple properties. MongoDB's horizontal scalability can handle massive datasets, ensuring database performance as shop items increase. If we need to store different types of data in the same database later, it may be useful.
+\textbf{Flexibility and Scalability:} The schema-less nature provides enormous flexibility, allowing for the easy integration of diverse and growing data formats. This helps with shop item data, which may have multiple properties. MongoDB's horizontal scalability can handle massive datasets, ensuring database performance as shop items increase. If different types of data will need to be stored  in the same database later, it may be useful.
 
 \textbf{Performance and Efficiency:} The document-oriented structure allows for swifter read/write operations. This is critical for e-commerce platforms, as quick data retrieval and updates for store products are critical for user experience and operational efficiency. The adoption of the BSON (Binary JSON) format improves efficiency even more, especially for sophisticated queries across big datasets.
 
-\textbf{Agile Data Handling:} The dynamic query language in MongoDB is a powerful tool for quickly working with data and managing inventory in retail settings. It can handle many different types of data, which makes it perfect for e-commerce. It also lets you do complex queries like text searches, real-time aggregation, and range queries. This feature is very important for sorting, filtering, and analyzing products based on things like price, category, and availability. MongoDB is also very important for managing the connections between different types of data, which makes it easier to get a full picture of inventory. Businesses can respond quickly to changes in the market and in what customers want with this unified approach. It also helps with organization and making smart product management decisions.
+\textbf{Agile Data Handling:} The dynamic query language in MongoDB is a powerful tool for quickly working with data and managing inventory in retail settings. It can handle many different types of data, which makes it perfect for e-commerce. It also lets you do complex queries like text searches, real-time aggregation, and range queries. This feature is very important for sorting, filtering, and analyzing products based on things like price, category, and availability. MongoDB is also very important for managing the connections between different types of data, which makes it easier to get a full picture of inventory. Businesses can respond quickly to changes in the market and in what customers want with this unified approach. It also helps with organization and making smart product management decisions. 
 
 \newpage
 
 \textbf{Driver Support:} The platform offers official drivers and libraries for widely used programming languages, including Python, Java, C\# and Node.js. 
 I connected the ASP.NET API to MongoDB using the official driver to store and retrieve data efficiently. MongoDB also has extensive documentation and a vibrant community to help integrate it into various technological environments. 
-
+\newline \cite{mongodb}
 
 \subsubsection{Database Structure}
 
@@ -43,7 +43,7 @@ Users' basic information and associated session data are both included in the us
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{img/Users_erd.png}
+	\includegraphics[width=0.36\linewidth]{img/Users_erd.png}
 	\caption{Entity Relationship Diagram of User Data}
 	\label{fig:uerd}
 \end{figure}
@@ -74,6 +74,7 @@ When making modern software, the technology you use to build an Application Prog
 One of the main reasons for choosing ASP.NET Core is that it works well with many NuGet packages. NuGet packages are basically code libraries or tools that are easy to add to a project. They provide a huge collection of resources that can improve functionality and speed up development. This wide range not only speeds up the development process but also gives you access to a lot of pre-built features, so you don't have to start from scratch.
 
 Another big plus is that ASP.NET Core works natively with the Internet Information Services (IIS) server. This integration makes deployment and hosting easier, which guarantees strong performance and dependability. Its compatibility with MongoDB's driver makes it even more appealing, as it makes database interactions faster. Also, the fact that this framework has libraries for web scraping makes it easy to get data from different web sources, which is exactly what the project needs.
+\newline\cite{aspnet}
 
 The solution is designed so that the API is the central part of the application. It provides several features, like asynchronous web scraping, data manipulation, and providing important endpoints for both the web and mobile parts of the system. Also, it's an important security layer that handles how the applications and the database talk to each other, keeping the data safe and secure.
 
@@ -107,7 +108,7 @@ The architecture also includes the \textbf{ShopItemController} and \textbf{ShopI
 
 The \textbf{UserController} is the most complicated of these. Its job is to handle a wide range of user-related tasks. These include creating and deleting user accounts, logging in and out, authenticating users, verification of administrative privileges, assigning admin rights, and renewing refresh tokens that have expired.
 
-Shown below is a detailed class diagram so that you can fully understand how the different parts of this system work together. Figure \ref{fig:ccd} shows very clearly how different classes and interfaces are linked to each other, along with their properties and methods.
+Shown below is a detailed class diagram so that one can fully understand how the different parts of this system work together. Figure \ref{fig:ccd} shows very clearly how different classes and interfaces are linked to each other, along with their properties and methods.
 
 \begin{figure}[H]
 	\centering
@@ -329,6 +330,7 @@ As a platform known for its structured framework and wide range of tools, Angula
 Angular's powerful typing system, which is powered by TypeScript, makes code better and more reliable. This makes debugging and maintenance easier, which is important for the long-term growth and scalability of the app. Using reactive programming patterns with RxJS also makes it easier to work with asynchronous data streams, which are needed for the app's real-time data processing features like uploading product data and scraping the web.
 
 Built-in features of the framework, like dependency injection, routing, and services, make it easier to make applications that are safe and work well. The app uses these features to keep track of user authentication states, protect routes based on user roles, block HTTP requests, and easily talk to back-end services. Moreover the architecture carefully arranges how users interact with it, how it is protected, and how it handles data through a clear set of modules.
+\newline\cite{angular}
 
 By implementing SSL certificates for the web page and API, the application enables HTTPS protocol and ensures secure communication. Sensitive data, including passwords and tokens, is protected by this configuration, which encrypts data transferred between the server and client. By using HTTPS instead of HTTP, users can be assured that their data is encrypted and unintelligible even if it is intercepted, creating a secure and reliable environment. The application's design is based on this commitment to security, and it fits in perfectly with Angular's framework, which facilitates strong security implementations.
 
@@ -432,11 +434,12 @@ Even though that the web application only serves administrative purposes, it was
 
 \subsubsection{Introduction}
 
-The following chapter of this thesis discusses the mobile application I created using the \textbf{.NET MAUI} framework. .NET MAUI is a modern cross-platform development tool that enables applications to be easily adapted to a variety of operating systems, including Android, iOS, TizenOS, and macOS. I used several NuGet packages during the application's development, which significantly increased functionality and user experience. These packages include CommunityToolkit.Maui, which supports specific user interface elements, FuzzySharp, which enables fuzzy search based on product names, and ZXing.Net.Maui, which helps with barcode reading and decoding.
+The following chapter of this thesis discusses the mobile application I created using the .NET MAUI framework. .NET MAUI is a modern cross-platform development tool that enables applications to be easily adapted to a variety of operating systems, including Android, iOS, TizenOS, and macOS. I used several NuGet packages during the application's development, which significantly increased functionality and user experience. These packages include CommunityToolkit.Maui, which supports specific user interface elements, FuzzySharp, which enables fuzzy search based on product names, and ZXing.Net.Maui, which helps with barcode reading and decoding.
 
-During the project's development, I used the \textbf{MVVM} (Model-View-ViewModel) design pattern, which is a common architectural pattern in modern application development. The benefit of MVVM is that it effectively separates the user interface (View), data model (Model), and presentation logic (ViewModel). This separation simplifies the development process by allowing components to be tested and maintained more easily. The ViewModel serves as an intermediary between the model and the view, reducing direct dependencies and increasing the application's flexibility, making it easier for developers to manage business logic and user interface.
+During the project's development, I used the MVVM (Model-View-ViewModel) design pattern, which is a common architectural pattern in modern application development. The benefit of MVVM is that it effectively separates the user interface (View), data model (Model), and presentation logic (ViewModel). This separation simplifies the development process by allowing components to be tested and maintained more easily. The ViewModel serves as an intermediary between the model and the view, reducing direct dependencies and increasing the application's flexibility, making it easier for developers to manage business logic and user interface.
+\newline\cite{maui}
 
-The current application can be compared to a Minimum Viable Product (\textbf{MVP}), as it demonstrates basic functionality and serves as a solid foundation for future development. The MVP approach allows for the collection of user feedback in the early stages of a project, which can then be used to better determine future development directions. The scope of the project is extensive, and many ideas have yet to be implemented. In the field of software development, it is common to adapt and redesign in comparison to the original plans, which is difficult, but the MVP approach used allows the application to gradually develop further, achieving a balance between user needs and project framework.
+The current application can be compared to a Minimum Viable Product (MVP), as it demonstrates basic functionality and serves as a solid foundation for future development. The MVP approach allows for the collection of user feedback in the early stages of a project, which can then be used to better determine future development directions. The scope of the project is extensive, and many ideas have yet to be implemented. In the field of software development, it is common to adapt and redesign in comparison to the original plans, which is difficult, but the MVP approach used allows the application to gradually develop further, achieving a balance between user needs and project framework. \cite{mvp}
 
 In the following sections, I will discuss the architecture of the application, the persistence of data, I will highlight some interesting solutions that have been implemented, and I will provide an overall general idea of how the application functions.
 
@@ -546,7 +549,7 @@ Due to the fact that both the View and ViewModel layers are accountable for the 
 The user interface of the application can be broken down into four primary sections: \begin{itemize}
 	\item the shell, which provides a menu for navigating between categories;
 	\item the main page, which is in charge of presenting the items for a particular category;
-	\item the bar code page, which is in charge of scanning barcodes;
+	\item the barcode page, which is in charge of scanning barcodes;
 	\item  and the user profile page, which is responsible for accessing shopping carts.
 \end{itemize} 
 Additionally there's a popup for searching for items by their name.
