@@ -35,8 +35,8 @@ namespace WebAPI.Models.Authentication
 
         public JwtAuthenticationManager(IDataBaseService<UserModel> dataBaseService)
         {
-            this._key = Environment.GetEnvironmentVariable(Constants.JwtKeyVariable)!;
-            this._dataBaseService = dataBaseService;
+            _key = Environment.GetEnvironmentVariable(Constants.JwtKeyVariable)!;
+            _dataBaseService = dataBaseService;
         }
 
         #endregion

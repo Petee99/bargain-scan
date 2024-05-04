@@ -2397,16 +2397,17 @@
     <bcf:citekey order="30" intorder="1">maui</bcf:citekey>
     <bcf:citekey order="31" intorder="1">mongodb</bcf:citekey>
     <bcf:citekey order="32" intorder="1">aspnet</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">angular</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">maui</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">mvp</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">whatIsSoftwareTesting1</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">whatIsSoftwareTesting2</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">postman</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">moq</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">cleancode</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">agile</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">jwt</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">angular</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">maui</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">mvp</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">whatIsSoftwareTesting1</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">whatIsSoftwareTesting2</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">postman</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">moq</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">cleancode</bcf:citekey>
     <bcf:citekey order="42" intorder="1">agile</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">agile</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

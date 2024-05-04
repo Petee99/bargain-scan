@@ -55,13 +55,13 @@ builder.Services.AddCors(options => options.AddPolicy(Constants.CorsPolicyKey, b
     .SetPreflightMaxAge(TimeSpan.FromSeconds(Constants.PreFlightMaxTimeInSeconds)
     )));
 
+builder.Services.AddSingleton<IMongoDbService, MongoDbService>();
 builder.Services.AddSingleton<IDataBaseService<UserModel>, DataBaseService<UserModel>>();
 builder.Services.AddSingleton<IDataBaseService<AdminModel>, DataBaseService<AdminModel>>();
 builder.Services.AddSingleton<IDataBaseService<ShopItem>, DataBaseService <ShopItem>>();
 builder.Services.AddSingleton<IDataBaseService<ShopItemCategory>, DataBaseService<ShopItemCategory>>();
 builder.Services.AddSingleton<IDataBaseService<ScrapeRequest>, DataBaseService<ScrapeRequest>>();
 builder.Services.AddSingleton<IScraperService, ScraperService>();
-builder.Services.AddSingleton<IMongoDbService, MongoDbService>();
 
 builder.Services.AddAuthentication(option =>
 {

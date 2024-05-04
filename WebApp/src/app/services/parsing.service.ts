@@ -15,9 +15,18 @@ const apiUrl = environment.apiUrl;
      private jsonData:any[];
   
      parseFile(file: any){
-
+        
         if(file.type == "application/json"){
-            this.jsonData = JSON.parse(file);
+            const reader = new FileReader();
+            reader.readAsText(file, 'UTF-8');
+
+            reader.onload = () => {
+                try {
+                this.jsonData = JSON.parse(reader.result as string);
+                } catch (e) {
+                alert('Invalid JSON file!');
+                }
+            };
         }
 
         if(file.type !== "text/csv"){
@@ -26,10 +35,9 @@ const apiUrl = environment.apiUrl;
 
         Parser.parse(file, {
             complete: (result) => {
-                console.log('Parsed: ', result);
                 this.jsonData = this.csvJSON(result.data);
             },
-            header: true // Set to true if the first row of CSV are headers
+            header: true
         });
      }
 
@@ -60,4 +68,3 @@ const apiUrl = environment.apiUrl;
         this.jsonData = [];
     }
 }
-  

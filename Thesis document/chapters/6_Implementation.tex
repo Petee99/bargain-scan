@@ -2,11 +2,11 @@
 
 In this crucial section of my thesis, I explore the pragmatic aspects of the implementation process, revealing the manner in which my proposed solution was actualized. The proposed solution incorporates a comprehensive system consisting of four essential components: a MongoDB database, an ASP.NET API, an Angular web application designed for administrative purposes, and a .NET MAUI mobile application that is compatible with both iPhone and Android devices. The purpose of this section is to offer a comprehensive explanation of each module, elucidating their respective contributions to the overall software solution.
 
-The sections on each part of my solution will start with a reason why I chose each technology. Included are discussions on why MongoDB was chosen as the database, the benefits of using ASP.NET to create the API, the choice of Angular for the web app, and the advantages of using.NET MAUI to create cross-platform mobile apps. The evaluation is not only about the choice, but also about how these technologies work together to make a system that works as a whole.
+Each upcoming section contains different parts of my solution, starting with stating the reason why I chose each technology for that specific part. Discussions on why MongoDB was chosen as the database, the benefits of using ASP.NET to create the API, the choice of Angular for the web app, and the advantages of using.NET MAUI to create cross-platform mobile apps have been included. The evaluation is not only about the choice, but also about how these technologies work together to make a system that works as a whole.
 
-I will also carefully look over all the details of the implementation process. This includes the structure and architecture of each module, the design patterns that were used (if any), and the addition of different frameworks and libraries that made the system work better and be more useful. This section will not only explain these parts, but it will also include code examples to help you understand how they work in a clear and useful way.
+I will also carefully look over all the details of the implementation process. This includes the structure and architecture of each module, the design patterns that were used (if any), and the addition of different frameworks and libraries that made the system work better and be more useful. This section will not only explain these parts, but will also include code examples to help you understand how they work in a clear and useful way.
 
-Dealing with the different problems and challenges that come up along the way is an important part of this project. This part of my thesis, I want to talk about the problems I faced personally when trying to solve these problems, the plans I made to get past them, and the insights I gained from these experiences. These thoughts are meant to give a realistic picture of the implementation process, focusing on both its successes and problems.
+Dealing with the different problems and challenges that come up along the way is an important part of this project. In this part of my thesis, I want to talk about the problems I faced personally when trying to solve these problems, the plans I made to get past them, and the insights I gained from these experiences. These thoughts are meant to give a realistic picture of the implementation process, focusing on both its successes and problems.
 
 In summary, this section will focus on the practical aspects of my thesis, specifically the implementation of certain components, their interplay, encountered challenges, acquired experiences, and the strategies employed to address said issues.
 
@@ -14,17 +14,17 @@ In summary, this section will focus on the practical aspects of my thesis, speci
 
 \subsubsection{Introduction}
 
-With the quick rate of technological progress and digital change, the massive volume of data on the Internet can sometimes appear overwhelming and chaotic. Effective handling of this complicated, frequently badly structured, and abundant data is critical. MongoDB is a NoSQL database that varies from typical relational databases. It is appropriate for dynamic, changing situations since it can manage massive volumes of data and is flexible enough to swiftly react to changes.
+With the quick rate of technological progress and digital change, the massive volume of data on the Internet can sometimes appear overwhelming and chaotic. Effective handling of this complicated, frequently badly structured, and abundant data is critical. MongoDB is a NoSQL database that varies from typical relational databases. It is appropriate for dynamic, changing situations, since it can manage massive volumes of data and is flexible enough to swiftly react to changes.
 
-In my situation, MongoDB was an ideal choice for the solution because maintaining an extensive amount of shop item data and the necessity for quick queries required the use of a technology like this. In this section, I will highlight the primary benefits of MongoDB to justify its use, and then show how the database and its collections were configured for the solution.
+In my situation, MongoDB was an ideal choice for the solution because maintaining an extensive amount of shop item data and the necessity for quick queries required the use of a technology like such. In this section, I will highlight the primary benefits of MongoDB to justify its use, and then show how the database and its collections were configured for the solution.
 
 \noindent\textbf{Why MongoDB} 
 
-\textbf{Flexibility and Scalability:} The schema-less nature provides enormous flexibility, allowing for the easy integration of diverse and growing data formats. This helps with shop item data, which may have multiple properties. MongoDB's horizontal scalability can handle massive datasets, ensuring database performance as shop items increase. If different types of data will need to be stored  in the same database later, it may be useful.
+\textbf{Flexibility and Scalability:} The schema-less nature provides enormous flexibility, allowing for the easy integration of diverse and growing data formats. This helps with shop item data, which may have multiple properties. MongoDB's horizontal scalability can handle massive datasets, ensuring database performance as shop items increase. It may come in handy in case different types of data will need to be stored in the same database.
 
 \textbf{Performance and Efficiency:} The document-oriented structure allows for swifter read/write operations. This is critical for e-commerce platforms, as quick data retrieval and updates for store products are critical for user experience and operational efficiency. The adoption of the BSON (Binary JSON) format improves efficiency even more, especially for sophisticated queries across big datasets.
 
-\textbf{Agile Data Handling:} The dynamic query language in MongoDB is a powerful tool for quickly working with data and managing inventory in retail settings. It can handle many different types of data, which makes it perfect for e-commerce. It also lets you do complex queries like text searches, real-time aggregation, and range queries. This feature is very important for sorting, filtering, and analyzing products based on things like price, category, and availability. MongoDB is also very important for managing the connections between different types of data, which makes it easier to get a full picture of inventory. Businesses can respond quickly to changes in the market and in what customers want with this unified approach. It also helps with organization and making smart product management decisions. 
+\textbf{Agile Data Handling:} The dynamic query language in MongoDB is a powerful tool for quickly working with data and managing inventory in retail settings. It can handle many different types of data, which makes it perfect for e-commerce. It also lets you do complex queries like text searches, real-time aggregation, and range queries. This feature is very important for sorting, filtering, and analyzing products based on things like price, category, and availability. MongoDB is also very important for managing the connections between different types of data, which makes it easier to get a full picture of inventory. Businesses can quickly respond to changes in the market, as well as to customer wants with this unified approach. It also helps with organization and making smart product management decisions. 
 
 \newpage
 
@@ -71,7 +71,7 @@ In conclusion, for large shop item data, MongoDB is flexible, fast, and scalable
 
 When making modern software, the technology you use to build an Application Programming Interface (API) is very important. I chose to use ASP.NET Core along with the programming language C\# for the API part of my project. Several important factors, each of which added to the overall efficiency and reliability of the API, led to this decision.
 
-One of the main reasons for choosing ASP.NET Core is that it works well with many NuGet packages. NuGet packages are basically code libraries or tools that are easy to add to a project. They provide a huge collection of resources that can improve functionality and speed up development. This wide range not only speeds up the development process but also gives you access to a lot of pre-built features, so you don't have to start from scratch.
+One of the main reasons for choosing ASP.NET Core is its ability works well with many NuGet packages. NuGet packages are basically code libraries or tools that are easy to add to a project. They provide a huge collection of resources that can improve functionality and speed up development. This wide range not only speeds up the development process but also gives you access to a lot of pre-built features, so you don't have to start from scratch.
 
 Another big plus is that ASP.NET Core works natively with the Internet Information Services (IIS) server. This integration makes deployment and hosting easier, which guarantees strong performance and dependability. Its compatibility with MongoDB's driver makes it even more appealing, as it makes database interactions faster. Also, the fact that this framework has libraries for web scraping makes it easy to get data from different web sources, which is exactly what the project needs.
 \newline\cite{aspnet}
@@ -108,7 +108,7 @@ The architecture also includes the \textbf{ShopItemController} and \textbf{ShopI
 
 The \textbf{UserController} is the most complicated of these. Its job is to handle a wide range of user-related tasks. These include creating and deleting user accounts, logging in and out, authenticating users, verification of administrative privileges, assigning admin rights, and renewing refresh tokens that have expired.
 
-Shown below is a detailed class diagram so that one can fully understand how the different parts of this system work together. Figure \ref{fig:ccd} shows very clearly how different classes and interfaces are linked to each other, along with their properties and methods.
+Shown below is a detailed class diagram, so that one can fully understand how the different parts of this system work together. Figure \ref{fig:ccd} shows very clearly how different classes and interfaces are linked to each other, along with their properties and methods.
 
 \begin{figure}[H]
 	\centering
@@ -121,16 +121,28 @@ Shown below is a detailed class diagram so that one can fully understand how the
 
 \noindent\textbf{UserController in Detail}
 
-Since UserController is a complex part of the application, mostly because that is how it handles authentication, it is useful to talk about the implementation a little more in detail.
+Since UserController is a complex part of the application, mostly because that is how it handles authentication, it is useful to talk about the implementation in detail.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\linewidth]{img/code_auth.png}
-	\caption{Authentication Snippet}
-	\label{fig:authcode}
-\end{figure}
+\begin{algorithm}
+	\caption{Refresh Access Token}
+	\begin{algorithmic}
+		\State Initialize principal from expired token
+		\State $userName \gets$ principal.Identity.Name
+		\State $user \gets$ databaseService.Get(userName)
+		
+		\If{$user = \text{null} \lor user.RefreshToken = \text{null} \lor user.RefreshTokenExpiryTime < \text{DateTime.Now}$}
+		\State \Return BadRequest()
+		\EndIf
+		
+		\State $newAccessToken \gets$ jwtAuthenticationManager.GenerateAccessToken(principal.Claims)
 
-In the provided snippet the authentication process is visible, with an additional JWT token refresh process, which is only needed if at the time of the request, the token of the user was expired, in which case, the system checks whether or not the user's other information and additional token is valid, in which case it generates a net token, which the user can use for authentication.
+		\State Response.Cookies.Append(Constants.AccessToken, newAccessToken)
+		
+		\State \Return Ok()
+	\end{algorithmic}
+\end{algorithm}
+
+Visible on the algorithm above, an interesting part of the authentication process is the JWT refreshing. Since the Access Token's lifespan is only a few seconds (security reasons), most of the requests require refreshing this token on the server-side with the request principal, setting the user's cookie before fulfilling the request.
 
 Upon registering, the user's provided password is immediately hashed and only stored afterwards, and in every login process the hashed passwords are being matched to each other.
 On logging out, the system removes all the cookies from the user, which is achieved by setting the cookies expiration date to a value, which will essentially turn them invalid.
@@ -139,35 +151,58 @@ Regarding the addition of a new admin user, the process will only be successful 
 
 \subsubsection{JWT Authentication}
 
-The authentication for the web uses JSON Web Tokens and takes advantage of AspNetCore's Authentication libarary, as well as the IdentityModels's Jwt token library. JSON Web Tokens (JWTs) are compact, URL-safe claims that are used for secure authentication and information exchange in web applications.
+The authentication for the web uses JSON Web Tokens and takes advantage of AspNetCore's Authentication library, as well as the IdentityModels's Jwt token library. JSON Web Tokens (JWTs) are compact, URL-safe claims that are used for secure authentication and information exchange in web applications. \cite{jwt}
+
+Figure \ref{fig:acd} represents the class for holding authentication information, as well as the authentication manager class, which is responsible for handling all JWT authentication related tasks, described using pseudo code.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{img/authentication_classdiagram.png}
+	\includegraphics[width=0.7\linewidth]{img/authentication_classdiagram.png}
 	\caption{Class Diagrams Related to JWT Authentication}
 	\label{fig:acd}
 \end{figure}
 
-Figure \ref{fig:acd} represents the class for holding authentication information as well as the authentication manager class which is responsible for handling all JWT authentication related tasks. The implementation of the class is explained on the next page and represented by the following code snippet:
-
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=1\linewidth]{img/code_jwt.png}
- 	\caption{Authentication Snippet}
- 	\label{fig:jwtcode}
- \end{figure}
- 
-\textbf{ GetPrincipalFromExpiredToken(string token):} This function throws an exception if the token is invalid or not in the expected format and verifies an expired JWT token in order to extract and return its ClaimsPrincipal.
- 
-\textbf{ GenerateAccessToken(IEnumerable<Claim> claims):} With the supplied claims, it generates and returns a new JWT access token.
- 
-\textbf{ GenerateRefreshToken():} creates a base64 string that can be used as a refresh token by randomly selecting a 32-byte number.
- 
-\textbf{ Authenticate(IAuthInformation authInformation):} This function verifies a user's identity using the credentials they have provided. If successful, it returns a new JWT access token; otherwise, it returns an empty string.
+\begin{algorithm}
+	\caption{Authentication Manager}
+	\begin{algorithmic}
+		
+		\Function{GetPrincipalFromExpiredToken}{token}
+		\State Validate JWT with tokenValidationParameters
+		\If{securityToken is HMAC SHA256}
+		\State \Return principal
+		\Else
+		\State Throw new SecurityTokenException
+		\EndIf
+		\EndFunction
+		
+		\Function{GenerateAccessToken}{claims}
+		\State Convert key to byte array
+		\State Setup tokenDescriptor with claims and signing credentials
+		\State Create token using tokenDescriptor
+		\State \Return token
+		\EndFunction
+		
+		\Function{GenerateRefreshToken}{}
+		\State Returns a random32-byte buffer as Base64 string
+		\EndFunction
+		
+		
+		\Function{Authenticate}{authInfo}
+		\If{username and password combination is valid}
+		\State Create new claims for user
+		\State Generate and \Return access token
+		\Else
+		\State \Return empty string
+		\EndIf
+		\EndFunction
+		
+		
+	\end{algorithmic}
+\end{algorithm}
  
 \subsubsection{Data Models}
 
-While being an essential part of the MVC pattern, the  data models in the application are mostly used for data representation, and moving data in a structured way between the API endpoints and the database. Only the UserModel includes specific methods for password hashing and verifying using \textbf{BCrypt.Net-Next library's} \textit{EnhancedVerify()} method, that checks a plaintext password against a hashed version to ensure secure authentication as well as \textit{EnhancedHashPassword()} method, that uses bcrypt hashing algorithm and other security enhancements to make storing passwords secure. The structure of the data models used by the controllers as well as showcasing how easily extensible the genereic controller implementation is shown on the figure \ref{fig:dcd}.
+While being an essential part of the MVC pattern, the  data models in the application are mostly used for data representation, and moving data in a structured way between the API endpoints and the database. Only the UserModel includes specific methods for password hashing and verifying using \textbf{BCrypt.Net-Next library's} \textit{EnhancedVerify()} method, that checks a plaintext password against a hashed version to ensure secure authentication, as well as \textit{EnhancedHashPassword()} method, that uses bcrypt hashing algorithm and other security enhancements to make storing passwords secure. The structure of the data models used by the controllers as well as showcasing how easily extensible the genereic controller implementation is shown on the figure \ref{fig:dcd}.
 
 \begin{figure}[H]
 	\centering
@@ -179,13 +214,13 @@ While being an essential part of the MVC pattern, the  data models in the applic
 \newpage
 
 \subsubsection{Web Scraping}
-In the solution the API is responsible for handling the data collection from the web as well. The scraping service is accessible from the website on a specific page available for administrators only, where they can force an immediate process or set a time interval for automatic executions. For crawling the web the solution uses a version of Selenium framework provided for .Net applications.
+In the solution the API is responsible for handling the data collection from the web as well. The scraping service is accessible from the website on a specific page available for administrators only, where they can force an immediate process or set a time interval for automatic executions. For crawling the web, the solution uses a version of Selenium framework provided for .Net applications.
 
-\textbf{Selenium} is a free and open-source automation tool that is mostly used to automate web browsers. It gives engineers a solid way to check web applications. Many people choose Selenium for cross-browser automation for it has many useful parts, such as Selenium WebDriver for managing how browsers work, which is crucial in this case.
+Selenium is a free and open-source automation tool that is mostly used to automate web browsers. It gives engineers a solid way to check web applications. Many people choose Selenium for cross-browser automation for it has many useful parts, such as Selenium WebDriver for managing how browsers work, which is crucial in this case.
 
-The first approach consisted of downloading the page's HTML code, however it turned out that nowadays most of the websites load content dynamically, so the data downloaded was of no use. To overcome this, the application uses Selenium for simulating a head-less browser, which is a web browser that doesn't have a graphical user interface. It lets programs control web pages automatically, which is why it's often used for web scraping, automated testing, and rendering web pages for processing on the server.
+The first approach consisted of downloading the page's HTML code, however, it turned out, that nowadays most of the websites load content dynamically, so the data downloaded was of no use. To overcome this, the application uses Selenium for simulating a head-less browser, which is a web browser that doesn't have a graphical user interface. It lets programs control web pages automatically, which is why it's often used for web scraping, automated testing, and rendering web pages for processing on the server.
 
-Scraping also states an issue with protection of the site's data. The general rule is that you are only supposed to collect data, that you can publicly access and if the site's robots.txt file content does not prohibit you from scraping the data available on the website. Before crawling a new website for data, it is essential to review these points.
+Scraping also states an issue with protection of the site's data. The general rule is that you are only supposed to collect data that you can publicly access and if the site's robots.txt file content does not prohibit you from scraping the data available on the website. Before crawling a new website for data, it is essential to review these points.
 
 Shown below on figure \ref{fig:scd} are the classes and interfaces that are required for the service to work, the characteristics of its working process are explained on the next page.
 
@@ -302,11 +337,11 @@ The process of scraping the items from various websites always needs fine tuning
 
 \subsubsection{OpenAI Processing}
 
-Unfortunately it can't be guaranteed that each site has the same categories for the products listed, therefore I needed a solution to match these. Fuzzy string matching would not be reliable enough, therefore I turned to OpenAI's chat endpoint and utilized it the following was: Before returning the data to the ScrapingService, the IShopScraper calls of the OpenAiOptimizer's OptimizeCategoriesToMatchSchema method.
+Unfortunately it can't be guaranteed that each site has the same categories for the products listed, therefore I needed a solution to match these. Fuzzy string matching would not be reliable enough, therefore I turned to OpenAI's chat endpoint and utilized it the following way: Before returning the data to the ScrapingService, the IShopScraper calls of the OpenAiOptimizer's OptimizeCategoriesToMatchSchema method.
 
 A system calls the OptimizeCategoriesToMatchSchema method to divide categories into 10 groups and asynchronously send them to OpenAI's ChatGPT as JSON data. ChatGPT matches these categories to a schema and returns renamed JSON categories. After renaming the categories, the method returns the modified data to the calling system. This way AI-driven classification and automated data processing are also shown in this web application.
 
-Interesting remark about the prompting process, is that it is not included in a ChatGPT subscription, instead it uses a credit / prompt system, which has become much cheaper, since the introduction of the GPT 3.5 turbo model. The code also needs to be prepared for occasional outages, when it needs to retry the prompt. Writing a message with instructions for ChatGPT can be challenging too, I overcame this by writing a sturdy prompt message and asking ChatGPT to reply with a JSON format of the data. This sometimes also produced extra message and characters around the JSON format, which I worked around by trimming all the characters, outside the JSON body format. On figure \ref{fig:ai} a simplified version of the process is shown via sequence diagram.
+Interesting remark about the prompting process, is that it is not included in a ChatGPT subscription, instead it uses a credit / prompt system, which has become much cheaper since the introduction of the GPT 3.5 turbo model. The code also needs to be prepared for occasional outages, when it needs to retry the prompt. Writing a message with instructions for ChatGPT can be challenging too, I overcame this by writing a sturdy prompt message and asking ChatGPT to reply with a JSON format of the data. This sometimes also produced extra message and characters around the JSON format, which I worked around by trimming all the characters, outside the JSON body format. On figure \ref{fig:ai} a simplified version of the process is shown via sequence diagram.
 
 \begin{figure}[H]
 	\centering
@@ -323,13 +358,13 @@ Interesting remark about the prompting process, is that it is not included in a 
 
 \subsubsection{Introduction}
 
-As the framework of choice for this app, Angular was chosen because it has a large ecosystem and a lot of strong features that make it perfect for a modern, dynamic web app.
+As the framework of choice for this app, Angular was chosen, because it has a large ecosystem and a lot of strong features that make it perfect for a modern, dynamic web app.
 
 As a platform known for its structured framework and wide range of tools, Angular makes it easy to build large-scale apps with its opinionated architecture. This prescriptive nature makes it much easier to keep codebases consistent, which makes it perfect for the application's complicated structure, which needs clear modularity and separation of concerns.
 
 Angular's powerful typing system, which is powered by TypeScript, makes code better and more reliable. This makes debugging and maintenance easier, which is important for the long-term growth and scalability of the app. Using reactive programming patterns with RxJS also makes it easier to work with asynchronous data streams, which are needed for the app's real-time data processing features like uploading product data and scraping the web.
 
-Built-in features of the framework, like dependency injection, routing, and services, make it easier to make applications that are safe and work well. The app uses these features to keep track of user authentication states, protect routes based on user roles, block HTTP requests, and easily talk to back-end services. Moreover the architecture carefully arranges how users interact with it, how it is protected, and how it handles data through a clear set of modules.
+Built-in features of the framework, like dependency injection, routing, and services, make it easier to make applications that are safe and work well. The app uses these features to keep track of user authentication states, protect routes based on user roles, block HTTP requests, and easily talk to back-end services. Moreover, the architecture carefully arranges how users interact with it, how it is protected, and how it handles data through a clear set of modules.
 \newline\cite{angular}
 
 By implementing SSL certificates for the web page and API, the application enables HTTPS protocol and ensures secure communication. Sensitive data, including passwords and tokens, is protected by this configuration, which encrypts data transferred between the server and client. By using HTTPS instead of HTTP, users can be assured that their data is encrypted and unintelligible even if it is intercepted, creating a secure and reliable environment. The application's design is based on this commitment to security, and it fits in perfectly with Angular's framework, which facilitates strong security implementations.
@@ -338,7 +373,7 @@ By implementing SSL certificates for the web page and API, the application enabl
 
 \subsubsection{Architecture}
 
-The following diagram, visible on figure \ref{fig:webappstruct} makes it easy to see how the application is structured. Every module makes sure that the user has a safe, quick, and smooth experience by explaining its function in the application and how it works with the other modules. This organized method makes things run more smoothly and sets the stage for future improvements.
+The following diagram, visible on figure \ref{fig:webappstruct} makes it easy to see how the application is structured. Every module makes sure that the user has a safe, quick, and smooth experience by explaining its function in the application and how it works with the other modules. This organized method makes things run smoother and sets the stage for future improvements.
 
 \begin{figure}[H]
 	\centering
@@ -387,7 +422,7 @@ With utilizing the Users Component, the administrators can view a complete list 
 
 \noindent\textbf{User-Focused Functionality:}
 
-Authorized users are given permission to access the Contacts Component for the purpose of communication and the Upload Product Data Component. The latter component, shown on figure \ref{fig:uploaddata} is provided for users to upload product data, which is then processed by the Product Data Service, which converts CSV inputs into JSON format and checks that they match the Shop Item Model before submitting them to the API.
+Authorized users are given permission to access the Contacts Component for the purpose of communication, and the Upload Product Data Component. The latter component, shown on figure \ref{fig:uploaddata} is provided for users to upload product data, which is then processed by the Product Data Service, which converts CSV inputs into JSON format and checks that they match the Shop Item Model before submitting them to the API.
 
 \begin{figure}[H]
 	\centering
@@ -426,7 +461,7 @@ Backend interaction happens through the API package. The document defines the en
 
 \noindent\textbf{Ending Note:}
 
-Even though that the web application only serves administrative purposes, it was still important to provide this functionality in a user friendly manner. From development side, since the future is malleable choosing Angular was the right way to ensure modularity and scalability. 
+Even though the web application only serves administrative purposes, it was still important to provide this functionality in a user friendly manner. From development side, since the future is malleable, choosing Angular was the right way to ensure modularity and scalability. 
 
 \newpage
 
@@ -554,9 +589,9 @@ The user interface of the application can be broken down into four primary secti
 \end{itemize} 
 Additionally there's a popup for searching for items by their name.
 
-Since the application is heavily dependent on the MVVM design pattern, the ViewModels implement INotifyPropertyChanged in order to update the View with information about changed properties. Additionally, the ViewModels implement the IHandle interface in order to handle messages that are published by the EventAggregator. The Views are being initialized and registered through the use of ResolverService, and I have avoided using the code-behind as much as possible because doing so is also a violation of the pattern.
+Since the application is heavily dependent on the MVVM design pattern, the ViewModels implement INotifyPropertyChanged in order to update the View with information about changed properties. Additionally, the ViewModels implement the IHandle interface in order to handle messages that are published by the EventAggregator. The Views are being initialized and registered through the use of ResolverService, and I have avoided using the code-behind as much as possible, because doing so is also a violation of the pattern.
 
-There are additional ViewModels which are not matched by their own Views. The reason behind this is that the models used in this case are not enough by themselves and they need an extra layer of presentation logic to make sense for the user interface.
+There are additional ViewModels which are not matched by their own Views. The reason behind this is that the models used in this case are not enough by themselves and need an extra layer of presentation logic to make sense for the user interface.
 
 The general architecture of the layer can be seen on figure \ref{fig:appviewmodels} below.
 

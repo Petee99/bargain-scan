@@ -786,6 +786,22 @@
       \verb https://learn.microsoft.com/en-us/dotnet/maui
       \endverb
     \endentry
+    \entry{jwt}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{title}{JSON Web Token Introduction}
+      \field{urlday}{14}
+      \field{urlmonth}{4}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jwt.io/introduction
+      \endverb
+      \verb{url}
+      \verb https://jwt.io/introduction
+      \endverb
+    \endentry
     \entry{whatIsSoftwareTesting1}{online}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
@@ -853,8 +869,8 @@
       \endverb
     \endentry
     \entry{moq}{online}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{title}{The most popular and friendly mocking framework for .NET}
       \field{urlday}{14}
